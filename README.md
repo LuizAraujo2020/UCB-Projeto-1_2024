@@ -1,2 +1,11 @@
 # UCB-Projeto-1_2024
-Projeto interdisciplinar de Programação Web e Interface Humano Computador
+Projeto interdisciplinar de: 
+- Programação para Web
+    prof. João Nunes
+- Interface Humano Computador
+    prof. Osmam Brás
+
+- Alunos:
+    Juliana Pires
+    Luiz Araujo
+    Natália Carvalho
