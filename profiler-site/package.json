@@ -1,0 +1,35 @@
+{
+  "name": "profiler-site",
+  "version": "1.0.0",
+  "description": "Website for developers to build their own portfolio, resume, showcase...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuizAraujo2020/UCB-Projeto-1_2024.git"
+  },
+  "keywords": [
+    "web",
+    "js",
+    "html",
+    "css",
+    "node",
+    "express",
+    "ihc",
+    "ucb",
+    "pair",
+    "programming",
+    "2024"
+  ],
+  "author": "Juliana Pires, Luiz Araujo, Natália Carvalho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuizAraujo2020/UCB-Projeto-1_2024/issues"
+  },
+  "homepage": "https://github.com/LuizAraujo2020/UCB-Projeto-1_2024#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
