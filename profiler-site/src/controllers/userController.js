@@ -1,19 +1,19 @@
-const userDB = require('../models/user');
+const userDB = require('../models/user')
 
-function findUserByUsername(username) {
-    const users = userDB.mockUsers;
+function findUserByUsername (username) {
+  const users = userDB.mockUsers
 
-    let found;
-    
-    users.forEach(user => {
-        if (user.username == username) {
-            found = user;
-        }
-    });
+  let found
 
-    return found;
+  users.forEach(user => {
+    if (user.username == username) {
+      found = user
+    }
+  })
+
+  return found
 }
 
 module.exports = {
-    findUserByUsername
+  findUserByUsername
 }

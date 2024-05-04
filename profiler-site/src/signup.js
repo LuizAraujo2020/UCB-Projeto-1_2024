@@ -1,62 +1,61 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 module.exports = () => {
-    const signUpRouter = new SignUpRouter()
-    router.post('/signup', ExpressRouterAdapter.adapt(signUpRouter))
+  const signUpRouter = new SignUpRouter()
+  router.post('/signup', ExpressRouterAdapter.adapt(signUpRouter))
 }
 
 class ExpressRouterAdapter {
-    static adapt(router) {
-        return async (req, res) => {
-            const httpRequest = {
-                body: req.body
-            }
-            const httpResponse = await router.route(httpRequest)
-            res.status(httpResponse.statusCode).json(httpResponse.body)
-        }
+  static adapt (router) {
+    return async (req, res) => {
+      const httpRequest = {
+        body: req.body
+      }
+      const httpResponse = await router.route(httpRequest)
+      res.status(httpResponse.statusCode).json(httpResponse.body)
     }
+  }
 }
 
 // CAMADA: Presentation
 // signup-router
 class SignUpRouter {
-    async route(httpRequest) {
-        const { email, password, repeatPassword } = httpRequest.body
-        const user = new SignUpUseCase().signUp(email, password, repeatPassword)
+  async route (httpRequest) {
+    const { email, password, repeatPassword } = httpRequest.body
+    const user = new SignUpUseCase().signUp(email, password, repeatPassword)
 
-        return {
-            statusCode: 200,
-            body: user
-        }
+    return {
+      statusCode: 200,
+      body: user
     }
+  }
 }
 
 // CAMADA: Domain
-// signup-usecase 
+// signup-usecase
 class SignUpUseCase {
-    async signUp(email, password, repeatPassword) {
-        if (password === repeatPassword) {
-            new AddAccountRepository().add(email, password)
+  async signUp (email, password, repeatPassword) {
+    if (password === repeatPassword) {
+      new AddAccountRepository().add(email, password)
 
-            return new SignUpPresenter().signUpSuccess()
-        } else {
-            return new SignUpPresenter().signUpFail()
-        }
+      return new SignUpPresenter().signUpSuccess()
+    } else {
+      return new SignUpPresenter().signUpFail()
     }
+  }
 }
 
 // CAMADA: Infra
 // signup-presenter
 class SignUpPresenter {
-    async signUpSuccess() {
-        return 'Usuário cadastrado com sucesso'
-    }
+  async signUpSuccess () {
+    return 'Usuário cadastrado com sucesso'
+  }
 
-    async signUpFail() {
-
-        return 'Senhas não conferem'
-    }
+  async signUpFail () {
+    return 'Senhas não conferem'
+  }
 }
 
 // add-account-repo
@@ -64,51 +63,49 @@ const mongoose = require('mongoose')
 const AccountModel = mongoose.model('Account')
 
 class AddAccountRepository {
-    
-    async add(email, password) {
-        const account = new AccountModel({ email, password })
-        await account.save()
+  async add (email, password) {
+    const account = new AccountModel({ email, password })
+    await account.save()
 
-        return account
+    return account
+  }
+
+  // Load
+  async loadById (id) {
+    // TODO: Fazer depois
+  }
+
+  async loadByEmail (email) {
+    const account = await AccountModel.findOne({ email })
+
+    if (account) {
+      return account
     }
+    return null
+  }
 
-    // Load
-    async loadById(id) {
-        //TODO: Fazer depois
-    }
+  async loadByEmailAndPassword (email, password) {
+    return null
+  }
 
-    async loadByEmail(email) {
-        const account = await AccountModel.findOne({ email })
+  // Update
+  async updatePassword (id, password) {
+    // TODO: Fazer depois
 
-        if (account) {
-            return account
-        }
-        return null
-    }
+    return null
+  }
 
-    async loadByEmailAndPassword(email, password) {
-        return null
-    }
+  async updateEmail (id, email) {
+    // TODO: Fazer depois
 
+    return null
+  }
 
-    // Update
-    async updatePassword(id, password) {
-        //TODO: Fazer depois
+  async updateName (id, name) {
+    // TODO: Fazer depois
 
-        return null
-    }
-    
-    async updateEmail(id, email) {
-        //TODO: Fazer depois
-
-        return null
-    }
-
-    async updateName(id, name) {
-        //TODO: Fazer depois
-
-        return null
-    }
+    return null
+  }
 }
 
 // // account-model
