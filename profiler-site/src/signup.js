@@ -18,6 +18,7 @@ class ExpressRouterAdapter {
     }
 }
 
+// CAMADA: Presentation
 // signup-router
 class SignUpRouter {
     async route(httpRequest) {
@@ -31,6 +32,7 @@ class SignUpRouter {
     }
 }
 
+// CAMADA: Domain
 // signup-usecase 
 class SignUpUseCase {
     async signUp(email, password, repeatPassword) {
@@ -44,6 +46,7 @@ class SignUpUseCase {
     }
 }
 
+// CAMADA: Infra
 // signup-presenter
 class SignUpPresenter {
     async signUpSuccess() {
