@@ -21,3 +21,16 @@ describe('Login Router', () => {
         // expect(httpResponse.body).toEqual(new MissingParamError('email'))
     })
 })
+
+describe('Login Router', () => {
+    test('Should return 400 if no password is provided', () => {
+        const sut= new LoginRouter()
+        const httpRequest = {
+            body: {
+                password: 'any_email@email.com'
+            }
+        }
+        const httpResponse = sut.route(httpRequest)
+        expect(httpResponse.statusCode).toBe(400)
+    })
+})
