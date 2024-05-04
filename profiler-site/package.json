@@ -4,7 +4,11 @@
   "description": "Website for developers to build their own portfolio, resume, showcase...",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "lint:staged": "lint-staged",
+    "precommit": "lint-staged",
+    "test": "jest --watchAll",
     "test:staged": "jest"
   },
   "standard": {
