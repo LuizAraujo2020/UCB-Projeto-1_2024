@@ -9,7 +9,7 @@
     "lint:staged": "lint-staged",
     "precommit": "lint-staged",
     "test": "jest --watchAll",
-    "test:staged": "jest"
+    "test:staged": "jest --passWithNoTests"
   },
   "standard": {
     "env": ["jest"]
