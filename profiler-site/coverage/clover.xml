@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1714873325986" clover="3.2.0">
-  <project timestamp="1714873325986" name="All files">
-    <metrics statements="63" coveredstatements="63" conditionals="15" coveredconditionals="15" methods="7" coveredmethods="7" elements="85" coveredelements="85" complexity="0" loc="63" ncloc="63" packages="2" files="4" classes="4"/>
+<coverage generated="1714874004622" clover="3.2.0">
+  <project timestamp="1714874004622" name="All files">
+    <metrics statements="73" coveredstatements="73" conditionals="19" coveredconditionals="19" methods="8" coveredmethods="8" elements="100" coveredelements="100" complexity="0" loc="73" ncloc="73" packages="2" files="4" classes="4"/>
     <package name="helpers">
-      <metrics statements="36" coveredstatements="36" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
+      <metrics statements="42" coveredstatements="42" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
       <file name="http-status-code.js" path="/Users/luizaraujo/Desktop/Github/Web/Projects/UCB/UCB-Projeto-1_2024/profiler-site/src/presentation/helpers/http-status-code.js">
-        <metrics statements="24" coveredstatements="24" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <metrics statements="30" coveredstatements="30" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -15,21 +15,27 @@
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
       </file>
       <file name="missing-params-error.js" path="/Users/luizaraujo/Desktop/Github/Web/Projects/UCB/UCB-Projeto-1_2024/profiler-site/src/presentation/helpers/missing-params-error.js">
         <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -44,43 +50,47 @@
         <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
       </file>
     </package>
     <package name="routers">
-      <metrics statements="27" coveredstatements="27" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+      <metrics statements="31" coveredstatements="31" conditionals="13" coveredconditionals="13" methods="2" coveredmethods="2"/>
       <file name="login-router.js" path="/Users/luizaraujo/Desktop/Github/Web/Projects/UCB/UCB-Projeto-1_2024/profiler-site/src/presentation/routers/login-router.js">
-        <metrics statements="27" coveredstatements="27" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <metrics statements="31" coveredstatements="31" conditionals="13" coveredconditionals="13" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="8" type="stmt"/>
-        <line num="6" count="8" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="8" type="cond" truecount="4" falsecount="0"/>
+        <line num="9" count="9" type="cond" truecount="4" falsecount="0"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="9" type="cond" truecount="1" falsecount="0"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="19" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="9" type="cond" truecount="1" falsecount="0"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
       </file>
     </package>
   </project>
