@@ -4,7 +4,7 @@ const UnauthorizedError = require('../helpers/unauthorized-error')
 
 const makeSUT = () => {
     // Mock Class
-        class AuthUseCaseSpy {
+    class AuthUseCaseSpy {
         auth(email, password) {
             this.email = email
             this.password = password
@@ -79,5 +79,31 @@ describe('Login Router', () => {
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(401)
         expect(httpResponse.body).toEqual(new UnauthorizedError())
+    })
+    
+    test('Should return 500 if no AutUseCase is provided', () => {
+        const sut = new LoginRouter()
+        const httpRequest = {
+            body: {
+                email: 'any_email@email.com',
+                password: 'any_password'
+            }
+        }
+        const httpResponse = sut.route(httpRequest)
+        expect(httpResponse.statusCode).toBe(500)
+    })
+    
+    test('Should return 500 if AutUseCase has no auth method', () => {
+        class AuthUseCaseSpy { }
+        const authUseCaseSpy = new AuthUseCaseSpy()
+        const sut = new LoginRouter(authUseCaseSpy)
+        const httpRequest = {
+            body: {
+                email: 'any_email@email.com',
+                password: 'any_password'
+            }
+        }
+        const httpResponse = sut.route(httpRequest)
+        expect(httpResponse.statusCode).toBe(500)
     })
 })
