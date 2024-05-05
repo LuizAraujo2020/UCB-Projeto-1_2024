@@ -237,4 +237,16 @@ describe('Login Router', () => {
         expect(authUseCaseSpy.email).toBe(httpRequest.body.email)
         expect(authUseCaseSpy.password).toBe(httpRequest.body.password)
     })
+    
+    test('Should call EmailValidator with correct email', async () => {
+        const { sut, emailValidatorSpy } = makeSUT()
+        const httpRequest = {
+            body: {
+                email: 'any_email@email.com',
+                password: 'any_password'
+            }
+        }
+        await sut.route(httpRequest)
+        expect(emailValidatorSpy.email).toBe(httpRequest.body.email)
+    })
 })
