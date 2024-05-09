@@ -9,7 +9,8 @@
     "lint:staged": "lint-staged",
     "precommit": "lint-staged",
     "test": "jest --silent --colors --noStackTrace --passWithNoTests",// --watch vem por padrão com -o, que serve pra rodar só quando tem mudanças nos arquivos testados
-    "test:unit": "npm test -- --watch",
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
     "test:staged": "npm test -- --findRelatedTests", // findRelatedTests faz o mesmo que o --watch, só roda o teste que precisa
     "test:ci": "npm test -- --coverage"
   },
