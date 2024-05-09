@@ -8,8 +8,8 @@
     "lint:fix": "standard --fix",
     "lint:staged": "lint-staged",
     "precommit": "lint-staged",
-    "test": "jest --watchAll",
-    "test:staged": "jest --passWithNoTests"
+    "test": "jest --watch --silent --colors --noStackTrace",// --watch vem por padrão com -o, que serve pra rodar só quando tem mudanças nos arquivos testados
+    "test:staged": "jest --passWithNoTests --findRelatedTests --silent --noStackTrace" // findRelatedTests faz o mesmo que o --watch, só roda o teste que precisa
   },
   "standard": {
     "env": ["jest"]
