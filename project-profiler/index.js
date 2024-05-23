@@ -2,9 +2,9 @@
 const express = require('express')
 const mustacheExpress = require('mustache-express')
 
-const userController = require('./src/controllers/userController')
+const userController = require('./src/Controllers/userController')
 
-const Errors = require('./src/models/error')
+const Errors = require('./src/Models/error')
 
 //= ===== CONFIGURAÇÃO INICIAL
 const app = express()

@@ -1,4 +1,4 @@
-const userDB = require('../models/user')
+const userDB = require('../Models/user')
 
 function findUserByUsername (username) {
   const users = userDB.mockUsers
