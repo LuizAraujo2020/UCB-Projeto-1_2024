@@ -1,16 +1,16 @@
-const userRepository = require('../Models/user')
+// const userRepository = require('../Models/User')
 
 function index(req, res) {
-    let userName = req.query.user
+    // let userName = req.query.user
 
-    let user = userRepository.findUser(userName)
+    // let user = userRepository.findUser(userName)
 
-    if (user) {
-        res.render('index', { user })
+    // if (user) {
+    //     res.render('index', { user })
 
-    } else {
+    // } else {
         res.render('search')
-    }
+    // }
 }
 
 module.exports = {
