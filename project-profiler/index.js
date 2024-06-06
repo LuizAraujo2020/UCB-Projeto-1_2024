@@ -1,4 +1,4 @@
-//==== IMPORTAÇÃO DE MÓDULOS / DEPENDÊNCIAS
+//==== MODULES/PACKAGES/IMPORTS/DEPENDENCIES
 const express = require('express')
 const mustacheExpress = require('mustache-express')
 
@@ -6,25 +6,25 @@ const userController = require('./src/Controllers/userController')
 const Errors = require('./src/Models/error')
 
 
-//==== CONFIGURAÇÃO INICIAL
+//==== INITIAL CONFIG
 const app = express()
+
+const router = require('./src/routes')
 
 app.engine('html', mustacheExpress())
 app.set('view engine', 'html')
 app.set('views', __dirname + '/src/Views')
 
-// Decode dos dados vindos do POST
+// Decode the data that comes from POST method.
 app.use(express.urlencoded({ extended: true }))
-// Pasta estática para expor arquivos ao html: css, imagens e etc.
+// Static folder to expose the files to js, html e so on: css, images and etc.
 app.use(express.static('Static'))
 
 
-//==== ROTAS
-const router = require('./src/Utils/Routes/mainRoutes')
 app.use('/', router)
 
 
-//==== EXECUTAR O SERVIDOR
+//==== EXECUTE THE SERVER
 const PORT = 8080
 
 app.listen(PORT, function () {
