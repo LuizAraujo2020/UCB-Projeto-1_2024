@@ -12,17 +12,18 @@ const router = require('./routes')
 //==== INITIAL CONFIG
 const app = express()
 
-app.use('/', router)
-
 app.engine('html', mustacheExpress())
 app.set('view engine', 'html')
 app.set('views', __dirname + '/src/Views')
 
 // Decode the data that comes from POST method.
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
 // Static folder to expose the files to js, html e so on: css, images and etc.
 app.use(express.static('Static'))
 
+app.use('/', router)
 
 //==== DATABASE
 db.sync(function() {

@@ -1,6 +1,6 @@
 // const userRepository = require('../Models/User')
 
-function index(req, res) {
+function indexView(req, res) {
     // let userName = req.query.user
 
     // let user = userRepository.findUser(userName)
@@ -14,5 +14,5 @@ function index(req, res) {
 }
 
 module.exports = {
-    index
+    indexView
 }

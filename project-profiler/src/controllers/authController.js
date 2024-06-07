@@ -19,13 +19,28 @@ function signup(req, res) {
     //     user = userRepository.registerUser(tempUser)
     // }
 
-    userController.createUser(req).then(() => {
-        res.redirect('/?user=' + user.username)
+    // userController.createUser(req, res).then((user) => {
+    //     // res.redirect('/?user=' + user.email)
+    //     let email = user.email
+    //     res.redirect('index', { email })
 
-    }).catch((err) => {
+    // }).catch((err) => {
+    //     const fail = 'Não foi possível realizar o cadastro, verifique as informações e tente novamente.'
+    //     res.render('signup', { fail })
+    // })
+    try {
+        let user = userController.createUser(req, res)
+        let email = user.email
+        // res.redirect('index', { email })
+        // res.redirect(200, '/')
+        res.render('index')
+
+      } catch (e) {
+        // console.error(e);
+        // Expected output: Error: Parameter is not a number!
         const fail = 'Não foi possível realizar o cadastro, verifique as informações e tente novamente.'
         res.render('signup', { fail })
-    })
+      }
 }
 
 

@@ -9,8 +9,7 @@ const mainController     = require('./src/Controllers/mainController')
 // const userController     = require('./Controllers/userController')
 // const errorController    = require('./Controllers/errorController')
 
-
-router.get('/', mainController.index)
+router.get('/', mainController.indexView)
 
 router.get('/signup', authController.signupView)
 router.post('/signup', authController.signup)
