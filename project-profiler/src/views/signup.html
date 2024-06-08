@@ -14,23 +14,42 @@
     <div class="container col-12 bg-dark ">
         <div class="row">
             <div class="text-center">
-                <h1>INSERIR CONTEÚDO CADASTRO</h1>
+                <h1>Profiler</h1>
+                <h2>Cadastro</h2>
             </div>
         </div> <!-- End: Row 1 -->
 
-        <div class="row">
-            <div class="text-center mt-5 mb-5">
-            <form action="/signup" method="POST">
-                <label for="email">email</label>
-                <input type="text" name="email" id="email">
+        <form action="/signup" method="POST" class="form">
 
-                <label for="senha">senha</label>
-                <input type="password" name="senha" id="senha">
+            <div class="row mt-5 mb-3 ms-5 me-5">
+                <label for="usuario">Nome de Usuário</label>
+                <input class="row mt-2" type="text" name="usuario" id="usuario">
+            </div>
 
-                <input type="submit" value="Enviar">
-            </form>
-        </div>
+            <div class="row mb-3 ms-5 me-5">
+                <label for="email">E-mail</label>
+                <input class="row mt-2" type="text" name="email" id="email">
+            </div>
+
+            <div class="row mb-3 ms-5 me-5">
+                <label for="senha">Senha</label>
+                <input class="row mt-2" type="password" name="senha" id="senha">
+            </div>
+
+            <div class="row mb-3 ms-5 me-5">
+                <label for="confirmarSenha">Confirmar Senha</label>
+                <input class="row mt-2" type="password" name="confirmarSenha" id="confirmarSenha">
+            </div>
+
+            <div class="row mt-5 mb-5 ms-5 me-5">
+                <div class="text-center col-12">
+                    <input type="submit" value="REGISTRAR">
+                </div>
+            </div>
+
+            <div class="row mt-5 ms-5 me-5"></div>
         </div> <!-- End: Row 2 -->
+        </form>
 
         <div class="row">
             <div class="text-center col-2 mt-5 mb-5"> </div> <!-- Helps Centralize with Bootstrap -->

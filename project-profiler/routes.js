@@ -1,18 +1,23 @@
 const express = require('express')
 const router = express.Router();
 
-const authController     = require('./src/Controllers/authController')
+// const authController     = require('./src/Controllers/authController')
 const mainController     = require('./src/Controllers/mainController')
 // const settingsController = require('./src/Controllers/settingsController')
 // const searchController   = require('./src/Controllers/searchController')
 
-// const userController     = require('./Controllers/userController')
+const userController     = require('./src/Controllers/userController')
 // const errorController    = require('./Controllers/errorController')
+
+const admController    = require('./src/Controllers/admController')
+
 
 router.get('/', mainController.indexView)
 
-router.get('/signup', authController.signupView)
-router.post('/signup', authController.signup)
+router.get('/signup', userController.signupView)
+router.post('/signup', userController.createUser)
+
+router.get('/adm', admController.admView)
 
 // router.get('/login', authController.loginPage)
 // router.post('/login', authController.login)

@@ -1,40 +1,36 @@
 //====== USER MANAGEMENT
 
-const Usuario = require('../Models/User')
+const User = require('../Models/user')
 
+
+//====== VIEWS
+function signupView(req, res) {
+  res.render('signup')
+}
+
+function loginView(req, res) {
+  res.render('login')
+}
+
+
+//====== USER CRUD
 
 // CREATE
-function createUser(req) {
+function createUser(req, res) {
+  /// Helper that reates an Object from the request body .
   let user = createUserObject(req.body)
 
-  // // Usuario.create(user).then().catch((err) => {
-  // //   // res.redirect('/?cadastrar_usuario=false')
-  // //   // res.status(500).send({ message: err.message })
-  // //   throw err
-  // // })
+  /// Validations
+  const fail = validateSignup(user.senha, user.confirmarSenha)
+  if (fail) { res.render('signup', { fail }) }
 
-  // return Usuario.create(user)
-  // // return user
-  // // user.create(usuario, (err, data) => {
-  // //   if (err) {
-      
-  // //   } else {
-  // //   }
-  // // })
-  Usuario.create(user).then(() => {
-    // // res.redirect('/?cadastrar_usuario=true')
-    // // res.render('index', { user })
+  User.create(user).then(() => {
+    res.redirect(`/?user=` + user.email)
 
-    // let email = user.email
-    // res.redirect('index', { email })
-
-    }).catch((err) => {
-      // console.log(err)
-      // res.redirect('/?cadastrar_usuario=false')
-      throw err
-    }
-  )
-  return user
+  }).catch((err) => {
+      let fail = 'Error: ' + err.errors.map(e => e.message)
+      res.render('signup', { fail })
+  })
 }
 
 // // READ
@@ -61,11 +57,27 @@ function createUser(req) {
 // }
 
 
+//====== VALIDATIONS
+/// Validates the entries in the Signup journey.
+function validateSignup(senha, confirmarSenha) {
+  let fail
+
+  if (senha !== confirmarSenha) { 
+    fail = 'Senha e Confirmar Senha devem ser iguais.' 
+  }
+
+  // TODO: Adicionar mais validações ao `fail` com \n pra ficar um erro em cada linha.
+
+  return fail
+}
+
 //====== HELPERS
 function createUserObject(body) {
   let usuario = {
+    usuario: body.email,
     email: body.email,
-    senha: body.senha
+    senha: body.senha,
+    confirmarSenha: body.confirmarSenha
   }
 
   return usuario
@@ -74,6 +86,7 @@ function createUserObject(body) {
 
 //====== MODULE EXPORTING
 module.exports = {
+  signupView, loginView,
   createUser,
   // readUserByID, readUserByUsername, listAllUsers, 
   // updateUser,
