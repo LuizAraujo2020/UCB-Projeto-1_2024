@@ -1,16 +1,32 @@
-// const userRepository = require('../Models/User')
+// const userController = require('../Controllers/userController')
+const profileController = require('./profileController.js')
 
-function indexView(req, res) {
-    // let userName = req.query.user
+async function indexView(req, res) {
+    const userParam = req.query.user
+    if (!userParam) { 
+        res.render('search') 
+        return
+    }
 
-    // let user = userRepository.findUser(userName)
+    loadProfileInfo(userParam)
+        .then((profile) => {
+            if (profile) {
+                res.render('index', { profile: profile}) 
 
-    // if (user) {
-    //     res.render('index', { user })
+            } else {
+                console.log('🚨 Erro ao criar o Profile no DB.')
+                res.render('search') 
+            }
+            // return
 
-    // } else {
-        res.render('search')
-    // }
+        })//.catch((err) => {
+        //     console.log('🚨 Erro ao criar o Profile no DB.')
+        //     res.render('search') 
+        // })
+}
+
+async function loadProfileInfo(param) {
+    return await profileController.findProfile(param)
 }
 
 module.exports = {

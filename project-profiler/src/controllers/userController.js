@@ -1,6 +1,7 @@
 //====== USER MANAGEMENT
 
 const User = require('../Models/user')
+const Profile = require('../Models/Profile')
 
 
 //====== VIEWS
@@ -16,19 +17,30 @@ function loginView(req, res) {
 //====== SIGNUP & LOGIN JOURNEY
 
 function createUser(req, res) {
-  /// Helper that reates an Object from the request body .
+  /// Creates helper objects from the request body.
   let user = createUserObject(req.body)
+  let profile = createProfileObjectFromUser(user)
 
   /// Validations
   const fail = validateSignup(user.senha, user.confirmarSenha)
-  if (fail) { res.render('signup', { fail }) }
+  if (fail) { 
+    res.render('signup', { fail }) 
+    return
+  }
 
   User.create(user).then(() => {
     res.redirect(`/?user=` + user.email)
+    
+  }).catch((err) => {
+    let fail = 'Error: ' + err.errors.map(e => e.message)
+    res.render('signup', { fail })
+  })
+
+  Profile.create(profile).then(() => {
+    console.log('✅ Profile criado no DB com sucesso.')
 
   }).catch((err) => {
-      let fail = 'Error: ' + err.errors.map(e => e.message)
-      res.render('signup', { fail })
+      console.log('🚨 Erro ao criar o Profile no DB.')
   })
 }
 
@@ -120,12 +132,21 @@ function createUserObject(body) {
   return usuario
 }
 
+function createProfileObjectFromUser(user) {
+  let profile = {
+    usuario: user.email,
+    email: user.email
+  }
+
+  return profile
+}
+
 
 //====== MODULE EXPORTING
 module.exports = {
   signupView, loginView,
   createUser,
-  // findUser, readUserByID, listAllUsers, 
+  findUser, //readUserByID, listAllUsers, 
   // updateUser,
   // deleteUser,
   /// Helpers
