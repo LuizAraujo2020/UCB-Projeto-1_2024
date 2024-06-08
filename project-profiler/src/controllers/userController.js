@@ -13,9 +13,8 @@ function loginView(req, res) {
 }
 
 
-//====== USER CRUD
+//====== SIGNUP & LOGIN JOURNEY
 
-// CREATE
 function createUser(req, res) {
   /// Helper that reates an Object from the request body .
   let user = createUserObject(req.body)
@@ -33,14 +32,26 @@ function createUser(req, res) {
   })
 }
 
-// // READ
+// READ
 // function readUserByID(id) {
 //   return Usuario.findById(id)
 // }
 
-// function readUserByUsername(username) {
-//   // return Usuario.findBy
-// }
+async function findUser(termo) {
+  let found = await User.findOne({ where: { usuario: termo } });
+
+  if (!found) {
+    found = await User.findOne({ where: { email: termo } });
+  }
+
+  if (!found) { 
+    //TODO: Fazer Custom Error msg
+    console.log('Não encontrado!');
+    return null 
+  }
+
+  return found
+}
 
 // function listAllUsers() {
 //   return Usuario.find()
@@ -55,6 +66,32 @@ function createUser(req, res) {
 // function deleteUser(id) {
 //   return Usuario.findByIdAndRemove(id)
 // }
+
+
+//====== LOGIN JOURNEY
+
+async function login(req, res) {
+  let fail = 'Erro: '// + err.errors.map(e => e.message)
+
+  /// Try to find the user.
+  const userFound = await findUser(req.body.termo)
+
+  if (!userFound) {
+    fail += 'usuário não encontrado.'
+    res.render('login', { fail })
+    return
+  }
+  
+  /// Confirm password
+  if (!req.body.senha === userFound.senha) {
+    fail += 'Senha incorreta. '
+    res.render('login', { fail })
+    return
+  }
+  
+  /// Login successfully.
+  res.redirect(`/?user=` + userFound.usuario)
+}
 
 
 //====== VALIDATIONS
@@ -88,10 +125,12 @@ function createUserObject(body) {
 module.exports = {
   signupView, loginView,
   createUser,
-  // readUserByID, readUserByUsername, listAllUsers, 
+  // findUser, readUserByID, listAllUsers, 
   // updateUser,
   // deleteUser,
-  createUserObject
+  /// Helpers
+  createUserObject,
+  login
 }
 
 

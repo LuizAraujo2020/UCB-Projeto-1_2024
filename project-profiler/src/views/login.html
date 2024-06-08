@@ -13,44 +13,32 @@
 <body class="bg-dark bg-gradient vh-100 vh-100 text-white">
     <div class="container bg-dark">
         <div class="row">
-            <div class="col-12 text-center">
-                <h1>INSERIR CONTEÚDO LOGIN</h1>
+            <div class="text-center">
+                <h1>Profiler</h1>
+                <h2>Login</h2>
             </div>
         </div> <!-- End: Row 1 -->
 
-        <div class="row">
-            <div class="container col-6">
-                <div class="col">
-                    <form action="/login" method="POST"></form>
-                        <div class="row mt-5 mb-2">
-                            <label class="form-label" for="">asdad</label>
-                            <input class="form-control" type="text" name="username" id="username">
-                        </div>
+        <form action="/login" method="POST" class="form">
 
-                        <div class="row mt-2 mb-2">
-                            <label class="form-label" for="">asd</label>
-                            <input class="form-control" type="text" name="password" id="password">
-                        </div>
+            <div class="row mt-5 mb-3 ms-5 me-5">
+                <label for="termo">Email / Nome de Usuário:</label>
+                <input class="row mt-2" type="text" name="termo" id="termo">
+            </div>
 
-                        <div class="row mt-5 mb-3">
-                            <input class="btn btn-primary" type="submit" value="Enviar">
-                        </div>
-                    </form>
+            <div class="row mb-3 ms-5 me-5">
+                <label for="senha">Senha:</label>
+                <input class="row mt-2" type="password" name="senha" id="senha">
+            </div>
+
+            <div class="row mt-5 mb-5 ms-5 me-5">
+                <div class="text-center col-12">
+                    <input type="submit" value="REGISTRAR">
                 </div>
-            </div><!-- ENDO container 2 -->
+            </div>
 
-            <!-- <div class="text-center mt-5 mb-5">
-            <form action="/login" method="POST">
-                <label for=""></label>
-                <input type="text" name="username" id="username">
-
-                <label for=""></label>
-                <input type="text" name="password" id="password">
-
-                <input type="submit" value="Enviar">
-            </form>
-            </div> -->
-        </div> <!-- End: Row 2 -->
+            <div class="row mt-5 ms-5 me-5"></div>
+        </form>
 
         <div class="row">
             <div class="text-center col-2 mt-5 mb-5"> </div> <!-- Helps Centralize with Bootstrap -->

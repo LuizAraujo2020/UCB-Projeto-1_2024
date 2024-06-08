@@ -19,8 +19,8 @@ router.post('/signup', userController.createUser)
 
 router.get('/adm', admController.admView)
 
-// router.get('/login', authController.loginPage)
-// router.post('/login', authController.login)
+router.get('/login', userController.loginView)
+router.post('/login', userController.login)
 
 // router.get('/settings', settingsController.settingsPage)
 

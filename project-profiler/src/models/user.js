@@ -11,7 +11,7 @@ const User = db.define('user', {
 
   //==== SIGNUP INFO
   usuario: {
-    type: Sequelize.STRIN,
+    type: Sequelize.STRING,
     allowNull: false,
     unique: true
   },
