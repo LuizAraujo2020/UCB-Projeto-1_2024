@@ -1,24 +1,27 @@
-const mockUsers = [
-  {
-    username: 'fulanadetal',
-    name: 'Fulana',
-    surname: 'de Tal',
-    email: 'fulana_tal@email.com'
-  },
-  {
-    username: 'fulanodetal',
-    name: 'Fulano',
-    surname: 'de Tal',
-    email: 'fulano_tal2@email.com'
-  },
-  {
-    username: 'abrilinasantos',
-    name: 'Abrilina',
-    surname: 'Santos',
-    email: 'abrilina@email.com'
-  }
-]
+const Sequelize = require('sequelize')
+const db = require('../../db')
 
-module.exports = {
-  mockUsers
-}
+const User = db.define('user', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false
+  },
+  usuario: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
+  senha: {
+      type: Sequelize.STRING,
+      allowNull: false
+  },
+})
+
+module.exports = User

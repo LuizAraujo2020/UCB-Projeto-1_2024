@@ -1,32 +1,39 @@
-//==== IMPORTAÇÃO DE MÓDULOS / DEPENDÊNCIAS
+//==== MODULES/PACKAGES/IMPORTS/DEPENDENCIES
 const express = require('express')
 const mustacheExpress = require('mustache-express')
+const db = require('./db')
 
-const userController = require('./src/Controllers/userController')
-const Errors = require('./src/Models/error')
+const router = require('./routes')
+
+// const userController = require('./src/Controllers/userController')
+// const Errors = require('./src/Models/error')
 
 
-//==== CONFIGURAÇÃO INICIAL
+//==== INITIAL CONFIG
 const app = express()
 
 app.engine('html', mustacheExpress())
 app.set('view engine', 'html')
 app.set('views', __dirname + '/src/Views')
 
-// Decode dos dados vindos do POST
+// Decode the data that comes from POST method.
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-// Pasta estática para expor arquivos ao html: css, imagens e etc.
+
+// Static folder to expose the files to js, html e so on: css, images and etc.
 app.use(express.static('Static'))
 
-
-//==== ROTAS
-const router = require('./src/Utils/Routes/mainRoutes')
 app.use('/', router)
 
+//==== DATABASE
+db.sync(function() {
+  console.log('Banco de dados sincronizado com sucesso!')
+})
 
-//==== EXECUTAR O SERVIDOR
+
+//==== EXECUTE THE SERVER
 const PORT = 8080
 
 app.listen(PORT, function () {
-  console.log('Servidor rodando na porta: ' + PORT)
+  console.log(`🖥️  Servidor rodando na porta: ${PORT}`)
 })
