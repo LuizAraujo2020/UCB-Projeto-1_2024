@@ -20,7 +20,7 @@
                 <div class="alert alert-danger mt-1" role="alert">
                     {{fail}}
                 </div>
-            {{/fail}}
+                {{/fail}}
             </div>
         </div>
 
@@ -47,14 +47,14 @@
             <div class="row mt-5 ms-5 me-5"></div>
         </form>
 
-        {{#list}}
-            {{list}}
-        <div class="row mt-5 mb-3 ms-5 me-5">
-            <div class="col-12 text-center bg-secondary">
-                <h5 class=" text-center">Fulana de tal</h5>
-                <h6 class=" text-center">Cargo/função</h6>
-                <h6 class=" text-center">Estado, País</h6>
+        <!-- {{#list}}
+            <div>
+                {{list}}
             </div>
+        {{/list}} -->
+        {{#list}}
+        <div class="alert alert-danger mt-1" role="alert">
+            {{{list}}}
         </div>
         {{/list}}
     </div><!-- End Container -->
