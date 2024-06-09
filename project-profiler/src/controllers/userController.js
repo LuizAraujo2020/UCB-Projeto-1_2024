@@ -1,47 +1,47 @@
 //====== USER MANAGEMENT
 
-const User = require('../Models/user')
-const Profile = require('../Models/Profile')
-
+const User = require("../Models/user");
+const Profile = require("../Models/Profile");
 
 //====== VIEWS
 function signupView(req, res) {
-  res.render('signup')
+    res.render("signup");
 }
 
 function loginView(req, res) {
-  res.render('login')
+    res.render("login");
 }
-
 
 //====== SIGNUP & LOGIN JOURNEY
 
 function createUser(req, res) {
-  /// Creates helper objects from the request body.
-  let user = createUserObject(req.body)
-  let profile = createProfileObjectFromUser(user)
+    /// Creates helper objects from the request body.
+    let user = createUserObject(req.body);
+    let profile = createProfileObjectFromUser(user);
 
-  /// Validations
-  const fail = validateSignup(user.senha, user.confirmarSenha)
-  if (fail) { 
-    res.render('signup', { fail }) 
-    return
-  }
+    /// Validations
+    const fail = validateSignup(user.senha, user.confirmarSenha);
+    if (fail) {
+        res.render("signup", { fail });
+        return;
+    }
 
-  User.create(user).then(() => {
-    res.redirect(`/?user=` + user.email)
-    
-  }).catch((err) => {
-    let fail = 'Error: ' + err.errors.map(e => e.message)
-    res.render('signup', { fail })
-  })
+    User.create(user)
+        .then(() => {
+            res.redirect(`/?user=` + user.email);
+        })
+        .catch((err) => {
+            let fail = "Error: " + err.errors.map((e) => e.message);
+            res.render("signup", { fail });
+        });
 
-  Profile.create(profile).then(() => {
-    console.log('✅ Profile criado no DB com sucesso.')
-
-  }).catch((err) => {
-      console.log('🚨 Erro ao criar o Profile no DB.')
-  })
+    Profile.create(profile)
+        .then(() => {
+            console.log("✅ Profile criado no DB com sucesso.");
+        })
+        .catch((err) => {
+            console.log("🚨 Erro ao criar o Profile no DB.");
+        });
 }
 
 // READ
@@ -50,19 +50,19 @@ function createUser(req, res) {
 // }
 
 async function findUser(termo) {
-  let found = await User.findOne({ where: { usuario: termo } });
+    let found = await User.findOne({ where: { usuario: termo } });
 
-  if (!found) {
-    found = await User.findOne({ where: { email: termo } });
-  }
+    if (!found) {
+        found = await User.findOne({ where: { email: termo } });
+    }
 
-  if (!found) { 
-    //TODO: Fazer Custom Error msg
-    console.log('Não encontrado!');
-    return null 
-  }
+    if (!found) {
+        //TODO: Fazer Custom Error msg
+        console.log("Não encontrado!");
+        return null;
+    }
 
-  return found
+    return found;
 }
 
 // function listAllUsers() {
@@ -79,81 +79,78 @@ async function findUser(termo) {
 //   return Usuario.findByIdAndRemove(id)
 // }
 
-
 //====== LOGIN JOURNEY
 
 async function login(req, res) {
-  let fail = 'Erro: '// + err.errors.map(e => e.message)
+    let fail = "Erro: "; // + err.errors.map(e => e.message)
 
-  /// Try to find the user.
-  const userFound = await findUser(req.body.termo)
+    /// Try to find the user.
+    const userFound = await findUser(req.body.termo);
 
-  if (!userFound) {
-    fail += 'usuário não encontrado.'
-    res.render('login', { fail })
-    return
-  }
-  
-  /// Confirm password
-  if (!req.body.senha === userFound.senha) {
-    fail += 'Senha incorreta. '
-    res.render('login', { fail })
-    return
-  }
-  
-  /// Login successfully.
-  res.redirect(`/?user=` + userFound.usuario)
+    if (!userFound) {
+        fail += "usuário não encontrado.";
+        res.render("login", { fail });
+        return;
+    }
+
+    /// Confirm password
+    if (!req.body.senha === userFound.senha) {
+        fail += "Senha incorreta. ";
+        res.render("login", { fail });
+        return;
+    }
+
+    /// Login successfully.
+    res.redirect(`/?user=` + userFound.usuario);
 }
-
 
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
 function validateSignup(senha, confirmarSenha) {
-  let fail
+    let fail;
 
-  if (senha !== confirmarSenha) { 
-    fail = 'Senha e Confirmar Senha devem ser iguais.' 
-  }
+    if (senha !== confirmarSenha) {
+        fail = "Senha e Confirmar Senha devem ser iguais.";
+    }
 
-  // TODO: Adicionar mais validações ao `fail` com \n pra ficar um erro em cada linha.
+    // TODO: Adicionar mais validações ao `fail` com \n pra ficar um erro em cada linha.
 
-  return fail
+    return fail;
 }
 
 //====== HELPERS
 function createUserObject(body) {
-  let usuario = {
-    usuario: body.email,
-    email: body.email,
-    senha: body.senha,
-    confirmarSenha: body.confirmarSenha
-  }
+    let usuario = {
+        usuario: body.email,
+        email: body.email,
+        senha: body.senha,
+        confirmarSenha: body.confirmarSenha,
+    };
 
-  return usuario
+    return usuario;
 }
 
 function createProfileObjectFromUser(user) {
-  let profile = {
-    usuario: user.email,
-    email: user.email
-  }
+    let profile = {
+        usuario: user.email,
+        email: user.email,
+    };
 
-  return profile
+    return profile;
 }
-
 
 //====== MODULE EXPORTING
 module.exports = {
-  signupView, loginView,
-  createUser,
-  findUser, //readUserByID, listAllUsers, 
-  // updateUser,
-  // deleteUser,
-  /// Helpers
-  createUserObject,
-  login
-}
-
+    signupView,
+    loginView,
+    createUser,
+    findUser, //readUserByID, listAllUsers,
+    // updateUser,
+    // deleteUser,
+    /// Helpers
+    createUserObject,
+    login,
+};
 
 // function findUserByUsername (username) {
 //   const users = userDB.mockUsers
@@ -178,7 +175,6 @@ module.exports = {
 //   res.render('index.html')
 // }
 
-
 // module.exports = {
-  // indexView
+// indexView
 // }

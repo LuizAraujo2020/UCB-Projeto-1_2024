@@ -4,7 +4,7 @@ const router = express.Router();
 // const authController     = require('./src/Controllers/authController')
 const mainController     = require('./src/Controllers/mainController')
 // const settingsController = require('./src/Controllers/settingsController')
-// const searchController   = require('./src/Controllers/searchController')
+const searchController   = require('./src/Controllers/searchController')
 
 const userController     = require('./src/Controllers/userController')
 // const errorController    = require('./Controllers/errorController')
@@ -24,8 +24,8 @@ router.post('/login', userController.login)
 
 // router.get('/settings', settingsController.settingsPage)
 
-// router.get('/search', searchController.searchPage)
-// router.post('/search', searchController.search)
+router.get('/search', searchController.searchView)
+router.post('/search', searchController.search)
 
   
 // app.get('/signup', function (request, response) {
