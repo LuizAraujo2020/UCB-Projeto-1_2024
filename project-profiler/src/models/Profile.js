@@ -26,7 +26,15 @@ const Profile = db.define('profile', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  posicao: {
+  cargo: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  pais: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  estado: {
     type: Sequelize.STRING,
     allowNull: true
   },

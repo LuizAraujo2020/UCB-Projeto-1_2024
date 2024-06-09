@@ -17,16 +17,16 @@
                 <h1>INSERIR CONTEÚDO INDEX</h1>
 
                 {{#profile.nome}}
-                <div class="alert alert-danger mt-1" role="alert">
-                    <h2>NOME: {{ profile.nome }}</h2>
+                <div>
+                    {{ profile.nome }}
                 </div>
                 {{/profile.nome}}
                 
-                <h2>EMAIL: {{ profile.email }}</h2>
+                {{ profile.email }}
                 
                 {{#profile.sobre}}
-                <div class="alert alert-danger mt-1" role="alert">
-                    <h2>SOBRE: {{profile.sobre}}</h2>
+                <div>
+                    SOBRE: {{profile.sobre}}
                 </div>
                 {{/profile.sobre}}
             </div>
