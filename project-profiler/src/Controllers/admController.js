@@ -27,9 +27,13 @@ async function listAllUsers() {
 //====== VIEW COMPONENTS
 function admView(req, res) {
 	// res.redirect('/adm');
-	let body = createListAllUsers();
-	console.log(body);
-	res.render("adm", { body });
+	createListAllUsers()
+		.then((result) => {
+			res.render("adm", { body: result });
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 	// res.render('login')
 }
 
@@ -121,12 +125,20 @@ async function createListAllUsers() {
 	// });
 	console.log("🚨🚨🚨🚨");
 	console.log(users[0].email);
+	console.log(users[0].senha);
 	console.log("🚨🚨🚨🚨");
 	const size = users.length;
 	for (let index = 0; index < size; index++) {
 		const element = users[index];
 		console.log(`✅ ${element.email}`);
-		rows.push(element);
+		rows.push(`
+			<tr>
+				<td>${index}</td>
+				<td>${element.email}</td>
+				<td>${element.senha}</td>
+				<td><button type="button"></button></td>
+			</tr>
+			`);
 	}
 	// users.array.forEach(element => {
 	//     console.log(`✅ ${ element.email }`)
@@ -141,6 +153,8 @@ async function createListAllUsers() {
 	// users.then(function(result) {
 	//     return result
 	//   });
+
+	console.log(rows.join("\n"));
 	return rows.join("\n");
 }
 

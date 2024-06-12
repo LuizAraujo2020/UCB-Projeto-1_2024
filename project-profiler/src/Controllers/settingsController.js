@@ -1,8 +1,13 @@
-function settingsPage(req, res) {
+function settingsView(req, res) {
     res.render("settings");
 }
 
 //==== EXPORTING
 module.exports = {
-    settingsPage,
+	settingsView,
 };
+<tr>
+	<td>1</td>
+	<td>Maria Anders</td>
+	<td>Germany</td>
+</tr>;
