@@ -48,10 +48,11 @@ function admView(req, res) {
 	// res.send(`Welcome  ${userSession.username}!`).end()'
 	try {
 		sessionController.getSession().then((session) => {
-			// console.log("✅ Achou a session!");
-			// console.log(session);
+			console.log("✅ Achou a session!");
+			console.log(session);
 
-			if (!session || !validateAdmPanelAccess(session)) {
+			// if (!session || !validateAdmPanelAccess(session)) {
+			if (!session || session.admin == false) {
 				res.render("login", { fail: "Efetue o login como administrador para acessar o Painel Administrativo!" });
 				return;
 			}
@@ -68,7 +69,9 @@ function admView(req, res) {
 		});
 	} catch (error) {
 		console.log("❌ Erro ao buscar a session! " + error);
-		res.redirect("login");
+		res.render("login", {
+			fail: "Efetue o login como administrador para acessar o Painel Administrativo!",
+		});
 		return;
 	}
 	// console.log("⚠️");
@@ -144,15 +147,15 @@ function deleteUser(req) {
 }
 
 //====== VALIDATIONS
-async function validateAdmPanelAccess(user) {
-	if (!user || !user.admin) {
-		throw new Error("Você não tem permissão para acessar essa página.");
-		console.log("Você não tem permissão para acessar essa página.");
-		return false;
-	}
+// async function validateAdmPanelAccess(user) {
+// 	if (!user || !user.admin) {
+// 		// throw new Error("Você não tem permissão para acessar essa página.");
+// 		console.log("Você não tem permissão para acessar essa página.");
+// 		return false;
+// 	}
 
-	return true
-}
+// 	return true
+// }
 
 module.exports = {
 	admView,

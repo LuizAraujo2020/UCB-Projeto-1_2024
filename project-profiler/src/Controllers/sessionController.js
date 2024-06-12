@@ -52,7 +52,8 @@ async function getSession(sessionToken) {
 	return found[0];
 }
 
-async function logoutSession(req, res) {
+// async function logoutSession(req, res) {
+async function logoutSession() {
 	// if (!req.cookies) {
     //     console.log("🚨 (!req.cookies)");
     //     res.redirect("/login");
@@ -72,7 +73,7 @@ async function logoutSession(req, res) {
     deleteSession();
 
 	// res.cookie("session_token", "", { expires: new Date() });
-	res.redirect('login');
+	// res.redirect('login');
 };
 
 

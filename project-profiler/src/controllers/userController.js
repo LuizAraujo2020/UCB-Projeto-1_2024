@@ -11,6 +11,8 @@ function signupView(req, res) {
 }
 
 function loginView(req, res) {
+    // logout(req, res);
+    logout(req, res); 
     res.render("login");
 }
 
@@ -125,12 +127,13 @@ async function login(req, res) {
 
 async function logout(req, res) {
 	sessionController.logoutSession(req, res);
+	res.render("login");
 }
 
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
 function validateSignup(senha, confirmarSenha) {
-    let fail;
+    let fail; 
 
     if (senha !== confirmarSenha) {
         fail = "Senha e Confirmar Senha devem ser iguais.";
