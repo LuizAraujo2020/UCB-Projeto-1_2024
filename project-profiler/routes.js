@@ -22,6 +22,8 @@ router.get('/adm', admController.admView)
 router.get('/login', userController.loginView)
 router.post('/login', userController.login)
 
+router.get("/logout", userController.logout);
+
 // router.get('/settings', settingsController.settingsPage)
 
 router.get('/search', searchController.searchView)

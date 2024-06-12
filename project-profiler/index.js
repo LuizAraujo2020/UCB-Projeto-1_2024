@@ -2,6 +2,8 @@
 const express = require('express')
 const mustacheExpress = require('mustache-express')
 const db = require('./db')
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 const router = require('./routes')
 
@@ -22,6 +24,9 @@ app.use(express.urlencoded({ extended: true }))
 
 // Static folder to expose the files to js, html e so on: css, images and etc.
 app.use(express.static('Static'))
+
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use('/', router)
 

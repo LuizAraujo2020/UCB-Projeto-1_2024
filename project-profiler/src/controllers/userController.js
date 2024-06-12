@@ -2,6 +2,8 @@
 
 const User = require("../Models/user");
 const Profile = require("../Models/Profile");
+const sessionController = require('../Controllers/sessionController')
+
 
 //====== VIEWS
 function signupView(req, res) {
@@ -26,14 +28,17 @@ function createUser(req, res) {
         return;
     }
 
+    user.admin = user.usuario === "admin";
+
     User.create(user)
         .then(() => {
             res.redirect(`/?user=` + user.email);
         })
         .catch((err) => {
-            let fail = "Error: " + err.errors.map((e) => e.message);
+            let fail = "Erro: falha ao criar o usuário." // + err.errors.map((e) => e.message);
             res.render("signup", { fail });
         });
+    
 
     Profile.create(profile)
         .then(() => {
@@ -42,6 +47,8 @@ function createUser(req, res) {
         .catch((err) => {
             console.log("🚨 Erro ao criar o Profile no DB.");
         });
+
+    sessionController.initSession(user.email, user.admin, res);    
 }
 
 // READ
@@ -75,9 +82,20 @@ async function findUser(termo) {
 // }
 
 // // DELETE
-// function deleteUser(id) {
+function deleteUser(email) {
 //   return Usuario.findByIdAndRemove(id)
-// }
+    User.destroy({
+		where: {
+			email: email,
+		},
+	});
+
+    Profile.destroy({
+		where: {
+			email: email,
+		},
+	});
+}
 
 //====== LOGIN JOURNEY
 
@@ -101,7 +119,12 @@ async function login(req, res) {
     }
 
     /// Login successfully.
+    sessionController.initSession(userFound.email, userFound.admin, res);
     res.redirect(`/?user=` + userFound.usuario);
+}
+
+async function logout(req, res) {
+	sessionController.logoutSession(req, res);
 }
 
 //====== VALIDATIONS
@@ -121,7 +144,7 @@ function validateSignup(senha, confirmarSenha) {
 //====== HELPERS
 function createUserObject(body) {
     let usuario = {
-        usuario: body.email,
+        usuario: body.usuario,
         email: body.email,
         senha: body.senha,
         confirmarSenha: body.confirmarSenha,
@@ -132,7 +155,7 @@ function createUserObject(body) {
 
 function createProfileObjectFromUser(user) {
     let profile = {
-        usuario: user.email,
+        usuario: user.usuario,
         email: user.email,
     };
 
@@ -141,15 +164,17 @@ function createProfileObjectFromUser(user) {
 
 //====== MODULE EXPORTING
 module.exports = {
-    signupView,
-    loginView,
-    createUser,
-    findUser, //readUserByID, listAllUsers,
-    // updateUser,
-    // deleteUser,
-    /// Helpers
-    createUserObject,
-    login,
+	signupView,
+	loginView,
+	createUser,
+	findUser, //readUserByID, listAllUsers,
+	// updateUser,
+	// deleteUser,
+	/// Helpers
+	createUserObject,
+	login,
+	logout,
+	deleteUser,
 };
 
 // function findUserByUsername (username) {

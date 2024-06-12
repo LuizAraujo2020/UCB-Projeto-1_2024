@@ -23,10 +23,13 @@
   },
   "homepage": "https://github.com/LuizAraujo2020/UCB-Projeto-1_2024#readme",
   "dependencies": {
-    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
     "mustache-express": "^1.3.2",
     "sequelize": "^6.31.1",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.3"

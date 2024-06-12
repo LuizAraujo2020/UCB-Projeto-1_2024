@@ -11,15 +11,13 @@ async function indexView(req, res) {
     loadProfileInfo(userParam).then((profile) => {
         if (profile) {
             res.render("index", { profile: profile });
-        } else {
-            console.log("🚨 Erro ao criar o Profile no DB.");
-            res.render("search");
+            return
         }
         // return
     }); //.catch((err) => {
     //     console.log('🚨 Erro ao criar o Profile no DB.')
     //     res.render('search')
-    // })
+    // }) 
 }
 
 async function loadProfileInfo(param) {

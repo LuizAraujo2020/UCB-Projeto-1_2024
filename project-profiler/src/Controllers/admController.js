@@ -1,161 +1,157 @@
+// const { use } = require("../../routes");
 const User = require("../Models/user");
+const userController = require("../Controllers/userController")
+const sessionController = require("../Controllers/sessionController")
 
-//====== HELPERS
-async function listAllUsers() {
-	const users = await User.findAll();
-	return users;
-	// User.findAll().then((users) => {
 
-	//     console.log('🚨🚨🚨🚨')
-	//     console.log(users)
-	//     return users
-	// })
-	// // return User.findAll({
-	// //     where:{
-	// //       is_active:'1',
-	// //       name:{$like:'%%'}
-	// //     },
-	// //     limit:10
-	// //   }).then(function(users){
-	// //     console.log(users);
-	// //     res.send({error:false,message:'users list',data:users});
-	// //   }).catch(function(err){
-	// //     console.log('Oops! something went wrong, : ', err);
-	// //   });
-}
-
-//====== VIEW COMPONENTS
+//====== VIEW
 function admView(req, res) {
-	// res.redirect('/adm');
-	createListAllUsers()
-		.then((result) => {
-			res.render("adm", { body: result });
-		})
-		.catch((err) => {
-			console.log(err);
+	// const sessionToken = req.cookies["session_token"];
+
+	// console.log("✅✅✅sessionToken✅✅✅");
+	// console.log(sessionToken);
+	
+	// if (!sessionToken) {
+	// 	// If the cookie is not set, return an unauthorized status
+	// 	res.redirect("/index");
+	// 	return;
+	// }
+	
+	// // if (!userController.sessionPersisted()) {
+	// // 	console.log("🚨 Você não tem permissão para acessar essa página.");
+	// // 	res.redirect("index");
+	// // }
+	
+	// // try {
+	// // 	const admin = validateAdmPanelAccess(userController.userLogged);
+
+	// // } catch (error) {
+	// // 	console.log(error)
+	// // 	res.redirect('index')
+	// // }
+	const session = sessionController.getSession();
+	// if (!userSession) {
+	// 	// If the session token is not present in session map, return an unauthorized error
+	// 	res.status(401).end();
+	// 	return;
+	// }
+	// // if the session has expired, return an unauthorized error, and delete the
+	// // session from our map
+	// if (userSession.isExpired()) {
+	// 	sessionController.deleteSession(sessionToken)
+	// 	res.redirect("index");
+	// 	return;
+	// }
+
+	// If all checks have passed, we can consider the user authenticated and
+	// send a welcome message
+	// res.send(`Welcome  ${userSession.username}!`).end()'
+	try {
+		sessionController.getSession().then((session) => {
+			// console.log("✅ Achou a session!");
+			// console.log(session);
+
+			if (!session || !validateAdmPanelAccess(session)) {
+				res.render("login", { fail: "Efetue o login como administrador para acessar o Painel Administrativo!" });
+				return;
+			}
+
+			deleteUser(req);
+
+			createListAllUsers()
+				.then((result) => {
+					res.render("adm", { body: result });
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		});
-	// res.render('login')
+	} catch (error) {
+		console.log("❌ Erro ao buscar a session! " + error);
+		res.redirect("login");
+		return;
+	}
+	// console.log("⚠️");
+	// console.log(session);
+	// if (!session || !validateAdmPanelAccess(session) || session == null) {
+	// 	// res.redirect("login");
+	// 	console.log("Efetue o login como administrador para acessar o Painel Administrativo!");
+	// 	res.render("login", { fail: "Efetue o login como administrador para acessar o Painel Administrativo!" });
+
+	// 	return;
+	// } else {
+	// 	console.log('✅ Achou a session!')
+
+	// 	deleteUser(req);
+
+	// 	createListAllUsers()
+	// 		.then((result) => {
+	// 			res.render("adm", { body: result });
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
+	// }
 }
 
 //====== VIEW COMPONENTS
 async function createListAllUsers() {
 	const users = await listAllUsers();
-	// // .then(users => console.log(users))
-	// // .catch(error => console.error(error));
-	// // const users = await listAllUsers().map(el => el.get({ plain: true }))
-	// const users = await User.findAll({}).map(el => el.get({ plain: true }))
-	// // const users = User.findAll().then((users) => {
-	//     User.findAll({
-	//         where: {
-	//           nodeid: node.nodeid
-	//         },
-	//         raw: true,
-	//         nest: true,
-	//       })
-	//       .success(function (sensors) {
-	//         var nodedata = JSON.parse(JSON.stringify(node)); // this is my trick
-	//         nodedata.sensors = sensors;
-	//         nodesensors.push(nodedata);
-	//         response.json(nodesensors);
-	// });
-	//     console.log('🚨🚨🚨🚨')
-	//     console.log(users)
-	//     return users
-	// })
-
-	// let rows = ['']
-
-	// let rows = users.every(user => {
-	//     `
-	//     <div class="row">
-	//         <!-- <div class="text-center col-2 mt-5 mb-5"> </div> Helps Centralize with Bootstrap -->
-
-	//         <div class="text-center col-4">
-	//                 <p>Abrilina Catanhedo Silverio</p>
-	//         </div>
-
-	//         <div class="text-center col-4">
-	//                 <p>${ user.email }</p>
-	//         </div>
-
-	//         <div class="text-center col-3">
-	//                 <p>${ user.senha }</p>
-	//         </div>
-
-	//         <div class="text-center col-1">
-	//             <button type="button" class="btn btn-danger">DEL</button>
-	//         </div>
-
-	//         <!-- <div class="text-center col-2 mt-5 mb-5"> </div> Helps Centralize with Bootstrap -->
-	//     </div>`
-	// })
-
-	// for (let index = 0; index < users.length; index++) {
-	//     // const user = users[index];
-	//     console.log('🚨🚨🚨🚨')
-	//     console.log('All users:', JSON.stringify(users, null, 2));
-	//     const user = users[index];
-	//     rows.push(`
-	//     <div class="row">
-	//         <!-- <div class="text-center col-2 mt-5 mb-5"> </div> Helps Centralize with Bootstrap -->
-
-	//         <div class="text-center col-4">
-	//                 <p>Abrilina Catanhedo Silverio</p>
-	//         </div>
-
-	//         <div class="text-center col-4">
-	//                 <p>${ user.email }</p>
-	//         </div>
-
-	//         <div class="text-center col-3">
-	//                 <p>${ user.senha }</p>
-	//         </div>
-
-	//         <div class="text-center col-1">
-	//             <button type="button" class="btn btn-danger">DEL</button>
-	//         </div>
-
-	//         <!-- <div class="text-center col-2 mt-5 mb-5"> </div> Helps Centralize with Bootstrap -->
-	//     </div>
-	// `)
-	// }
-
-	// let rows = users.map(user => {
 	let rows = [];
-	// });
-	console.log("🚨🚨🚨🚨");
-	console.log(users[0].email);
-	console.log(users[0].senha);
-	console.log("🚨🚨🚨🚨");
+
 	const size = users.length;
+
 	for (let index = 0; index < size; index++) {
 		const element = users[index];
-		console.log(`✅ ${element.email}`);
 		rows.push(`
 			<tr>
 				<td>${index}</td>
 				<td>${element.email}</td>
 				<td>${element.senha}</td>
-				<td><button type="button"></button></td>
+				<td>
+					<a
+						href="/adm/?delete=${element.email}"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn btn-sm btn-outline-danger"
+					>
+						X
+					</a>
+				</td>
 			</tr>
 			`);
 	}
-	// users.array.forEach(element => {
-	//     console.log(`✅ ${ element.email }`)
-	// });
+				// <td>
+				// 	<button type="button" class="btn btn-sm btn-outline-danger">
+				// 		X
+				// 	</button>
+				// </td>;
 
-	// console.log(typeof users);
-	// let rows = users.get({ plain: true });
-
-	// console.log(rows)
-	// console.log(users[0].dataValues.email)
-
-	// users.then(function(result) {
-	//     return result
-	//   });
-
-	console.log(rows.join("\n"));
 	return rows.join("\n");
+}
+
+//====== HELPERS
+async function listAllUsers() {
+	const users = await User.findAll();
+	return users;
+}
+
+function deleteUser(req) {
+	const userToDelete = req.query.delete
+	if (userToDelete) {
+		userController.deleteUser(userToDelete);
+	}
+}
+
+//====== VALIDATIONS
+async function validateAdmPanelAccess(user) {
+	if (!user || !user.admin) {
+		throw new Error("Você não tem permissão para acessar essa página.");
+		console.log("Você não tem permissão para acessar essa página.");
+		return false;
+	}
+
+	return true
 }
 
 module.exports = {
