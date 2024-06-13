@@ -1,0 +1,123 @@
+@font-face {
+    font-family: Futura;
+    src: url(../fonts/Futura.ttc);
+}
+
+* {
+    margin: 0;
+}
+
+nav {
+    height: 80px;
+    background-color: white;
+}
+
+div{
+    justify-content: end;
+}
+
+/*p{
+    margin-bottom: 10px;
+}*/
+
+#navbarNav li a{ 
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: Futura;
+    padding: 20px;
+    padding-top: 25px;
+    color: black;
+}
+
+.navbar-brand{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.paiHome{
+    padding-top: 15px;
+    background-image: url("/project-profiler/src/views/images/PlanodeFundo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#filhaHome1{
+    display:flex;
+    justify-content: right;
+    margin-right: 15px;
+}
+
+.btn{
+    background-color: #D9D9D9;
+    color: black;
+    font-size: 16px;
+    font-family: Futura;
+    font-weight: 400;
+    /*padding: 10px;*/
+    border-radius: 5px;
+    height: 34px;
+}
+
+#filhaHome2{
+    display: flex;
+    justify-content: center;
+}
+
+#filhaHome3{
+    display: flex;
+    justify-content: center;
+    font-family: Futura;
+    padding-top: 25px;
+    font-size: 30px;
+    color: #EEEEEE;
+}
+
+#filhaHome4{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    font-family: Futura;
+    font-size: 17px;
+    color: #EEEEEE;
+}
+
+#filhaHome4 p{
+    margin-bottom: 10px;
+}
+
+#filhaHome5{
+    padding-top: 35px;
+    padding-left: 95px;
+    padding-right: 95px;
+    font-family: Futura;
+    color: #EEEEEE;
+    font-size: 18px;
+}
+
+#filhaHome5 p{
+    margin-bottom: 0px;
+}
+
+#filhaHome6{ 
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+#filhaHome6 p{
+    padding-bottom: 6px;
+}
+
+.Footer{
+    height: 114px;
+    background-color: white;
+}
+
+#filhaFooter{
+    padding-top: 20px;
+    padding-bottom: 0px;
+    width: 100%;
+    position:absolute;
+    text-align: center;
+}

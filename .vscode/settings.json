@@ -5,5 +5,6 @@
         "termo",
         "tipo",
         "usuario"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
