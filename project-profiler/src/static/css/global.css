@@ -35,6 +35,12 @@ div{
     padding-bottom: 25px;
 }
 
+.teste222 {
+    width: 60%;
+    padding: 3rem;
+    padding-top: 3rem;
+}
+
 .paiHome{
     padding-top: 15px;
     /* background-image: url("/project-profiler/src/views/images/PlanodeFundo.png"); */

@@ -12,7 +12,7 @@ function signupView(req, res) {
 
 function loginView(req, res) {
     // logout(req, res);
-    logout(req, res); 
+    logout(); 
     res.render("login");
 }
 
@@ -125,10 +125,14 @@ async function login(req, res) {
     res.redirect(`/?user=` + userFound.usuario);
 }
 
-async function logout(req, res) {
-	sessionController.logoutSession(req, res);
-	res.render("login");
+async function logout() {
+	sessionController.logoutSession();
 }
+
+// async function logout(res) {
+// 	sessionController.logoutSession();
+// 	res.render("login");
+// }
 
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
