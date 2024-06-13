@@ -37,7 +37,9 @@ div{
 
 .paiHome{
     padding-top: 15px;
-    background-image: url("/project-profiler/src/views/images/PlanodeFundo.png");
+    /* background-image: url("/project-profiler/src/views/images/PlanodeFundo.png"); */
+    /* background-image: url("../images/PlanodeFundo.png"); */
+    background-color: #5A5A5A;
     background-position: center;
     background-repeat: no-repeat;
 }

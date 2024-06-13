@@ -4,10 +4,5 @@ function settingsView(req, res) {
 
 //==== EXPORTING
 module.exports = {
-	settingsView,
+	settingsView
 };
-<tr>
-	<td>1</td>
-	<td>Maria Anders</td>
-	<td>Germany</td>
-</tr>;

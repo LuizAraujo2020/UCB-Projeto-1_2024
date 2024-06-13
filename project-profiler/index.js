@@ -7,9 +7,6 @@ const cookieParser = require("cookie-parser");
 
 const router = require('./routes')
 
-// const userController = require('./src/Controllers/userController')
-// const Errors = require('./src/Models/error')
-
 
 //==== INITIAL CONFIG
 const app = express()
@@ -23,7 +20,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Static folder to expose the files to js, html e so on: css, images and etc.
-app.use(express.static('Static'))
+app.use(express.static(__dirname + "/src/static"));
+// app.use(express.static("static/css"));
 
 app.use(bodyParser.json());
 app.use(cookieParser());
