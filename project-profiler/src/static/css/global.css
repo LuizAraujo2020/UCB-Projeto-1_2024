@@ -37,9 +37,10 @@ div{
 
 .paiHome{
     padding-top: 15px;
-    background-image: url("/project-profiler/src/views/images/PlanodeFundo.png");
-    background-position: center;
+    background-image: url("/project-profiler/src/views/images/desenhoBackground.png");
+    background-position: top;
     background-repeat: no-repeat;
+    background-color: #737373;
 }
 
 #filhaHome1{
