@@ -86,7 +86,7 @@ div{
     margin-bottom: 10px;
 }
 
-#filhaHome5{
+#filhaHome5, #filhaHome7, #filhaHome9, #filhaHome11, #filhaHome13{
     padding-top: 35px;
     padding-left: 95px;
     padding-right: 95px;
@@ -95,18 +95,68 @@ div{
     font-size: 18px;
 }
 
-#filhaHome5 p{
+#filhaHome5 p, #filhaHome7 p, #filhaHome9 p, #filhaHome11 p, #filhaHome13 p{
     margin-bottom: 0px;
 }
 
-#filhaHome6{ 
+#filhaHome6, #filhaHome8, #filhaHome10, #filhaHome12, #filhaHome14{ 
     padding-top: 10px;
     font-size: 14px;
     font-weight: 200;
 }
 
-#filhaHome6 p{
+#filhaHome6 p, #filhaHome8 p, #filhaHome10 p {
     padding-bottom: 6px;
+}
+
+#filhaHome13 {
+    padding-top: 0px;
+}
+
+#filhaHome14 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+#filhaHome15 {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+#filhaHome15 a {
+    padding-right: 15px;
+}
+
+#periodoTrabalho {
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+
+#localTrabalho {
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+#curso {
+    font-weight: bold;
+}
+
+#periodoCurso {
+    padding-bottom: 30px;
+}
+
+#contato {
+    text-align: center;
+}
+
+#email {
+    padding-right: 30px;
 }
 
 .Footer{
