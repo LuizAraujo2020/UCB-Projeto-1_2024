@@ -11,8 +11,6 @@ function signupView(req, res) {
 }
 
 function loginView(req, res) {
-    // logout(req, res);
-    logout(); 
     res.render("login");
 }
 
@@ -49,8 +47,6 @@ function createUser(req, res) {
         .catch((err) => {
             console.log("🚨 Erro ao criar o Profile no DB.");
         });
-
-    sessionController.initSession(user.email, user.admin, res);    
 }
 
 // READ
@@ -101,38 +97,37 @@ function deleteUser(email) {
 
 //====== LOGIN JOURNEY
 
-async function login(req, res) {
-    let fail = "Erro: "; // + err.errors.map(e => e.message)
+// async function login(req, res) {
+//     let fail = "Erro: "; // + err.errors.map(e => e.message)
 
-    /// Try to find the user.
-    const userFound = await findUser(req.body.termo);
+//     /// Try to find the user.
+//     const userFound = await findUser(req.body.termo);
 
-    if (!userFound) {
-        fail += "usuário não encontrado.";
-        res.render("login", { fail });
-        return;
-    }
+//     if (!userFound) {
+//         fail += "usuário não encontrado.";
+//         res.render("login", { fail });
+//         return;
+//     }
 
-    /// Confirm password
-    if (!req.body.senha === userFound.senha) {
-        fail += "Senha incorreta. ";
-        res.render("login", { fail });
-        return;
-    }
+//     /// Confirm password
+//     if (!req.body.senha === userFound.senha) {
+//         fail += "Senha incorreta. ";
+//         res.render("login", { fail });
+//         return;
+//     }
 
-    /// Login successfully.
-    sessionController.initSession(userFound.email, userFound.admin, res);
-    res.redirect(`/?user=` + userFound.usuario);
-}
-
-async function logout() {
-	sessionController.logoutSession();
-}
-
-// async function logout(res) {
-// 	sessionController.logoutSession();
-// 	res.render("login");
+//     /// Login successfully.
+//     res.redirect(`/?user=` + userFound.usuario);
 // }
+
+// async function logout() {
+// 	sessionController.logoutSession();
+// }
+
+// // async function logout(res) {
+// // 	sessionController.logoutSession();
+// // 	res.render("login");
+// // }
 
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
@@ -179,8 +174,7 @@ module.exports = {
 	// deleteUser,
 	/// Helpers
 	createUserObject,
-	login,
-	logout,
+// c	login,
 	deleteUser,
 };
 

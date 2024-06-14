@@ -1,61 +1,60 @@
 // const { use } = require("../../routes");
 const User = require("../Models/user");
 const userController = require("../Controllers/userController")
-const sessionController = require("../Controllers/sessionController")
 
 
 //====== VIEW
 function admView(req, res) {
-	// const sessionToken = req.cookies["session_token"];
+	// // const sessionToken = req.cookies["session_token"];
 
-	// console.log("✅✅✅sessionToken✅✅✅");
-	// console.log(sessionToken);
+	// // console.log("✅✅✅sessionToken✅✅✅");
+	// // console.log(sessionToken);
 	
-	// if (!sessionToken) {
-	// 	// If the cookie is not set, return an unauthorized status
-	// 	res.redirect("/index");
-	// 	return;
-	// }
+	// // if (!sessionToken) {
+	// // 	// If the cookie is not set, return an unauthorized status
+	// // 	res.redirect("/index");
+	// // 	return;
+	// // }
 	
-	// // if (!userController.sessionPersisted()) {
-	// // 	console.log("🚨 Você não tem permissão para acessar essa página.");
+	// // // if (!userController.sessionPersisted()) {
+	// // // 	console.log("🚨 Você não tem permissão para acessar essa página.");
+	// // // 	res.redirect("index");
+	// // // }
+	
+	// // // try {
+	// // // 	const admin = validateAdmPanelAccess(userController.userLogged);
+
+	// // // } catch (error) {
+	// // // 	console.log(error)
+	// // // 	res.redirect('index')
+	// // // }
+	// const session = sessionController.getSession();
+	// // if (!userSession) {
+	// // 	// If the session token is not present in session map, return an unauthorized error
+	// // 	res.status(401).end();
+	// // 	return;
+	// // }
+	// // // if the session has expired, return an unauthorized error, and delete the
+	// // // session from our map
+	// // if (userSession.isExpired()) {
+	// // 	sessionController.deleteSession(sessionToken)
 	// // 	res.redirect("index");
+	// // 	return;
 	// // }
-	
-	// // try {
-	// // 	const admin = validateAdmPanelAccess(userController.userLogged);
 
-	// // } catch (error) {
-	// // 	console.log(error)
-	// // 	res.redirect('index')
-	// // }
-	const session = sessionController.getSession();
-	// if (!userSession) {
-	// 	// If the session token is not present in session map, return an unauthorized error
-	// 	res.status(401).end();
-	// 	return;
-	// }
-	// // if the session has expired, return an unauthorized error, and delete the
-	// // session from our map
-	// if (userSession.isExpired()) {
-	// 	sessionController.deleteSession(sessionToken)
-	// 	res.redirect("index");
-	// 	return;
-	// }
+	// // If all checks have passed, we can consider the user authenticated and
+	// // send a welcome message
+	// // res.send(`Welcome  ${userSession.username}!`).end()'
+	// try {
+	// 	sessionController.getSession().then((session) => {
+	// 		console.log("✅ Achou a session!");
+	// 		console.log(session);
 
-	// If all checks have passed, we can consider the user authenticated and
-	// send a welcome message
-	// res.send(`Welcome  ${userSession.username}!`).end()'
-	try {
-		sessionController.getSession().then((session) => {
-			console.log("✅ Achou a session!");
-			console.log(session);
-
-			// if (!session || !validateAdmPanelAccess(session)) {
-			if (!session || session.admin == false) {
-				res.render("login", { fail: "Efetue o login como administrador para acessar o Painel Administrativo!" });
-				return;
-			}
+	// 		// if (!session || !validateAdmPanelAccess(session)) {
+	// 		if (!session || session.admin == false) {
+	// 			res.render("login", { fail: "Efetue o login como administrador para acessar o Painel Administrativo!" });
+	// 			return;
+	// 		}
 
 			deleteUser(req);
 
@@ -66,14 +65,14 @@ function admView(req, res) {
 				.catch((err) => {
 					console.log(err);
 				});
-		});
-	} catch (error) {
-		console.log("❌ Erro ao buscar a session! " + error);
-		res.render("login", {
-			fail: "Efetue o login como administrador para acessar o Painel Administrativo!",
-		});
-		return;
-	}
+	// 	});
+	// } catch (error) {
+	// 	console.log("❌ Erro ao buscar a session! " + error);
+	// 	res.render("login", {
+	// 		fail: "Efetue o login como administrador para acessar o Painel Administrativo!",
+	// 	});
+	// 	return;
+	// }
 	// console.log("⚠️");
 	// console.log(session);
 	// if (!session || !validateAdmPanelAccess(session) || session == null) {
@@ -108,7 +107,7 @@ async function createListAllUsers() {
 		const element = users[index];
 		rows.push(`
 			<tr>
-				<td>${index}</td>
+				<td>${index}</td> 
 				<td>${element.email}</td>
 				<td>${element.senha}</td>
 				<td>

@@ -11,7 +11,7 @@ async function findProfile(termo) {
 
 	if (!found) {
 		//TODO: Fazer Custom Error msg
-		console.log("Não encontrado!");
+		console.log("Perfil não encontrado!");
 		return null;
 	}
 

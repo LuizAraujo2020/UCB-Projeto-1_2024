@@ -2,8 +2,7 @@
 const express = require('express')
 const mustacheExpress = require('mustache-express')
 const db = require('./db')
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 const router = require('./routes')
 
@@ -23,8 +22,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(__dirname + "/src/static"));
 // app.use(express.static("static/css"));
 
-app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(
+	session({
+		secret: "secret-token",
+		name: "sessionId",
+		resave: false,
+		saveUninitialized: false,
+	})
+);
 
 app.use('/', router)
 

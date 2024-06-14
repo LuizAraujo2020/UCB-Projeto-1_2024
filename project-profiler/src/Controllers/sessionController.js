@@ -1,94 +1,62 @@
-const uuid = require("uuid");
-const Session = require("../Models/Session");
+const User = require("../Models/user");
 
-// const users = {
-// 	user1: "password1",
-// 	user2: "password2",
-// };
+async function autenticar(req, res) {
+	let usuario = await User.findOne({
+		where: {
+			email: req.body.termo,
+			senha: req.body.senha,
+		},
+	});
+	
+	if (!usuario) {
+		usuario = await User.findOne({
+			where: {
+				usuario: req.body.termo,
+				senha: req.body.senha,
+			},
+		});
+	}
 
-async function initSession(email, admin, res) {
-	const sessionToken = uuid.v4();
-            console.log("✅ initSession(email, admin, res)");
-
-	// set the expiry time as 120s after the current time
-	const now = new Date();
-	const expiresAt = new Date(+now + 120 * 1000);
-
-	// create a session containing information about the user and expiry time
-	const session = {
-		sessionToken: sessionToken,
-		expiresAt: expiresAt,
-		email: email,
-		admin: admin,
-	};
-	// add the session information to the sessions map
-	Session.create(session)
-        .then(() => {
-            res.cookie("session_token", sessionToken, { expires: expiresAt });
-            console.log("✅ Criação da Session bem sucedida.");
-            return session
-        })
-        .catch((err) => {
-            console.log("🚨 Erro na criação da Session.");
-            console.log(err);
-        });
+	if (usuario !== null) {
+		req.session.autorizado = true;
+		req.session.usuario = usuario;
+		res.redirect(`/?user=` + usuario.email);
+	} else {
+		let fail = "Falha ao realizar o login.";
+		res.render("login", { fail });
+	}
 }
 
-async function getSession(sessionToken) {
-	// let found = await Session.findOne({ where: { sessionToken: sessionToken } });
-
-	// if (!found) {
-	// 	console.log("Session não encontrada!");
-	// 	return null;
-	// }
-
-	const found = await Session.findAll();
-
-    if (found.length <= 0) {
-        return null
-    }
-    console.log("🚨 found");
-    console.log(found);
-	return found[0];
+function verificarAutenticacao(req, res, next) {
+	if (req.session.autorizado) {
+		console.log("usuário autorizado");
+		next();
+	} else {
+		console.log("usuário NÃO autorizado");
+		// res.redirect("/");
+		res.redirect(`/?user=` + req.session.usuario.email);
+	}
 }
 
-// async function logoutSession(req, res) {
-async function logoutSession() {
-	// if (!req.cookies) {
-    //     console.log("🚨 (!req.cookies)");
-    //     res.redirect("/login");
-	// 	return;
-	// }
-
-	// const sessionToken = req.cookies["session_token"];
-
-	// if (!sessionToken) {
-    //     console.log("🚨 (!sessionToken)");
-    //     res.redirect("/login");
-	// 	return;
-	// } 
-
-    // console.log("✅ sessionToken");
-    // deleteSession(sessionToken);
-    deleteSession();
-
-	// res.cookie("session_token", "", { expires: new Date() });
-	// res.redirect('login');
-};
-
-
-// function deleteSession(sessionToken) {
-function deleteSession() {
-	// Session.destroy({
-	// 	where: {
-	// 		sessionToken: sessionToken,
-	// 	},
-	// });
-    Session.truncate();
+function verificarAdmAutenticacao(req, res, next) {
+	if (req.session.autorizado && req.session.usuario.adm) {
+		console.log("usuário autorizado");
+		next();
+	} else {
+		console.log("usuário NÃO autorizado");
+		res.redirect("/login");
+	}
 }
 
+function logout(req, res) {
+	req.session.destroy();
+	res.redirect("/login");
+	// 	res.render("login");
+}
+ 
 module.exports = {
-	initSession,
-	getSession,
-    logoutSession,
+	autenticar,
+	verificarAutenticacao,
+	verificarAdmAutenticacao,
+	logout,
 };
