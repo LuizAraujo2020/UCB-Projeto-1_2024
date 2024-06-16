@@ -24,92 +24,94 @@ const Profile = db.define("profile", {
 	},
 	nome: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	cargo: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	pais: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	estado: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	sobre: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	hardskills: {
 		type: Sequelize.STRING,
-		allowNull: true,
-		// get: function () {
-		// 	return JSON.parse(this.getDataValue("hardskills"));
-		// },
-		// set: function (skills) {
-		// 	// if (!skills) {
-		// 	// 	return this.setDataValue("hardskills", JSON.stringify([]));
-		// 	// }
-		// 	return this.setDataValue("hardskills", JSON.stringify(skills));
-		// },
+		allowNull: false,
 	},
 	softskills: {
 		type: Sequelize.STRING,
-		allowNull: true,
-		// get: function () {
-		// 	return JSON.parse(this.getDataValue("softskills"));
-		// },
-		// set: function (skills) {
-		// 	// if (!skills) {
-		// 	// 	return this.setDataValue("softskills", JSON.stringify([]));
-		// 	// }
-		// 	return this.setDataValue("softskills", JSON.stringify(skills));
-		// },
+		allowNull: false,
 	},
-	// experiencia: {
-	// 	type: Sequelize.STRING,
-	// 	allowNull: true,
-	// 	get: function () {
-	// 		return JSON.parse(this.getDataValue("experiencia"));
-	// 	},
-	// 	set: function (xp) {
-	// 		// if (!xp) {
-	// 		// 	return this.setDataValue("experiencia", JSON.stringify([]));
-	// 		// }
-	// 		return this.setDataValue("experiencia", JSON.stringify(xp));
-	// 	},
-	// },
-	// educacao: {
-	// 	type: Sequelize.STRING,
-	// 	allowNull: true,
-	// 	get: function () {
-	// 		return JSON.parse(this.getDataValue("educacao"));
-	// 	},
-	// 	set: function (course) {
-	// 		// if (!course) {
-	// 		// 	return this.setDataValue("educacao", JSON.stringify([]));
-	// 		// }
-	// 		return this.setDataValue("educacao", JSON.stringify(course));
-	// 	},
-	// },
+	experienciaLocal: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	expexperienciaCargo: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	experienciaPeriodo: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	educacaoCurso: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	educacaoInstituicao: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	educacaoPeriodo: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
 	telefone: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	linkedin: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	github: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	instagram: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 });
 
 module.exports = Profile;
+
+
+// usuario;
+// email;
+// foto;
+// nome;
+// cargo;
+// pais;
+// estado;
+// sobre;
+// hardskills;
+// softskills;
+// experienciaLocal;
+// expexperienciaCargo;
+// experienciaPeriodo;
+// educacaoCurso;
+// educacaoInstituicao;
+// educacaoPeriodo;
+// telefone;
+// linkedin;
+// github;
+// instagram;

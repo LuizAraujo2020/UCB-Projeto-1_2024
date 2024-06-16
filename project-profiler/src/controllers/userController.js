@@ -1,18 +1,17 @@
 //====== USER MANAGEMENT
 
-const User = require("../Models/user");
-const Profile = require("../Models/Profile");
+const User = require("../models/user");
+const Profile = require("../models/Profile");
 // const profileController = require("../Controllers/profileController")
-const sessionController = require('../Controllers/sessionController')
-
+const sessionController = require("./sessionController");
 
 //====== VIEWS
 function signupView(req, res) {
-    res.render("signup");
+	res.render("signup");
 }
 
 function loginView(req, res) {
-    res.render("login");
+	res.render("login");
 }
 
 //====== SIGNUP & LOGIN JOURNEY
@@ -59,28 +58,28 @@ async function createUser(req, res, next) {
 // }
 
 async function findUser(termo) {
-    let found = await User.findOne({ where: { usuario: termo } });
+	let found = await User.findOne({ where: { usuario: termo } });
 
-    if (!found) {
-        found = await User.findOne({ where: { email: termo } });
-    }
+	if (!found) {
+		found = await User.findOne({ where: { email: termo } });
+	}
 
-    if (!found) {
-        //TODO: Fazer Custom Error msg
-        console.log("Não encontrado!");
-        return null;
-    }
+	if (!found) {
+		//TODO: Fazer Custom Error msg
+		console.log("Não encontrado!");
+		return null;
+	}
 
-    return found;
+	return found;
 }
 
 // UPDATE
 async function updateUser(id, user) {
-    await User.update(
+	await User.update(
 		{
 			usuario: user.usuario,
 			email: user.email,
-            senha: user.senha,
+			senha: user.senha,
 		},
 		{
 			where: {
@@ -88,27 +87,27 @@ async function updateUser(id, user) {
 			},
 		}
 	);
-    // // return User.findByIdAndUpdate(id, user, { new: true });
-    // let result = await User.update(user, {
-    //     where: {
-    //         _id: id,
-    //     },
-    // })
+	// // return User.findByIdAndUpdate(id, user, { new: true });
+	// let result = await User.update(user, {
+	//     where: {
+	//         _id: id,
+	//     },
+	// })
 
-    // console.log("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️");
-    // console.log(result);
+	// console.log("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️");
+	// console.log(result);
 }
 
 // // DELETE
 function deleteUser(email) {
-//   return Usuario.findByIdAndRemove(id)
-    User.destroy({
+	//   return Usuario.findByIdAndRemove(id)
+	User.destroy({
 		where: {
 			email: email,
 		},
 	});
 
-    Profile.destroy({
+	Profile.destroy({
 		where: {
 			email: email,
 		},
@@ -118,62 +117,54 @@ function deleteUser(email) {
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
 function validateSignup(senha, confirmarSenha) {
-    let fail; 
+	let fail;
 
-    if (senha !== confirmarSenha) {
-        fail = "Senha e Confirmar Senha devem ser iguais.";
-    }
+	if (senha !== confirmarSenha) {
+		fail = "Senha e Confirmar Senha devem ser iguais.";
+	}
 
-    // TODO: Adicionar mais validações ao `fail` com \n pra ficar um erro em cada linha.
+	// TODO: Adicionar mais validações ao `fail` com \n pra ficar um erro em cada linha.
 
-    return fail;
+	return fail;
 }
 
 //====== HELPERS
 function createUserObject(body) {
-    let usuario = {
-        usuario: body.usuario,
-        email: body.email,
-        senha: body.senha,
-        confirmarSenha: body.confirmarSenha,
-    };
+	let usuario = {
+		usuario: body.usuario,
+		email: body.email,
+		senha: body.senha,
+		confirmarSenha: body.confirmarSenha,
+	};
 
-    return usuario;
+	return usuario;
 }
 
 function createProfileObjectFromUser(user) {
-    let profile = {
+	let profile = {
 		usuario: user.usuario,
 		email: user.email,
-		foto: "",
-		nome: "",
-		cargo: "",
-		pais: "",
-		estado: "",
-		sobre: "",
-		hardskills: "",
-		softskills: "",
-		// experiencia: [
-		// 	{
-		// 		local: "",
-		// 		cargo: "",
-		// 		periodo: "",
-		// 	},
-		// ],
-		// educacao: [
-		// 	{
-		// 		curso: "",
-		// 		instituicao: "",
-		// 		periodo: "",
-		// 	},
-		// ],
-		telefone: "",
-		linkedin: "",
-		github: "",
-		instagram: "",
+		foto: null,
+		nome: "Insira o Seu Nome",
+		cargo: "Seu Cargo",
+		pais: "Seu País",
+		estado: "Seu Estado",
+		sobre: "Insira uma brave descrição sobre você. Comece com uma frase impactante que resuma quem você é e o que faz. Descreva suas principais habilidades e experiências, destacando o valor que você agrega. Mencione algumas conquistas importantes com dados concretos. Explique seus objetivos de carreira e o que busca no momento. Adicione um toque pessoal falando de suas paixões profissionais. Use uma linguagem clara e direta, sem jargões. Finalize com um convite para se conectar ou discutir oportunidades.",
+		hardskills: "Linguagens de Programação, Desenvolvimento Web, Machine Learning, Data Science, Cloud Computing, Testing, APIs e Web Services, Controle de Versão, Banco de Dados, ",
+		softskills: "Comunicação, Trabalho em Equipe, Resolução de Problemas, Adaptabilidade, Gestão de Tempo, Atenção aos Detalhes, Pensamento Crítico, Empatia, Criatividade, Proatividade, Paciência, Mentoria, Liderança, Curiosidade",
+		experienciaLocal: "Nome da Empresa",
+		expexperienciaCargo: "Cargo ou Função Desempenhada",
+		experienciaPeriodo: "20XX - 20XX",
+		educacaoCurso: "Principal Curso Feito",
+		educacaoInstituicao: "Instituição Onde Estudou",
+		educacaoPeriodo: "20XX - 20XX",
+		telefone: "(XX) XXXXX-XXXX",
+		linkedin: "link do linkedIn",
+		github: "link do github",
+		instagram: "link do instagram",
 	};
 
-    return profile;
+	return profile;
 }
 
 // function createObjectFromProfile(profile) {
@@ -209,7 +200,7 @@ module.exports = {
 	// deleteUser,
 	/// Helpers
 	createUserObject,
-// c	login,
+	// c	login,
 	deleteUser,
 };
 

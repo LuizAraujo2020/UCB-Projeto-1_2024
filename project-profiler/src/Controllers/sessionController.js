@@ -1,4 +1,4 @@
-const User = require("../Models/user");
+const User = require("../models/user");
 
 async function autenticar(req, res) {
 	let usuario = await User.findOne({
@@ -7,7 +7,7 @@ async function autenticar(req, res) {
 			senha: req.body.senha,
 		},
 	});
-	
+
 	if (!usuario) {
 		usuario = await User.findOne({
 			where: {
@@ -54,7 +54,7 @@ function logout(req, res) {
 	res.redirect("/login");
 	// 	res.render("login");
 }
- 
+
 module.exports = {
 	autenticar,
 	verificarAutenticacao,

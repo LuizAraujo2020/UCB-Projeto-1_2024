@@ -1,6 +1,6 @@
 //====== PROFILE MANAGEMENT
 
-const Profile = require("../Models/Profile");
+const Profile = require("../models/Profile");
 
 async function createProfile(profile) {
 	Profile.create(profile)
@@ -86,7 +86,7 @@ async function updateProfileUserInfo(email, userInfo) {
 	found.usuario = userInfo.usuario;
 	found.email = userInfo.email;
 	console.log("✅ FOUND");
-	console.log(found)
+	console.log(found);
 
 	await Profile.update(found, {
 		where: {

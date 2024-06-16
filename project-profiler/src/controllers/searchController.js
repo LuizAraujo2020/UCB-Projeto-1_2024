@@ -1,4 +1,4 @@
-const profileController = require("../Controllers/profileController");
+const profileController = require("./profileController");
 
 function searchView(req, res) {
 	//TODO: Fazer toda a lógica
@@ -14,16 +14,15 @@ function search(req, res) {
 	profileController
 		.findProfileByType(tipo, termo)
 		.then((result) => {
-            if (result.length <= 0) {
-                const fail = "Erro: nenhum perfil encontrado.";
-                res.render("search", { fail });
-                return 
-
-            } else if (result.length == 1) {
-                // res.redirect(`/profile/${result[0].id}`);
-                res.redirect(`/?user=${result[0].email}`);
-                return
-            }
+			if (result.length <= 0) {
+				const fail = "Erro: nenhum perfil encontrado.";
+				res.render("search", { fail });
+				return;
+			} else if (result.length == 1) {
+				// res.redirect(`/profile/${result[0].id}`);
+				res.redirect(`/?user=${result[0].email}`);
+				return;
+			}
 
 			const list = createList(result);
 			res.render("search", { list });

@@ -1,7 +1,6 @@
 // const { use } = require("../../routes");
-const User = require("../Models/user");
-const userController = require("../Controllers/userController")
-
+const User = require("../models/user");
+const userController = require("./userController");
 
 //====== VIEW
 function admView(req, res) {
@@ -19,7 +18,7 @@ function admView(req, res) {
 //====== VIEW COMPONENTS
 async function createListAllUsers() {
 	const users = await listAllUsers();
-	
+
 	return users;
 }
 
@@ -30,7 +29,7 @@ async function listAllUsers() {
 }
 
 function deleteUser(req) {
-	const userToDelete = req.query.delete
+	const userToDelete = req.query.delete;
 	if (userToDelete) {
 		userController.deleteUser(userToDelete);
 	}

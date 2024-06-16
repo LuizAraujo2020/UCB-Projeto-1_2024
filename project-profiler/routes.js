@@ -1,18 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
+const mainController = require("./src/controllers/mainController");
+const searchController = require("./src/controllers/searchController");
 
-const mainController = require("./src/Controllers/mainController");
-const searchController = require("./src/Controllers/searchController");
+const userController = require("./src/controllers/userController");
+const settingsController = require("./src/controllers/settingsController");
 
-const userController = require("./src/Controllers/userController");
-const settingsController = require("./src/Controllers/settingsController");
-
-const admController = require("./src/Controllers/admController");
-const sessionController = require("./src/Controllers/sessionController");
+const admController = require("./src/controllers/admController");
+const sessionController = require("./src/controllers/sessionController");
 
 // const errorController    = require('./Controllers/errorController')
-
 
 router.get("/", mainController.indexView);
 
@@ -32,6 +30,5 @@ router.get("/search", searchController.searchView);
 router.post("/search", searchController.search);
 
 router.get("/adm", sessionController.verificarAdm, admController.admView);
-
 
 module.exports = router;
