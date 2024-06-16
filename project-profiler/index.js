@@ -35,7 +35,7 @@ app.use('/', router)
 
 //==== DATABASE
 db.sync(function() {
-  console.log('Banco de dados sincronizado com sucesso!')
+	console.log('Banco de dados sincronizado com sucesso!')
 })
 
 
@@ -43,5 +43,5 @@ db.sync(function() {
 const PORT = 8080
 
 app.listen(PORT, function () {
-  console.log(`🖥️  Servidor rodando na porta: ${PORT}`)
+	console.log(`🖥️  Servidor rodando na porta: ${PORT}`)
 })
