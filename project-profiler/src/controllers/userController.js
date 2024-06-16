@@ -70,14 +70,26 @@ async function findUser(termo) {
     return found;
 }
 
-// function listAllUsers() {
-//   return Usuario.find()
-// }
+// UPDATE
+async function updateUser(id, user) {
+    await User.update(
+		{ usuario: user.usuario },
+		{
+			where: {
+				id: id,
+			},
+		}
+	);
+    // // return User.findByIdAndUpdate(id, user, { new: true });
+    // let result = await User.update(user, {
+    //     where: {
+    //         _id: id,
+    //     },
+    // })
 
-// // UPDATE
-// function updateUser(id, user) {
-//   return Usuario.findByIdAndUpdate(id, user, { new: true })
-// }
+    // console.log("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️");
+    // console.log(result);
+}
 
 // // DELETE
 function deleteUser(email) {
@@ -94,40 +106,6 @@ function deleteUser(email) {
 		},
 	});
 }
-
-//====== LOGIN JOURNEY
-
-// async function login(req, res) {
-//     let fail = "Erro: "; // + err.errors.map(e => e.message)
-
-//     /// Try to find the user.
-//     const userFound = await findUser(req.body.termo);
-
-//     if (!userFound) {
-//         fail += "usuário não encontrado.";
-//         res.render("login", { fail });
-//         return;
-//     }
-
-//     /// Confirm password
-//     if (!req.body.senha === userFound.senha) {
-//         fail += "Senha incorreta. ";
-//         res.render("login", { fail });
-//         return;
-//     }
-
-//     /// Login successfully.
-//     res.redirect(`/?user=` + userFound.usuario);
-// }
-
-// async function logout() {
-// 	sessionController.logoutSession();
-// }
-
-// // async function logout(res) {
-// // 	sessionController.logoutSession();
-// // 	res.render("login");
-// // }
 
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
@@ -170,7 +148,7 @@ module.exports = {
 	loginView,
 	createUser,
 	findUser, //readUserByID, listAllUsers,
-	// updateUser,
+	updateUser,
 	// deleteUser,
 	/// Helpers
 	createUserObject,
