@@ -3,33 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profiler - {{ profile.usuario }} </title>
-
+    
     <link rel="stylesheet" href="../static/normalize.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/global.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/global.css">
+    <title>Profiler - {{ user.name }} </title>
 </head>
 
-<body class="bg-dark bg-gradient vh-100 vh-100 text-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 bg-dark text-center">
-                <h1>INSERIR CONTEÚDO INDEX</h1>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img src="./images/Profiler.png" alt="" width="120" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#filhaHome5">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#filhaHome7">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#filhaHome9">Experiência</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#filhaHome11">Formação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#filhaHome13">Contato</a>
+                    </li>
+                </ul>
+          </div>
+        </div>
+    </nav>
 
-                {{#profile.nome}}
-                <div>
-                    {{ profile.nome }}
-                </div>
-                {{/profile.nome}}
-                
-                {{ profile.email }}
-                
-                {{#profile.sobre}}
-                <div>
-                    SOBRE: {{profile.sobre}}
-                </div>
-                {{/profile.sobre}}
+    <div class="paiHome">
+        <div id="filhaHome1">
+            <button type="button" class="btn btn-outline-secondary" href="./login.html">Entrar</button>
+        </div>
+
+        <div id="filhaHome2">
+            <img alt="image" src="./images/profilePhoto.png" width="170"/>
+        </div>
+
+        <div id="filhaHome3">
+            <p>Fulana de Tal</p>
+        </div>
+
+        <div id="filhaHome4">
+            <p>Cargo/função atual ou que procura</p>
+            <p>Estado, País</p>
+        </div>
+
+        <div id="filhaHome5">
+            <p>Sobre mim</p>
+            <img alt="image" src="./images/divisor.png" width="100%" height="3px"/>
+            <div id="filhaHome6">
+                <p>Ut tempor luctus imperdiet. Vivamus mauris magna, rutrum eu est sit amet, 
+                laoreet placerat tortor. Duis blandit vel nunc eu vestibulum. Class aptent 
+                taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                Proin sit amet risus sit amet nunc interdum condimentum. Quisque venenatis vel 
+                neque auctor malesuada.</p>
+
+                <p>Ut tempor luctus imperdiet. Vivamus mauris magna, rutrum eu est sit amet, 
+                laoreet placerat tortor. Duis blandit vel nunc eu vestibulum. Class aptent 
+                taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                Proin sit amet risus sit amet nunc interdum condimentum. Quisque venenatis vel 
+                neque auctor malesuada.</p>
+
+                <p>Ut tempor luctus imperdiet. Vivamus mauris magna, rutrum eu est sit amet, 
+                laoreet placerat tortor. Duis blandit vel nunc eu vestibulum. Class aptent 
+                taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                Proin sit amet risus sit amet nunc interdum condimentum. Quisque venenatis vel 
+                neque auctor malesuada.</p>
             </div>
+        </div>
+
+        <div id="filhaHome7">
+            <p>Habilidades</p>
+            <img alt="image" src="./images/divisor.png" width="100%" height="3px"/>
+            <div id="filhaHome8">
+                <p>* Swift</p>
+                <p>* Clean Code</p>
+                <p>* Scrum</p>
+                <p>* Figma</p>
+                <p>* Colaboração</p>
+                <p>* Trabalho em equipe</p>
+            </div>
+        </div>
+
+        <div id="filhaHome9">
+            <p>Experiência Profissional</p>
+            <img alt="image" src="./images/divisor.png" width="100%" height="3px"/>
+            <div id="filhaHome10">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td id="periodoTrabalho">Período</td>
+                            <td id="localTrabalho">Local de trabalho - função</td>
+                        </tr>
+                        <tr>
+                            <td id="periodoTrabalho">2018 - 2022</td>
+                            <td id="localTrabalho">Company Enterprise - iOS Developer</td>
+                        </tr>
+                        <tr>
+                            <td id="periodoTrabalho">fev/2017 - dez/2017</td>
+                            <td id="localTrabalho">Empreendimentos Prediais - Supervisor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="filhaHome11">
+            <p>Formação</p>
+            <img alt="image" src="./images/divisor.png" width="100%" height="3px"/>
+            <div id="filhaHome12">
+                <p id="curso">Curso</p>
+                <p>Instituição</p>
+                <p id="periodoCurso">Período</p>
+
+                <p id="curso">Engenharia de Software</p>
+                <p>Universidade Uniesquina</p>
+                <p id="periodoCurso">2012-2015</p>
+
+                <p id="curso">Curso Técnico em Informática</p>
+                <p>Escola Técnica de Brasília</p>
+                <p id="periodoCurso">2011-2012</p>
+            </div>
+        </div>
+
+        <div id="filhaHome13">
+            <p id="contato">Contato</p>
+            <img alt="image" src="./images/divisor.png" width="100%" height="3px"/>
+            <div id="filhaHome14">
+                <p id="email">fulana_tal@gmail.com</p>
+                <p>+55 (61) 9 9123-4567</p>
+            </div>
+            <div id="filhaHome15">
+                <a href="https://www.linkedin.com/"><img src="./images/LinkedIn.png" class="media-object"></a>
+                <a href="https://github.com/"><img src="./images/GitHub.png" class="media-object"></a>
+                <a href="https://instagram.com/"><img src="./images/Instagram.png" class="media-object"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="Footer">
+        <div id="filhaFooter">
+            <img src="./images/Footer.png" height="70">
         </div>
     </div>
 
