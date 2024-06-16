@@ -24,72 +24,92 @@ async function settings(req, res) {
 
 	let newUser = await userController.findUser(req.session.usuario.email);
 
-	// /// Username
-	// if (!userPost.settingsConfirmarUsuario && userPost.settingsConfirmarUsuario != "") {
-	// 	if (userPost.settingsConfirmarUsuario != userPost.settingsUsuario) {
-	// 		fail += "<p>Os nomes de usuário não coincidem.</p>";
-	// 		// res.render("settings", { fail });
-	// 	} else {
-	// 		const found = await userController.findUser(userPost.settingsConfirmarUsuario);
+    if (!newUser) {
+        fail = "Usuário não encontrado! Tente logar novamente ou com outras credenciais."
+        res.render("login", { fail });
+        return
+    }
+    
+	/// Username
+	if (!userPost.settingsConfirmarUsuario || userPost.settingsConfirmarUsuario === "") {
+        // fail += "<p>Confirme o novo nome de usuário.</p>";
 
-	// 		if (found) {
-	// 			fail += "<p>O nome de usuário já está em uso.</p>";
-	// 			// res.render("settings", { fail });
-	// 		} else {
-	// 			// await userController.updateUser(req.session.usuario.id, {
-	// 			//     usuario: userPost.settingsConfirmarUsuario,
-	// 			// });
-	// 			// res.redirect("/settings", { success });
-	newUser.usuario = userPost.settingsConfirmarUsuario;
-	// 		}
-	// 	}
-	// }
+    } else {
+		if (userPost.settingsConfirmarUsuario != userPost.settingsUsuario) {
+			fail += "<p>Os nomes de usuário não coincidem.</p>";
+			// res.render("settings", { fail });
+		} else {
+			const found = await userController.findUser(userPost.settingsConfirmarUsuario);
 
-	// /// Email
-	// if (!userPost.settingsConfirmEmail && userPost.settingsConfirmEmail != "") {
-	// 	if (userPost.settingsConfirmEmail != userPost.settingsEmail) {
-	// 		fail += "<p>Os e-mails não coincidem.</p>";
-	// 		// res.render("settings", { fail });
-	// 	} else {
-	// 		const found = await userController.findUser(userPost.settingsConfirmEmail);
+			if (found) {
+				fail += "<p>O nome de usuário já está em uso.</p>";
+				// res.render("settings", { fail });
+			} else {
+				newUser.usuario = userPost.settingsConfirmarUsuario;
+			}
+		}
+	}
 
-	// 		if (found) {
-	// 			fail += "<p>O e-mail já está em uso.</p>";
-	// 			// res.render("settings", { fail });
-	// 		} else {
-	// 			// await userController.updateUser(req.session.usuario.id, {
-	// 			//     usuario: userPost.settingsConfirmarUsuario,
-	// 			// });
-	// 			// res.redirect("/settings", { success });
-	// 			newUser.email = userPost.settingsConfirmEmail;
-	// 		}
-	// 	}
-	// }
+	/// Email
+	if (!userPost.settingsConfirmEmail || userPost.settingsConfirmEmail === "") {
+        // fail += "<p>Confirme o novo email.</p>";
 
-	// /// Password
-	// if (!userPost.settingsConfirmarNovaSenha && userPost.settingsConfirmarNovaSenha != '') {
-	// 	if (userPost.settingsConfirmarNovaSenha != userPost.settingsSenhaNova) {
-	// 		fail += "<p>As senhas não coincidem.</p>";
-	// 	} else if (userPost.settingsSenhaAtual !== newUser.senha) {
-	// 		fail += "<p>A senha atual não coincide com a senha cadastrada.</p>";
-	// 	} else if (userPost.settingsConfirmarNovaSenha.length < 4) {
-	// 		fail += "<p>A senha deve ter no mínimo 4 caracteres.</p>";
+    } else {
+		if (userPost.settingsConfirmEmail != userPost.settingsEmail) {
+			fail += "<p>Os e-mails não coincidem.</p>";
+			// res.render("settings", { fail });
+		} else {
+			const found = await userController.findUser(userPost.settingsConfirmEmail);
+            console.log("🚨🚨🚨 found");
+            console.log(found);
+			if (found) {
+				fail += "<p>O e-mail já está em uso.</p>";
+				// res.render("settings", { fail });
+			} else {
+				// await userController.updateUser(req.session.usuario.id, {
+				//     usuario: userPost.settingsConfirmarUsuario,
+				// });
+				// res.redirect("/settings", { success });
+                console.log("✅✅✅ ENTROUUUuuUUuU");
+				newUser.email = userPost.settingsConfirmEmail;
+                console.log("✅✅✅newUser.email: " + newUser.email);
+			}
+		}
+	}
 
-	// 		//TODO: Fazer validação depois...
-	// 	} else {
-	// 		newUser.senha = userPost.settingsConfirmarNovaSenha;
-	// 	}
-	// }
+	/// Password
+	if (!userPost.settingsConfirmarNovaSenha || userPost.settingsConfirmarNovaSenha === "") {
+        // fail += "<p>Confirme a nova senha.</p>";
 
-	// if (fail !== "") {
-	//     console.log("🚨🚨🚨🚨🚨🚨");
-	// 	console.log(userPost);
-	// 	console.log(newUser);
-	//     res.render("settings", { fail });
-	// } else {
-	//     console.log("✅✅✅✅✅✅");
-	// 	console.log(userPost);
-	// 	console.log(newUser);
+	} else {
+		if (userPost.settingsConfirmarNovaSenha != userPost.settingsSenhaNova) {
+			fail += "<p>As senhas não coincidem.</p>";
+
+		} else if (userPost.settingsSenhaAtual !== newUser.senha) {
+			fail += "<p>Insira a senha atual corretamente.</p>";
+
+		} else if (userPost.settingsConfirmarNovaSenha.length < 4) {
+			fail += "<p>A senha deve ter no mínimo 4 caracteres.</p>";
+
+			//TODO: Fazer validação depois...
+		} else {
+			newUser.senha = userPost.settingsConfirmarNovaSenha;
+		}
+	}
+
+	if (fail !== "") {
+	    console.log("🚨🚨🚨🚨🚨🚨");
+		console.log(userPost);
+		console.log(newUser);
+	    res.render("settings", { fail });
+        return
+	}// else {
+	    console.log("🚨🚨🚨0");
+		console.log(fail);
+	    console.log("✅✅✅1");
+		console.log(userPost);
+	    console.log("✅✅✅2");
+		console.log(newUser);
 	//     await userController.updateUser(req.session.usuario.id, newUser)
 	//         .then(() => {
 
@@ -102,6 +122,7 @@ async function settings(req, res) {
 	//             res.render("settings", { fail });
 	//         })
 	// // }
+
 	await userController.updateUser(newUser.id, newUser);
     req.session.usuario = newUser;
     res.redirect(`/?user=` + newUser.email);

@@ -73,7 +73,11 @@ async function findUser(termo) {
 // UPDATE
 async function updateUser(id, user) {
     await User.update(
-		{ usuario: user.usuario },
+		{
+			usuario: user.usuario,
+			email: user.email,
+            senha: user.senha,
+		},
 		{
 			where: {
 				id: id,
