@@ -1,4 +1,5 @@
 const userController = require('../Controllers/userController')
+const profileController = require('../Controllers/profileController')
 
 function settingsView(req, res) {
     const usuario = req.session.usuario;
@@ -60,19 +61,12 @@ async function settings(req, res) {
 			// res.render("settings", { fail });
 		} else {
 			const found = await userController.findUser(userPost.settingsConfirmEmail);
-            console.log("🚨🚨🚨 found");
-            console.log(found);
+            
 			if (found) {
 				fail += "<p>O e-mail já está em uso.</p>";
 				// res.render("settings", { fail });
 			} else {
-				// await userController.updateUser(req.session.usuario.id, {
-				//     usuario: userPost.settingsConfirmarUsuario,
-				// });
-				// res.redirect("/settings", { success });
-                console.log("✅✅✅ ENTROUUUuuUUuU");
 				newUser.email = userPost.settingsConfirmEmail;
-                console.log("✅✅✅newUser.email: " + newUser.email);
 			}
 		}
 	}
@@ -98,32 +92,22 @@ async function settings(req, res) {
 	}
 
 	if (fail !== "") {
-	    console.log("🚨🚨🚨🚨🚨🚨");
-		console.log(userPost);
-		console.log(newUser);
 	    res.render("settings", { fail });
         return
-	}// else {
-	    console.log("🚨🚨🚨0");
-		console.log(fail);
-	    console.log("✅✅✅1");
-		console.log(userPost);
-	    console.log("✅✅✅2");
-		console.log(newUser);
-	//     await userController.updateUser(req.session.usuario.id, newUser)
-	//         .then(() => {
+	}
+    
+	console.log("🚨🚨🚨0");
+	console.log(fail);
+	console.log("✅✅✅1");
+	console.log(userPost);
+	console.log("✅✅✅2");
+	console.log(newUser);
 
-	//         console.log("✅✅✅1111");
-	//             res.session.usuario = newUser;
-	//             res.redirect(`/?user=` + newUser.email);
-	//         })
-	//         .catch(err => {
-	//             const fail = "Falha na tentiva de atualização."
-	//             res.render("settings", { fail });
-	//         })
-	// // }
+	// await userController.updateUser(newUser.id, newUser);
+	// console.log("✅ EMAIL");
+	// console.log(userPost.email);
+	await profileController.updateProfileUserInfo(userPost.settingsConfirmEmail, newUser);
 
-	await userController.updateUser(newUser.id, newUser);
     req.session.usuario = newUser;
     res.redirect(`/?user=` + newUser.email);
 }

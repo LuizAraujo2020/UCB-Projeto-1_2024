@@ -2,6 +2,7 @@
 
 const User = require("../Models/user");
 const Profile = require("../Models/Profile");
+// const profileController = require("../Controllers/profileController")
 const sessionController = require('../Controllers/sessionController')
 
 
@@ -16,37 +17,40 @@ function loginView(req, res) {
 
 //====== SIGNUP & LOGIN JOURNEY
 
-function createUser(req, res) {
-    /// Creates helper objects from the request body.
-    let user = createUserObject(req.body);
-    let profile = createProfileObjectFromUser(user);
+async function createUser(req, res, next) {
+	/// Creates helper objects from the request body.
+	let user = createUserObject(req.body);
+	let profile = createProfileObjectFromUser(user);
 
-    /// Validations
-    const fail = validateSignup(user.senha, user.confirmarSenha);
-    if (fail) {
-        res.render("signup", { fail });
-        return;
-    }
+	/// Validations
+	const fail = validateSignup(user.senha, user.confirmarSenha);
+	if (fail) {
+		res.render("signup", { fail });
+		return;
+	}
 
-    user.admin = user.usuario === "admin";
+	user.admin = user.usuario === "admin";
 
-    User.create(user)
-        .then(() => {
-            res.redirect(`/?user=` + user.email);
-        })
-        .catch((err) => {
-            let fail = "Erro: falha ao criar o usuário." // + err.errors.map((e) => e.message);
-            res.render("signup", { fail });
-        });
-    
+	User.create(user)
+		.then(() => {
+			// profileController.createProfile(profile)
+			// res.redirect(`/?user=` + user.email);
+		})
+		.catch((err) => {
+			let fail = "Erro: falha ao criar o usuário."; // + err.errors.map((e) => e.message);
+			res.render("signup", { fail });
+		});
 
-    Profile.create(profile)
-        .then(() => {
-            console.log("✅ Profile criado no DB com sucesso.");
-        })
-        .catch((err) => {
-            console.log("🚨 Erro ao criar o Profile no DB.");
-        });
+	Profile.create(profile)
+		.then(() => {
+			console.log("✅ Profile criado no DB com sucesso.");
+			next();
+		})
+		.catch((err) => {
+			console.log("🚨 Erro ao criar o Profile no DB.");
+		});
+
+	// req.session.usuario = user;
 }
 
 // READ
@@ -139,12 +143,61 @@ function createUserObject(body) {
 
 function createProfileObjectFromUser(user) {
     let profile = {
-        usuario: user.usuario,
-        email: user.email,
-    };
+		usuario: user.usuario,
+		email: user.email,
+		foto: "",
+		nome: "",
+		cargo: "",
+		pais: "",
+		estado: "",
+		sobre: "",
+		hardskills: "",
+		softskills: "",
+		// experiencia: [
+		// 	{
+		// 		local: "",
+		// 		cargo: "",
+		// 		periodo: "",
+		// 	},
+		// ],
+		// educacao: [
+		// 	{
+		// 		curso: "",
+		// 		instituicao: "",
+		// 		periodo: "",
+		// 	},
+		// ],
+		telefone: "",
+		linkedin: "",
+		github: "",
+		instagram: "",
+	};
 
     return profile;
 }
+
+// function createObjectFromProfile(profile) {
+// 	let profile = {
+// 		usuario: user.usuario,
+// 		email: user.email,
+// 		foto: null,
+// 		nome: null,
+// 		cargo: null,
+// 		pais: null,
+// 		estado: null,
+// 		sobre: null,
+// 		hardskills: null,
+// 		softskills: null,
+// 		experiencia: null,
+// 		educacao: null,
+// 		telefone: null,
+// 		linkedin: null,
+// 		github: null,
+// 		instagram: null,
+// 	};
+
+// 	return profile;
+// }
 
 //====== MODULE EXPORTING
 module.exports = {

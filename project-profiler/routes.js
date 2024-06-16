@@ -18,6 +18,7 @@ router.get("/", mainController.indexView);
 
 router.get("/signup", userController.signupView);
 router.post("/signup", userController.createUser);
+// router.post("/signup", userController.createUser, sessionController.autenticar, mainController.indexView);
 
 router.get("/settings", sessionController.verificarAutenticacao, settingsController.settingsView);
 router.post("/settings", sessionController.verificarAutenticacao, settingsController.settings);
