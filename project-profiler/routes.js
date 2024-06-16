@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const mainController = require("./src/controllers/mainController");
+const mainController = require("./src/controllers/indexController");
 const searchController = require("./src/controllers/searchController");
 
 const userController = require("./src/controllers/userController");
@@ -15,7 +15,7 @@ const sessionController = require("./src/controllers/sessionController");
 router.get("/", mainController.indexView);
 
 router.get("/signup", userController.signupView);
-router.post("/signup", userController.createUser);
+router.post("/signup", userController.createUser, mainController.indexView);
 // router.post("/signup", userController.createUser, sessionController.autenticar, mainController.indexView);
 
 router.get("/settings", sessionController.verificarAutenticacao, settingsController.settingsView);
