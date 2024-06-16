@@ -56,80 +56,38 @@ function admView(req, res) {
 	// 			return;
 	// 		}
 
-			deleteUser(req);
+	deleteUser(req);
 
-			createListAllUsers()
-				.then((result) => {
-					res.render("adm", { body: result });
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-	// 	});
-	// } catch (error) {
-	// 	console.log("❌ Erro ao buscar a session! " + error);
-	// 	res.render("login", {
-	// 		fail: "Efetue o login como administrador para acessar o Painel Administrativo!",
-	// 	});
-	// 	return;
-	// }
-	// console.log("⚠️");
-	// console.log(session);
-	// if (!session || !validateAdmPanelAccess(session) || session == null) {
-	// 	// res.redirect("login");
-	// 	console.log("Efetue o login como administrador para acessar o Painel Administrativo!");
-	// 	res.render("login", { fail: "Efetue o login como administrador para acessar o Painel Administrativo!" });
-
-	// 	return;
-	// } else {
-	// 	console.log('✅ Achou a session!')
-
-	// 	deleteUser(req);
-
-	// 	createListAllUsers()
-	// 		.then((result) => {
-	// 			res.render("adm", { body: result });
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// }
+	createListAllUsers()
+		.then((result) => {
+			res.render("adm", { usuarios: result });
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 }
 
 //====== VIEW COMPONENTS
 async function createListAllUsers() {
 	const users = await listAllUsers();
-	let rows = [];
+	// let rows = [];
 
-	const size = users.length;
+	// const size = users.length;
 
-	for (let index = 0; index < size; index++) {
-		const element = users[index];
-		rows.push(`
-			<tr>
-				<td>${index}</td> 
-				<td>${element.email}</td>
-				<td>${element.senha}</td>
-				<td>
-					<a
-						href="/adm/?delete=${element.email}"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="btn btn-sm btn-outline-danger"
-					>
-						X
-					</a>
-				</td>
-			</tr>
-			`);
-	}
-				// <td>
-				// 	<button type="button" class="btn btn-sm btn-outline-danger">
-				// 		X
-				// 	</button>
-				// </td>;
+	// for (let index = 0; index < size; index++) {
+	// 	const element = users[index];
+	// 	rows.push(`
+			
+	// 		`);
+	// }
+	// 			// <td>
+	// 			// 	<button type="button" class="btn btn-sm btn-outline-danger">
+	// 			// 		X
+	// 			// 	</button>
+	// 			// </td>;
 
-	return rows.join("\n");
+	// return rows.join("\n");
+	return users;
 }
 
 //====== HELPERS

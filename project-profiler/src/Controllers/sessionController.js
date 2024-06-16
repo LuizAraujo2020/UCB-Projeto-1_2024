@@ -38,8 +38,8 @@ function verificarAutenticacao(req, res, next) {
 	}
 }
 
-function verificarAdmAutenticacao(req, res, next) {
-	if (req.session.autorizado && req.session.usuario.adm) {
+function verificarAdm(req, res, next) {
+	if (req.session.autorizado && req.session.usuario.admin) {
 		console.log("usuário autorizado");
 		next();
 	} else {
@@ -57,6 +57,6 @@ function logout(req, res) {
 module.exports = {
 	autenticar,
 	verificarAutenticacao,
-	verificarAdmAutenticacao,
+	verificarAdm,
 	logout,
 };

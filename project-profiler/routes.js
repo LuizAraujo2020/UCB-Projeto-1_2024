@@ -28,7 +28,7 @@ router.get("/logout", sessionController.logout);
 router.get("/search", searchController.searchView);
 router.post("/search", searchController.search);
 
-router.get("/adm", sessionController.verificarAdmAutenticacao, admController.admView);
+router.get("/adm", sessionController.verificarAdm, admController.admView);
 
 // app.get('/signup', function (request, response) {
 //     response.render('signup')

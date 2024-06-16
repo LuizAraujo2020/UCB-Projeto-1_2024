@@ -49,12 +49,22 @@
                             <th scope="col">DEL</th>
                         </tr>
                     </thead>
-        
+
+                    {{#usuarios}}
                     <tbody>
-                        {{#body}}
-                            {{{body}}}
-                        {{/body}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{email}}</td>
+                            <td>{{senha}}</td>
+                            <td>
+                                <a href="/adm/?delete={{email}}" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-sm btn-outline-danger">
+                                    X
+                                </a>
+                            </td>
+                        </tr>
                     </tbody>
+                    {{/usuarios}}
                 </table>
         
         
