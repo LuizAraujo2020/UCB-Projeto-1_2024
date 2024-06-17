@@ -1,5 +1,7 @@
 //====== PROFILE MANAGEMENT
 
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 const Profile = require("../models/Profile");
 
 async function createProfile(profile) {
@@ -38,6 +40,17 @@ async function findProfileByType(tipo, termo) {
 					usuario: termo,
 				},
 			});
+
+			/// If can't find the exactly word, the code below searches for it as part of something bigger.
+			if (!found || found.length <= 0) {
+				found = await Profile.findAll({
+					where: {
+						usuario: {
+							[Op.like]: "%" + termo + "%",
+						},
+					},
+				});
+			}
 			break;
 		case "email":
 			found = await Profile.findAll({
@@ -45,6 +58,17 @@ async function findProfileByType(tipo, termo) {
 					email: termo,
 				},
 			});
+
+			if (!found || found.length <= 0) {
+				found = await Profile.findAll({
+					where: {
+						email: {
+							[Op.like]: "%" + termo + "%",
+						},
+					},
+				});
+			}
+
 			break;
 		case "cargo":
 			found = await Profile.findAll({
@@ -52,6 +76,16 @@ async function findProfileByType(tipo, termo) {
 					cargo: termo,
 				},
 			});
+
+			if (!found || found.length <= 0) {
+				found = await Profile.findAll({
+					where: {
+						cargo: {
+							[Op.like]: "%" + termo + "%",
+						},
+					},
+				});
+			}
 			break;
 		case "hardskills":
 			found = await Profile.findAll({
@@ -59,6 +93,16 @@ async function findProfileByType(tipo, termo) {
 					hardskills: termo,
 				},
 			});
+
+			if (!found || found.length <= 0) {
+				found = await Profile.findAll({
+					where: {
+						hardskills: {
+							[Op.like]: "%" + termo + "%",
+						},
+					},
+				});
+			}
 			break;
 		case "softskills":
 			found = await Profile.findAll({
@@ -66,6 +110,16 @@ async function findProfileByType(tipo, termo) {
 					softskills: termo,
 				},
 			});
+
+			if (!found || found.length <= 0) {
+				found = await Profile.findAll({
+					where: {
+						softskills: {
+							[Op.like]: "%" + termo + "%",
+						},
+					},
+				});
+			}
 			break;
 
 		default:

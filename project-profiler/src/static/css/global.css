@@ -260,3 +260,17 @@ input .border-fail {
     color: #333;
     font-size: 1.125rem;
 }
+
+/* SEARCH */
+#search-result-btn {
+    color: black;
+    text-decoration: none;
+}
+
+#search-result-btn h5 {
+    font-weight: 700;
+}
+
+#search-result-btn /* .left */ {
+
+}

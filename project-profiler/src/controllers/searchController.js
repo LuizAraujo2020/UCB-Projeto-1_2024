@@ -21,8 +21,7 @@ function search(req, res) {
 				return;
 			}
 
-			const list = createList(result);
-			res.render("search", { list });
+			res.render("search", { list: result });
 			return;
 		})
 		.catch((err) => {
@@ -31,25 +30,6 @@ function search(req, res) {
 			res.render("search", { fail });
 			return;
 		});
-}
-
-function createList(result) {
-	let list = [];
-
-	for (let index = 0; index < result.length; index++) {
-		let item = result[index];
-		list.push(`
-            <div class="row ms-5 me-5">
-            <div class="col-12 text-center bg-secondary">
-                <h5 class=" text-center">${item.nome}</h5>
-                <h6 class=" text-center">${item.cargo}</h6>
-                <h6 class=" text-center">${item.estado}, ${item.pais}</h6>
-            </div>
-            </div>
-            `);
-	}
-
-	return list.join("</br>");
 }
 
 module.exports = {
