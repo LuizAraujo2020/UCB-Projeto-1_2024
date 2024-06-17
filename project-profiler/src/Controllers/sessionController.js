@@ -33,8 +33,7 @@ function verificarAutenticacao(req, res, next) {
 		next();
 	} else {
 		console.log("usuário NÃO autorizado");
-		// res.redirect("/");
-		// res.redirect(`/?user=` + req.session.usuario.email);
+		
 		res.redirect("/login");
 	}
 }
@@ -52,7 +51,6 @@ function verificarAdm(req, res, next) {
 function logout(req, res) {
 	req.session.destroy();
 	res.redirect("/login");
-	// 	res.render("login");
 }
 
 module.exports = {

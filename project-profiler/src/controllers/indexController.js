@@ -1,4 +1,3 @@
-// const userController = require('../Controllers/userController')
 const profileController = require("./profileController.js");
 
 async function indexView(req, res) {
@@ -9,7 +8,6 @@ async function indexView(req, res) {
 	}
 
 	profileController.findProfile(userParam).then((result) => {
-		// loadProfileInfo(userParam).then((profile) => {
 		if (result) {
 			let profile = result;
 			profile.hardskills = handleSkills(result.hardskills);
@@ -23,15 +21,11 @@ async function indexView(req, res) {
 			}
 
 			res.render("index", { profile, ownProfile, logged });
+
 		} else {
-			// const fail = "";
-			// res.render("search", { fail });
 			res.render("search");
 		}
-	}); //.catch((err) => {
-	//     console.log('🚨 Erro ao criar o Profile no DB.')
-	//     res.render('search')
-	// })
+	});
 }
 
 function handleSkills(skills) {
@@ -49,8 +43,6 @@ function handleSkills(skills) {
 	});
 
 	collection = collection.filter((skill) => skill !== "<li></li>");
-
-	// const result = collection.join("");
 
 	return collection.join("");
 }

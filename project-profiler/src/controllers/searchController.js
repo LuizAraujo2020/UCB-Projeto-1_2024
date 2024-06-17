@@ -4,8 +4,6 @@ function searchView(req, res) {
 	//TODO: Fazer toda a lógica
 
 	res.render("search");
-	// res.redirect('search.html')
-	// res.redirect("/search");
 }
 
 function search(req, res) {
@@ -19,7 +17,6 @@ function search(req, res) {
 				res.render("search", { fail });
 				return;
 			} else if (result.length == 1) {
-				// res.redirect(`/profile/${result[0].id}`);
 				res.redirect(`/?user=${result[0].email}`);
 				return;
 			}

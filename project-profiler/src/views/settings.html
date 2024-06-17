@@ -15,13 +15,6 @@
 
     <body class="paiHome">
     <div class="container">
-        <!-- <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a href="/index" class="navbar-brand">
-                    <img src="./images/Profiler.png" alt="" width="120" height="30">
-                </a>
-            </div>
-        </nav> -->
 
         <div class="card-custom shadow-far">
             <h1 class="text-center text-logo">Profiler</h1>
@@ -78,25 +71,17 @@
             
                 <!-- Buttons -->
                 <div class="row mt-5 mb-5 ms-5 me-5">
-                    <!-- <div class="text-center col-4"> -->
-                        <!-- {{#usuario}} -->
-                        <a href="/?user={{usuario.email}}" class="btn btn-secondary col-3" target="_self">CANCELAR</a>
-                        <!-- <input type="submit" value="CANCELAR"> -->
-                        <!-- {{/usuario}} -->
-                    <!-- </div> -->
+                    <a href="/?user={{usuario.email}}" class="btn btn-secondary col-3" target="_self">CANCELAR</a>
+                    
                     <div class="col-1"></div>
-                    <!-- <div class="text-center col-4"> -->
-
-                    <!-- Button trigger modal -->
+                    
                     <button type="button" class="btn btn-danger col-3" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
                         DELETAR
                     </button>
 
-                    <!-- </div> -->
                     <div class="col-1"></div>
-                    <!-- <div class="text-center col-4"> -->
-                        <input type="submit" class="btn btn-primary col-3" value="SALVAR">
-                    <!-- </div> -->
+                        
+                    <input type="submit" class="btn btn-primary col-3" value="SALVAR">
                 </div>
             
                 <div class="row mt-5 ms-5 me-5"></div>
