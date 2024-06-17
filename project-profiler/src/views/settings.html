@@ -97,14 +97,18 @@
             
                 <!-- Buttons -->
                 <div class="row mt-5 mb-5 ms-5 me-5">
-                    <div class="text-center col-5">
+                    <div class="text-center col-4">
                         {{#usuario}}
                         <a href="/?user={{usuario.email}}" target="_self">CANCELAR</a>
                         <!-- <input type="submit" value="CANCELAR"> -->
                         {{/usuario}}
                     </div>
 
-                    <div class="text-center col-5">
+                    <div class="text-center col-4">
+                        <a target="_self" class="btn btn-danger" href="/delete">DELETAR</a>
+                    </div>
+
+                    <div class="text-center col-4">
                         <input type="submit" value="SALVAR">
                     </div>
                 </div>

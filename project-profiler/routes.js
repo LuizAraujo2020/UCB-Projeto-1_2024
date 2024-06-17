@@ -20,6 +20,7 @@ router.post("/signup", userController.createUser, mainController.indexView);
 
 router.get("/settings", sessionController.verificarAutenticacao, settingsController.settingsView);
 router.post("/settings", sessionController.verificarAutenticacao, settingsController.settings);
+router.get("/delete", sessionController.verificarAutenticacao, settingsController.deleteAccount);
 
 router.get("/login", userController.loginView);
 router.post("/login", sessionController.autenticar, mainController.indexView);

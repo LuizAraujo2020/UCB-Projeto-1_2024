@@ -39,7 +39,7 @@ async function settings(req, res) {
 	} else {
 		if (userPost.settingsConfirmarUsuario != userPost.settingsUsuario) {
 			fail += "<p>Os nomes de usuário não coincidem.</p>";
-			// res.render("settings", { fail });
+
 		} else {
 			const found = await userController.findUser(userPost.settingsConfirmarUsuario);
 
@@ -77,8 +77,10 @@ async function settings(req, res) {
 	} else {
 		if (userPost.settingsConfirmarNovaSenha != userPost.settingsSenhaNova) {
 			fail += "<p>As senhas não coincidem.</p>";
+
 		} else if (userPost.settingsSenhaAtual !== newUser.senha) {
 			fail += "<p>Insira a senha atual corretamente.</p>";
+
 		} else if (userPost.settingsConfirmarNovaSenha.length < 4) {
 			fail += "<p>A senha deve ter no mínimo 4 caracteres.</p>";
 
@@ -93,24 +95,34 @@ async function settings(req, res) {
 		return;
 	}
 
-	console.log("🚨🚨🚨0");
-	console.log(fail);
-	console.log("✅✅✅1");
-	console.log(userPost);
-	console.log("✅✅✅2");
-	console.log(newUser);
-
 	await userController.updateUser(newUser.id, newUser);
-	// console.log("✅ EMAIL");
-	// console.log(userPost.email);
 	await profileController.updateProfileUserInfo(oldEmail, newUser);
 
 	req.session.usuario = newUser;
 	res.redirect(`/?user=` + newUser.email);
 }
 
+async function deleteAccount(req, res) {
+	let user = await userController.findUser(req.session.usuario.email);
+
+	userController.deleteUser(user.email);
+	profileController.deleteProfile(user.email);
+
+	user = await userController.findUser(req.session.usuario.email);
+
+	if (!user) {
+		req.session.destroy();
+		res.redirect("/");
+
+	} else {
+		const fail = "Falha ao deletar o usuário, tente novamente mais tarde!";
+		res.render("settings", { fail });
+	}
+}
+
 //==== EXPORTING
 module.exports = {
 	settingsView,
 	settings,
+	deleteAccount,
 };

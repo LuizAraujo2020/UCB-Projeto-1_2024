@@ -95,9 +95,18 @@ async function updateProfileUserInfo(email, userInfo) {
 	});
 }
 
+function deleteProfile(email) {
+	Profile.destroy({
+		where: {
+			email: email,
+		},
+	});
+}
+
 module.exports = {
 	createProfile,
 	findProfile,
 	findProfileByType,
 	updateProfileUserInfo,
+	deleteProfile,
 };

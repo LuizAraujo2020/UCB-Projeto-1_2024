@@ -111,12 +111,6 @@ function deleteUser(email) {
 			email: email,
 		},
 	});
-
-	Profile.destroy({
-		where: {
-			email: email,
-		},
-	});
 }
 
 //====== VALIDATIONS
