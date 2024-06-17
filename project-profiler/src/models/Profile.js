@@ -93,25 +93,3 @@ const Profile = db.define("profile", {
 });
 
 module.exports = Profile;
-
-
-// usuario;
-// email;
-// foto;
-// nome;
-// cargo;
-// pais;
-// estado;
-// sobre;
-// hardskills;
-// softskills;
-// experienciaLocal;
-// expexperienciaCargo;
-// experienciaPeriodo;
-// educacaoCurso;
-// educacaoInstituicao;
-// educacaoPeriodo;
-// telefone;
-// linkedin;
-// github;
-// instagram;

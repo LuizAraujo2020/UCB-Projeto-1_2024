@@ -156,7 +156,7 @@ function createProfileObjectFromUser(user) {
 		estado: "Seu Estado",
 		sobre: "Insira uma brave descrição sobre você. Comece com uma frase impactante que resuma quem você é e o que faz. Descreva suas principais habilidades e experiências, destacando o valor que você agrega. Mencione algumas conquistas importantes com dados concretos. Explique seus objetivos de carreira e o que busca no momento. Adicione um toque pessoal falando de suas paixões profissionais. Use uma linguagem clara e direta, sem jargões. Finalize com um convite para se conectar ou discutir oportunidades.",
 		hardskills:
-			"Linguagens de Programação, Desenvolvimento Web, Machine Learning, Data Science, Cloud Computing, Testing, APIs e Web Services, Controle de Versão, Banco de Dados, ",
+			"Linguagens de Programação, Desenvolvimento Web, Machine Learning, Data Science, Cloud Computing, Testing, APIs e Web Services, Controle de Versão, Banco de Dados",
 		softskills:
 			"Comunicação, Trabalho em Equipe, Resolução de Problemas, Adaptabilidade, Gestão de Tempo, Atenção aos Detalhes, Pensamento Crítico, Empatia, Criatividade, Proatividade, Paciência, Mentoria, Liderança, Curiosidade",
 		experienciaLocal: "Nome da Empresa",

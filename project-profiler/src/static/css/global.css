@@ -12,6 +12,10 @@ nav {
     background-color: white;
 }
 
+.nav-link:hover {
+    background-color: #ccc;
+}
+
 div{
     justify-content: end;
 }
@@ -171,4 +175,23 @@ div{
     width: 100%;
     position:absolute;
     text-align: center;
+}
+
+.opacity-hover {
+    height: 35px;
+    margin-left: 10px;
+}
+
+.opacity-hover:hover {
+    opacity: 0.5;
+}
+
+#button-settings {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+}
+#button-settings:hover {
+    /* background-image: url("../images/buttons/button-setttings-hover.png"); */
+    opacity: 0.5;
 }

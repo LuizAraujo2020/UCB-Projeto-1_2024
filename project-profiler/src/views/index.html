@@ -46,7 +46,34 @@
 
         <div class="paiHome">
             <div id="filhaHome1">
-                <button type="button" class="btn btn-outline-secondary" href="/login">Entrar</button>
+                <a class="opacity-hover" target="_self" href="/search">
+                    <img class="opacity-hover" src="./images/buttons/button-search.png" alt="Botão que leva para a tela de edição de perfil.">
+                </a>
+
+                {{#ownProfile}}
+                <a class="opacity-hover" target="_self" href="/edit">
+                    <img class="opacity-hover" src="./images/buttons/button-edit.png"
+                        alt="Botão que leva para a tela de edição de perfil.">
+                </a>
+                {{/ownProfile}}
+
+                {{#logged}}
+                <a class="opacity-hover" target="_self" href="/logout">
+                    <img class="opacity-hover" src="./images/buttons/button-sign-out.png" alt="Botão que desloga e leva para a tela de Login.">
+                </a>
+
+                <a target="_self" href="/settings">
+                    <img id="button-settings" src="./images/buttons/button-setttings.png"
+                        alt="Configurar dados de usuário, como email, nome de usuário e senha.">
+                </a>
+                {{/logged}}
+
+                {{^logged}}
+                <a target="_self" href="/login">
+                    <img class="opacity-hover" src="./images/buttons/button-sign-in.png"
+                        alt="Botão que leva para a tela de Login.">
+                </a>
+                {{/logged}}
             </div>
 
             <div id="filhaHome2">
@@ -74,8 +101,12 @@
                 <p>Habilidades</p>
                 <img alt="image" src="./images/divisor.png" width="100%" height="3px" />
                 <div id="filhaHome8">
-                    {{ profile.hardskills }}
-                    {{ profile.softskills }}
+                    <ul>
+                        {{{ profile.hardskills }}}
+                    </ul>
+                    <ul>
+                        {{{ profile.softskills }}}
+                    </ul>
                 </div>
             </div>
 
@@ -107,9 +138,12 @@
                     <p>{{ profile.telefone }}</p>
                 </div>
                 <div id="filhaHome15">
-                    <a href="{{ profile.linkedin }}"><img src="./images/LinkedIn.png" class="media-object" target="_blank" rel="noopener noreferrer"></a>
-                    <a href="{{ profile.github }}"><img src="./images/GitHub.png" class="media-object" target="_blank" rel="noopener noreferrer"></a>
-                    <a href="{{ profile.instagram }}"><img src="./images/Instagram.png" class="media-object" target="_blank" rel="noopener noreferrer"></a>
+                    <a href="{{ profile.linkedin }}"><img src="./images/LinkedIn.png" class="media-object"
+                            target="_blank" rel="noopener noreferrer"></a>
+                    <a href="{{ profile.github }}"><img src="./images/GitHub.png" class="media-object" target="_blank"
+                            rel="noopener noreferrer"></a>
+                    <a href="{{ profile.instagram }}"><img src="./images/Instagram.png" class="media-object"
+                            target="_blank" rel="noopener noreferrer"></a>
                 </div>
             </div>
         </div>

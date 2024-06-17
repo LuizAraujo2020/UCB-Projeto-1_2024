@@ -25,6 +25,8 @@ async function settings(req, res) {
 
 	let newUser = await userController.findUser(req.session.usuario.email);
 
+	const oldEmail = newUser.email;
+
 	if (!newUser) {
 		fail = "Usuário não encontrado! Tente logar novamente ou com outras credenciais.";
 		res.render("login", { fail });
@@ -98,10 +100,10 @@ async function settings(req, res) {
 	console.log("✅✅✅2");
 	console.log(newUser);
 
-	// await userController.updateUser(newUser.id, newUser);
+	await userController.updateUser(newUser.id, newUser);
 	// console.log("✅ EMAIL");
 	// console.log(userPost.email);
-	await profileController.updateProfileUserInfo(userPost.settingsConfirmEmail, newUser);
+	await profileController.updateProfileUserInfo(oldEmail, newUser);
 
 	req.session.usuario = newUser;
 	res.redirect(`/?user=` + newUser.email);
