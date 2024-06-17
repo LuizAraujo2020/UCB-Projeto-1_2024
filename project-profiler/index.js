@@ -20,7 +20,6 @@ app.use(express.urlencoded({ extended: true }))
 
 // Static folder to expose the files to js, html e so on: css, images and etc.
 app.use(express.static(__dirname + "/src/static"));
-// app.use(express.static("static/css"));
 
 app.use(
 	session({

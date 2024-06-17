@@ -2,7 +2,6 @@
 
 const User = require("../models/user");
 const Profile = require("../models/Profile");
-// const profileController = require("../Controllers/profileController")
 const sessionController = require("./sessionController");
 
 //====== VIEWS
@@ -32,13 +31,11 @@ async function createUser(req, res) {
 
 	User.create(user)
 		.then(() => {
-			// profileController.createProfile(profile)
-			// res.redirect(`/?user=` + user.email);
 			req.session.autorizado = true;
 			req.session.usuario = user;
 		})
 		.catch((err) => {
-			let fail = "Erro: falha ao criar o usuário."; // + err.errors.map((e) => e.message);
+			let fail = "Erro: falha ao criar o usuário.";
 			res.render("signup", { fail });
 			return
 		});
@@ -56,11 +53,6 @@ async function createUser(req, res) {
 		});
 
 }
-
-// READ
-// function readUserByID(id) {
-//   return Usuario.findById(id)
-// }
 
 async function findUser(termo) {
 	let found = await User.findOne({ where: { usuario: termo } });
@@ -92,20 +84,10 @@ async function updateUser(id, user) {
 			},
 		}
 	);
-	// // return User.findByIdAndUpdate(id, user, { new: true });
-	// let result = await User.update(user, {
-	//     where: {
-	//         _id: id,
-	//     },
-	// })
-
-	// console.log("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️");
-	// console.log(result);
 }
 
-// // DELETE
+// DELETE
 function deleteUser(email) {
-	//   return Usuario.findByIdAndRemove(id)
 	User.destroy({
 		where: {
 			email: email,
@@ -168,28 +150,6 @@ function createProfileObjectFromUser(user) {
 	return profile;
 }
 
-// function createObjectFromProfile(profile) {
-// 	let profile = {
-// 		usuario: user.usuario,
-// 		email: user.email,
-// 		foto: null,
-// 		nome: null,
-// 		cargo: null,
-// 		pais: null,
-// 		estado: null,
-// 		sobre: null,
-// 		hardskills: null,
-// 		softskills: null,
-// 		experiencia: null,
-// 		educacao: null,
-// 		telefone: null,
-// 		linkedin: null,
-// 		github: null,
-// 		instagram: null,
-// 	};
-
-// 	return profile;
-// }
 
 //====== MODULE EXPORTING
 module.exports = {
@@ -204,30 +164,3 @@ module.exports = {
 	// c	login,
 	deleteUser,
 };
-
-// function findUserByUsername (username) {
-//   const users = userDB.mockUsers
-
-//   let found
-
-//   users.forEach(user => {
-//     if (user.username == username) {
-//       found = user
-//     }
-//   })
-
-//   return found
-// }
-
-// //====== VIEWS
-// function indexView(req, res) {
-//   res.render('index.html')
-// }
-
-// function indexView(req, res) {
-//   res.render('index.html')
-// }
-
-// module.exports = {
-// indexView
-// }

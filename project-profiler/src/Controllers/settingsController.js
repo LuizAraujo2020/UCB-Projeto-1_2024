@@ -58,7 +58,6 @@ async function settings(req, res) {
 	} else {
 		if (userPost.settingsConfirmEmail != userPost.settingsEmail) {
 			fail += "<p>Os e-mails não coincidem.</p>";
-			// res.render("settings", { fail });
 		} else {
 			const found = await userController.findUser(userPost.settingsConfirmEmail);
 
