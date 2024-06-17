@@ -13,45 +13,26 @@
         <title>Profiler - {{ user.name }} </title>
     </head>
 
-    <body>
-        <nav class="navbar navbar-expand-lg">
+    <body class="paiHome">
+    <div class="container">
+        <!-- <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a href="/index" class="navbar-brand">
                     <img src="./images/Profiler.png" alt="" width="120" height="30">
                 </a>
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link " href="../visaoGeral_Usuarios/visaoGeral_Usuarios.html">Sobre</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../visaoGeral_Usuarios/visaoGeral_Usuarios.html">Habilidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../visaoGeral_Usuarios/visaoGeral_Usuarios.html">Experiência</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../visaoGeral_Usuarios/visaoGeral_Usuarios.html">Formação</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../visaoGeral_Usuarios/visaoGeral_Usuarios.html">Contato</a>
-                        </li>
-                    </ul>
-                </div> -->
             </div>
-        </nav>
+        </nav> -->
 
-        {{#fail}}
-        <div class="alert alert-danger mt-1" role="alert">
-            {{{fail}}}
-        </div>
-        {{/fail}}
+        <div class="card-custom shadow-far">
+            <h1 class="text-center text-logo">Profiler</h1>
+            <h1 class="text-center">Editar Cadastro</h1>
 
-        <div class="paiHome teste222">
+            {{#fail}}
+            <div class="alert alert-danger mt-1 ms-5 me-5" role="alert">
+                {{{fail}}}
+            </div>
+            {{/fail}}
+
             <form action="/settings" method="POST" class="form">
             
                 <!-- Username -->
@@ -107,7 +88,7 @@
                     <!-- <div class="text-center col-4"> -->
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger col-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-danger col-3" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
                         DELETAR
                     </button>
 
@@ -124,21 +105,23 @@
 
         
         <!-- Modals -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteConfirmation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content modal-custom shadow-far">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Deletar usuário?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h2 class="modal-title" id="deleteConfirmation">Deletar usuário?</h2>
+                        <button type="button" class="btn-close shadow-near" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
                     <div class="modal-body">
                         <p>Todas as informações do seguinte Usuário serão perdidas:</p>
                         <p>{{ usuario.usuario }}</p>
                         <p>{{ usuario.email }}</p>
                         <p>Realmente deseja DELETAR esse Usuário?</p>
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CANCELAR</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
                         <!-- <button type="button" class="btn btn-danger">DELETAR</button> -->
                         <a target="_self" class="btn btn-danger" href="/delete">DELETAR</a>
                     </div>
@@ -146,12 +129,12 @@
             </div>
         </div>
 
-        <div class="Footer">
-            <div id="filhaFooter">
-                <img src="./images/Footer.png" height="70">
-            </div>
-        </div>
-
+    </div> <!-- End Container -->
+<div class="Footer mt-5">
+    <div id="filhaFooter">
+        <img src="./images/Footer.png" height="70">
+    </div>
+</div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
