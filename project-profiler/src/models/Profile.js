@@ -24,79 +24,71 @@ const Profile = db.define("profile", {
 	},
 	nome: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	cargo: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	pais: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	estado: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	sobre: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	hardskills: {
 		type: Sequelize.STRING,
-		allowNull: true,
-		get: function () {
-			return JSON.parse(this.getDataValue("hardskills"));
-		},
-		set: function (skills) {
-			return this.setDataValue("hardskills", JSON.stringify(skills));
-		},
+		allowNull: false,
 	},
-	softkills: {
+	softskills: {
 		type: Sequelize.STRING,
-		allowNull: true,
-		get: function () {
-			return JSON.parse(this.getDataValue("softkills"));
-		},
-		set: function (skills) {
-			return this.setDataValue("softkills", JSON.stringify(skills));
-		},
+		allowNull: false,
 	},
-	experiencia: {
+	experienciaLocal: {
 		type: Sequelize.STRING,
-		allowNull: true,
-		get: function () {
-			return JSON.parse(this.getDataValue("experiencia"));
-		},
-		set: function (xp) {
-			return this.setDataValue("experiencia", JSON.stringify(xp));
-		},
+		allowNull: false,
 	},
-	educacao: {
+	expexperienciaCargo: {
 		type: Sequelize.STRING,
-		allowNull: true,
-		get: function () {
-			return JSON.parse(this.getDataValue("educacao"));
-		},
-		set: function (course) {
-			return this.setDataValue("educacao", JSON.stringify(course));
-		},
+		allowNull: false,
+	},
+	experienciaPeriodo: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	educacaoCurso: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	educacaoInstituicao: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	educacaoPeriodo: {
+		type: Sequelize.STRING,
+		allowNull: false,
 	},
 	telefone: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	linkedin: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	github: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	instagram: {
 		type: Sequelize.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 });
 

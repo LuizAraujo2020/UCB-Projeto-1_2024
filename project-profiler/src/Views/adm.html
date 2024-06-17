@@ -37,43 +37,39 @@
             <div class="container col-2"></div>
         </div> <!-- End: Row 2 -->
 
-
-
         <!-- MAIN CONTENT -->
-        <div class="row">
-            <!-- <div class="text-center col-2 mt-5 mb-5"></div> Helps Centralize with Bootstrap -->
-            
-            <div class="text-center col-4">
-                    <p>NOME</p>
-            </div>
+        <section>
+            <article class="my-3" id="tables">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">SENHA</th>
+                            <th scope="col">DEL</th>
+                        </tr>
+                    </thead>
 
-            <div class="text-center col-4">
-                    <p>EMAIL</p>
-            </div>
-
-            <div class="text-center col-3">
-                    <p>SENHA</p>
-            </div>
-
-            <div class="text-center col-1">
-                <p>DEL</p>
-            </div>
-
-            <!-- <div class="text-center col-2 mt-5 mb-5"> </div> Helps Centralize with Bootstrap -->
-        </div> <!-- End: Row 3 -->
-
-
-
-
-
-
-        <!-- Body: Row 4 -->
-        {{#body}}
-
-            {{body}}
-
-        {{/body}}
-
+                    {{#usuarios}}
+                    <tbody>
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{email}}</td>
+                            <td>{{senha}}</td>
+                            <td>
+                                <a href="/adm/?delete={{email}}" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-sm btn-outline-danger">
+                                    X
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {{/usuarios}}
+                </table>
+        
+        
+            </article>
+        </section>
 
 
 

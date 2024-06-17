@@ -2,11 +2,9 @@
 const express = require('express')
 const mustacheExpress = require('mustache-express')
 const db = require('./db')
+const session = require("express-session");
 
 const router = require('./routes')
-
-// const userController = require('./src/Controllers/userController')
-// const Errors = require('./src/Models/error')
 
 
 //==== INITIAL CONFIG
@@ -22,12 +20,22 @@ app.use(express.urlencoded({ extended: true }))
 
 // Static folder to expose the files to js, html e so on: css, images and etc.
 app.use(express.static(__dirname + "/src/static"));
+// app.use(express.static("static/css"));
+
+app.use(
+	session({
+		secret: "secret-token",
+		name: "sessionId",
+		resave: false,
+		saveUninitialized: false,
+	})
+);
 
 app.use('/', router)
 
 //==== DATABASE
 db.sync(function() {
-  console.log('Banco de dados sincronizado com sucesso!')
+	console.log('Banco de dados sincronizado com sucesso!')
 })
 
 
@@ -35,5 +43,5 @@ db.sync(function() {
 const PORT = 8080
 
 app.listen(PORT, function () {
-  console.log(`🖥️  Servidor rodando na porta: ${PORT}`)
+	console.log(`🖥️  Servidor rodando na porta: ${PORT}`)
 })

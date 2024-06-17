@@ -1,61 +1,35 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
 
-// const authController     = require('./src/Controllers/authController')
-const mainController     = require('./src/Controllers/mainController')
-// const settingsController = require('./src/Controllers/settingsController')
-const searchController   = require('./src/Controllers/searchController')
+const mainController = require("./src/controllers/indexController");
+const searchController = require("./src/controllers/searchController");
 
-const userController     = require('./src/Controllers/userController')
+const userController = require("./src/controllers/userController");
+const settingsController = require("./src/controllers/settingsController");
+
+const admController = require("./src/controllers/admController");
+const sessionController = require("./src/controllers/sessionController");
+
 // const errorController    = require('./Controllers/errorController')
 
-const admController    = require('./src/Controllers/admController')
+router.get("/", mainController.indexView);
 
+router.get("/signup", userController.signupView);
+router.post("/signup", userController.createUser, mainController.indexView);
+// router.post("/signup", userController.createUser, sessionController.autenticar, mainController.indexView);
 
-router.get('/', mainController.indexView)
+router.get("/settings", sessionController.verificarAutenticacao, settingsController.settingsView);
+router.post("/settings", sessionController.verificarAutenticacao, settingsController.settings);
+router.get("/delete", sessionController.verificarAutenticacao, settingsController.deleteAccount);
 
-router.get('/signup', userController.signupView)
-router.post('/signup', userController.createUser)
+router.get("/login", userController.loginView);
+router.post("/login", sessionController.autenticar, mainController.indexView);
 
-router.get('/adm', admController.admView)
+router.get("/logout", sessionController.logout);
 
-router.get('/login', userController.loginView)
-router.post('/login', userController.login)
+router.get("/search", searchController.searchView);
+router.post("/search", searchController.search);
 
-// router.get('/settings', settingsController.settingsPage)
+router.get("/adm", sessionController.verificarAdm, admController.admView);
 
-router.get('/search', searchController.searchView)
-router.post('/search', searchController.search)
-
-  
-// app.get('/signup', function (request, response) {
-//     response.render('signup')
-// })
-  
-// app.get('/login', function (request, response) {
-//     response.render('login')
-// })
-  
-// app.post('/settings', function (request, response) {
-//     const user = request.query.user
-  
-//     response.render('settings', { user })
-// })
-  
-// app.get('/:username', function (request, response) {
-//     const username = request.params.username
-  
-//     const user = userController.findUserByUsername(username)
-  
-//     // Se não for encontrado um Usuário com o `username` passado pela URL, vai para tela de Busca de Usuário.
-//     if (!user) {
-//       const error = Errors.Users.userNotFound
-//       response.render('search', { error })
-//       return
-//     }
-  
-//     response.render('index', { user })
-// })
-  
-
-module.exports = router
+module.exports = router;

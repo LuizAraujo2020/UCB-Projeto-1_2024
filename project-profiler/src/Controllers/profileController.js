@@ -1,6 +1,16 @@
 //====== PROFILE MANAGEMENT
 
-const Profile = require("../Models/Profile");
+const Profile = require("../models/Profile");
+
+async function createProfile(profile) {
+	Profile.create(profile)
+		.then(() => {
+			console.log("✅ Profile criado no DB com sucesso.");
+		})
+		.catch((err) => {
+			console.log("🚨 Erro ao criar o Profile no DB.");
+		});
+}
 
 async function findProfile(termo) {
 	let found = await Profile.findOne({ where: { usuario: termo } });
@@ -11,7 +21,7 @@ async function findProfile(termo) {
 
 	if (!found) {
 		//TODO: Fazer Custom Error msg
-		console.log("Não encontrado!");
+		console.log("Perfil não encontrado!");
 		return null;
 	}
 
@@ -19,7 +29,7 @@ async function findProfile(termo) {
 }
 
 async function findProfileByType(tipo, termo) {
-	let found 
+	let found;
 
 	switch (tipo) {
 		case "usuario":
@@ -71,7 +81,32 @@ async function findProfileByType(tipo, termo) {
 	return found;
 }
 
+async function updateProfileUserInfo(email, userInfo) {
+	let found = await findProfileByType("email", email);
+	found.usuario = userInfo.usuario;
+	found.email = userInfo.email;
+	console.log("✅ FOUND");
+	console.log(found);
+
+	await Profile.update(found, {
+		where: {
+			email: email,
+		},
+	});
+}
+
+function deleteProfile(email) {
+	Profile.destroy({
+		where: {
+			email: email,
+		},
+	});
+}
+
 module.exports = {
+	createProfile,
 	findProfile,
 	findProfileByType,
+	updateProfileUserInfo,
+	deleteProfile,
 };

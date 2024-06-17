@@ -12,6 +12,10 @@ nav {
     background-color: white;
 }
 
+.nav-link:hover {
+    background-color: #ccc;
+}
+
 div{
     justify-content: end;
 }
@@ -171,4 +175,88 @@ div{
     width: 100%;
     position:absolute;
     text-align: center;
+}
+
+.opacity-hover {
+    height: 35px;
+    margin-left: 10px;
+}
+
+.opacity-hover:hover {
+    opacity: 0.5;
+}
+
+#button-settings {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+}
+#button-settings:hover {
+    opacity: 0.5;
+}
+
+/* SHADOW */
+.shadow-far {
+    box-shadow: 5px 5px 5px black;
+}
+
+.shadow-near {
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.card-custom {
+    background-color: white;
+    color: black;
+    border-color: #ABABAB;
+    border-width: 25px;
+    
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+h1 {
+    font-size: 2.125rem;
+    font-weight: 500;
+    font-family: Futura;
+}
+
+p {
+    font-size: 1.313rem;
+    font-family: Futura;
+}
+
+.text-logo {
+    font-size: 5.563rem;
+    font-weight: 900;
+    font-family: Futura;
+}
+
+input {
+    height: 3rem;
+    border-radius: 1rem;
+    border-color: transparent;
+    background-color: #D9D9D9;
+}
+
+input .border-fail {
+    border-color: red;
+}
+
+/* MODALS */
+.modal-custom {
+    background-color: #D9D9D9;
+    color: black;
+    border-color: #ABABAB;
+    border-width: 5px;
+}
+
+.modal-custom a, button {
+    width: 10rem;
+    margin-left: 2rem;
+}
+
+.modal-body p {
+    font-weight: 400;
+    color: #333;
+    font-size: 1.125rem;
 }
