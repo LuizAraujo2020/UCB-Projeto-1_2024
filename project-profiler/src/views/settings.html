@@ -97,24 +97,53 @@
             
                 <!-- Buttons -->
                 <div class="row mt-5 mb-5 ms-5 me-5">
-                    <div class="text-center col-4">
-                        {{#usuario}}
-                        <a href="/?user={{usuario.email}}" target="_self">CANCELAR</a>
+                    <!-- <div class="text-center col-4"> -->
+                        <!-- {{#usuario}} -->
+                        <a href="/?user={{usuario.email}}" class="btn btn-secondary col-3" target="_self">CANCELAR</a>
                         <!-- <input type="submit" value="CANCELAR"> -->
-                        {{/usuario}}
-                    </div>
+                        <!-- {{/usuario}} -->
+                    <!-- </div> -->
+                    <div class="col-1"></div>
+                    <!-- <div class="text-center col-4"> -->
 
-                    <div class="text-center col-4">
-                        <a target="_self" class="btn btn-danger" href="/delete">DELETAR</a>
-                    </div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger col-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        DELETAR
+                    </button>
 
-                    <div class="text-center col-4">
-                        <input type="submit" value="SALVAR">
-                    </div>
+                    <!-- </div> -->
+                    <div class="col-1"></div>
+                    <!-- <div class="text-center col-4"> -->
+                        <input type="submit" class="btn btn-primary col-3" value="SALVAR">
+                    <!-- </div> -->
                 </div>
             
                 <div class="row mt-5 ms-5 me-5"></div>
             </form>
+        </div>
+
+        
+        <!-- Modals -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Deletar usuário?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Todas as informações do seguinte Usuário serão perdidas:</p>
+                        <p>{{ usuario.usuario }}</p>
+                        <p>{{ usuario.email }}</p>
+                        <p>Realmente deseja DELETAR esse Usuário?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CANCELAR</button>
+                        <!-- <button type="button" class="btn btn-danger">DELETAR</button> -->
+                        <a target="_self" class="btn btn-danger" href="/delete">DELETAR</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="Footer">
