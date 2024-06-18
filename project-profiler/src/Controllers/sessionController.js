@@ -33,8 +33,9 @@ function verificarAutenticacao(req, res, next) {
 		next();
 	} else {
 		console.log("usuário NÃO autorizado");
-		
-		res.redirect("/login");
+		const fail = "Efetue o login para acessar a referida página."
+		res.render("login", { fail })
+		// res.redirect("/login");
 	}
 }
 
@@ -42,8 +43,11 @@ function verificarAdm(req, res, next) {
 	if (req.session.autorizado && req.session.usuario.admin) {
 		console.log("usuário autorizado");
 		next();
+		
 	} else {
 		console.log("usuário NÃO autorizado");
+		const fail = "Efetue o login para acessar a referida página.";
+		res.render("login", { fail });
 		res.redirect("/login");
 	}
 }
