@@ -156,11 +156,8 @@ module.exports = {
 	signupView,
 	loginView,
 	createUser,
-	findUser, //readUserByID, listAllUsers,
+	findUser,
 	updateUser,
-	// deleteUser,
-	/// Helpers
 	createUserObject,
-	// c	login,
 	deleteUser,
 };

@@ -1,10 +1,4 @@
 const profileController = require("./profileController.js");
-const Profile = require("../models/Profile");
-
-const path = require("path");
-const { Console } = require("console");
-
-
 
 
 async function indexView(req, res) {
@@ -57,79 +51,38 @@ async function edit(req, res) {
 
 	let profileAux = await profileController.findProfile(user.email)
 
-	console.log("✅Image grabbed:");
-	console.log(req.file.filename);
-	let imageName = req.file.filename;
-	console.log("✅Image grabbed:");
-	console.log(req.file.filename);
-
-	// profileController.findProfile(user.email).then((profile) => {
-		if (profileAux) {
-			// res.render("edit", { profile });
-			let softskills = "";
-			if (req.body.softskills) {
-				softskills = req.body.softskills;
-			}
-			profileAux.foto = imageName;//req.body.foto;
-			profileAux.nome = req.body.nome;
-			profileAux.cargo = req.body.cargo;
-			profileAux.pais = req.body.pais;
-			profileAux.estado = req.body.estado;
-			profileAux.sobre = req.body.sobre;
-			profileAux.hardskills = req.body.hardskills;
-			profileAux.softskills = softskills;
-			profileAux.experienciaLocal = req.body.experienciaLocal;
-			profileAux.expexperienciaCargo = req.body.expexperienciaCargo;
-			profileAux.experienciaPeriodo = req.body.experienciaPeriodo;
-			profileAux.educacaoCurso = req.body.educacaoCurso;
-			profileAux.educacaoInstituicao = req.body.educacaoInstituicao;
-			profileAux.educacaoPeriodo = req.body.educacaoPeriodo;
-			profileAux.telefone = req.body.telefone;
-			profileAux.linkedin = req.body.linkedin;
-			profileAux.github = req.body.github;
-			profileAux.instagram = req.body.instagram;
-
-			await profileController.updateProfile(profileAux);
-
-			res.redirect(`/?user=` + profileAux.email);
-		} else {
-			res.render("login");
+	if (profileAux) {
+		let softskills = "";
+		if (req.body.softskills) {
+			softskills = req.body.softskills;
 		}
-	// });
+		profileAux.foto = imageName;
+		profileAux.nome = req.body.nome;
+		profileAux.cargo = req.body.cargo;
+		profileAux.pais = req.body.pais;
+		profileAux.estado = req.body.estado;
+		profileAux.sobre = req.body.sobre;
+		profileAux.hardskills = req.body.hardskills;
+		profileAux.softskills = softskills;
+		profileAux.experienciaLocal = req.body.experienciaLocal;
+		profileAux.expexperienciaCargo = req.body.expexperienciaCargo;
+		profileAux.experienciaPeriodo = req.body.experienciaPeriodo;
+		profileAux.educacaoCurso = req.body.educacaoCurso;
+		profileAux.educacaoInstituicao = req.body.educacaoInstituicao;
+		profileAux.educacaoPeriodo = req.body.educacaoPeriodo;
+		profileAux.telefone = req.body.telefone;
+		profileAux.linkedin = req.body.linkedin;
+		profileAux.github = req.body.github;
+		profileAux.instagram = req.body.instagram;
+
+		await profileController.updateProfile(profileAux);
+
+		res.redirect(`/?user=` + profileAux.email);
+	} else {
+		res.render("login");
+	}
 }
 
-//===== HELPERS
-
-// function createProfileObjectFromBody(body) {
-// 	let softskills = "";
-// 	if (body.softskills) {
-// 		softskills = body.softskills;
-// 	}
-// 	let profile = {
-// 		usuario: body.usuario,
-// 		email: body.email,
-// 		foto: body.foto,
-// 		nome: body.nome,
-// 		cargo: body.cargo,
-// 		pais: body.pais,
-// 		estado: body.estado,
-// 		sobre: body.sobre,
-// 		hardskills: body.hardskills,
-// 		softskills: softskills,
-// 		experienciaLocal: body.experienciaLocal,
-// 		expexperienciaCargo: body.expexperienciaCargo,
-// 		experienciaPeriodo: body.experienciaPeriodo,
-// 		educacaoCurso: body.educacaoCurso,
-// 		educacaoInstituicao: body.educacaoInstituicao,
-// 		educacaoPeriodo: body.educacaoPeriodo,
-// 		telefone: body.telefone,
-// 		linkedin: body.linkedin,
-// 		github: body.github,
-// 		instagram: body.instagram,
-// 	};
-
-// 	return profile;
-// }
 
 function handleSkills(skills) {
 	let collection = skills + "";
