@@ -1,6 +1,5 @@
 const profileController = require("./profileController.js");
 
-
 async function indexView(req, res) {
 	const userParam = req.query.user;
 	if (!userParam) {
@@ -56,7 +55,9 @@ async function edit(req, res) {
 		if (req.body.softskills) {
 			softskills = req.body.softskills;
 		}
-		profileAux.foto = imageName;
+		if (req.file) {
+			profileAux.foto = req.file.filename;
+		}
 		profileAux.nome = req.body.nome;
 		profileAux.cargo = req.body.cargo;
 		profileAux.pais = req.body.pais;
@@ -82,7 +83,6 @@ async function edit(req, res) {
 		res.render("login");
 	}
 }
-
 
 function handleSkills(skills) {
 	let collection = skills + "";
