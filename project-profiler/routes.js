@@ -13,6 +13,8 @@ const sessionController = require("./src/controllers/sessionController");
 // const errorController    = require('./Controllers/errorController')
 
 router.get("/", mainController.indexView);
+router.get("/edit", sessionController.verificarAutenticacao, mainController.editView);
+router.post("/edit", sessionController.verificarAutenticacao, mainController.edit);
 
 router.get("/signup", userController.signupView);
 router.post("/signup", userController.createUser, mainController.indexView);

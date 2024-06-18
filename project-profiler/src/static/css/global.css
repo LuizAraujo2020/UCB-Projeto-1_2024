@@ -280,7 +280,7 @@ h1 {
     font-family: Futura;
 }
 
-p {
+.modal p {
     font-size: 1.313rem;
     font-family: Futura;
 }
@@ -300,6 +300,10 @@ input {
 
 input .border-fail {
     border-color: red;
+}
+
+a {
+    color: white;
 }
 
 /* MODALS */
