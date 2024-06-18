@@ -12,7 +12,27 @@ const sessionController = require("./src/controllers/sessionController");
 
 // const errorController    = require('./Controllers/errorController')
 
+const path = require("path");
+const multer = require("multer");
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, path.join(__dirname, "src", "static", "uploads"));
+	},
+	filename: function (req, file, cb) {
+		cb(null, Date.now() + path.extname(file.originalname));
+	},
+});
+const upload = multer({ storage: storage });
+
 router.get("/", mainController.indexView);
+router.get("/edit", sessionController.verificarAutenticacao, mainController.editView);
+router.post("/edit", sessionController.verificarAutenticacao, upload.single("foto_upload"), function (req, res, next) {
+		console.log("✅Image saved:");
+		console.log(req.file.filename);
+		next();
+	},
+	mainController.edit
+);
 
 router.get("/signup", userController.signupView);
 router.post("/signup", userController.createUser, mainController.indexView);

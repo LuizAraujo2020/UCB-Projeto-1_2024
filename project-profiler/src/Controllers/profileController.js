@@ -135,6 +135,36 @@ async function findProfileByType(tipo, termo) {
 	return found;
 }
 
+async function updateProfile(profile) {
+	await Profile.update(
+		{
+			foto: profile.foto,
+			nome: profile.nome,
+			cargo: profile.cargo,
+			pais: profile.pais,
+			estado: profile.estado,
+			sobre: profile.sobre,
+			hardskills: profile.hardskills,
+			softskills: profile.softskills,
+			experienciaLocal: profile.experienciaLocal,
+			expexperienciaCargo: profile.expexperienciaCargo,
+			experienciaPeriodo: profile.experienciaPeriodo,
+			educacaoCurso: profile.educacaoCurso,
+			educacaoInstituicao: profile.educacaoInstituicao,
+			educacaoPeriodo: profile.educacaoPeriodo,
+			telefone: profile.telefone,
+			linkedin: profile.linkedin,
+			github: profile.github,
+			instagram: profile.instagram,
+		},
+		{
+			where: {
+				email: profile.email,
+			},
+		}
+	);
+}
+
 async function updateProfileUserInfo(email, userInfo) {
 	let found = await findProfileByType("email", email);
 	found.usuario = userInfo.usuario;
@@ -161,6 +191,6 @@ module.exports = {
 	createProfile,
 	findProfile,
 	findProfileByType,
-	updateProfileUserInfo,
+	updateProfileUserInfo, updateProfile,
 	deleteProfile,
 };

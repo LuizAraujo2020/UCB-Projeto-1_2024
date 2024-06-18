@@ -19,7 +19,7 @@ const Profile = db.define("profile", {
 		unique: true,
 	},
 	foto: {
-		type: Sequelize.BLOB,
+		type: Sequelize.STRING,
 		allowNull: true,
 	},
 	nome: {
