@@ -224,6 +224,34 @@ div{
     border-radius: 5px;
 }
 
+.paiSearch{
+    background-image: url("/project-profiler/src/static/images/background-busca.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: #737373;
+}
+
+#filhaSearch1 {
+    display:flex;
+    justify-content: right;
+    margin-right: 15px;
+    padding-top: 20px;
+}
+
+#filhaSearch2 {
+    display:flex;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+#filhaSearch3 {
+    display: flex;
+    justify-content: center;
+    font-family: Futura;
+    color: black;
+    padding-top: 20px;
+}
+
 .Footer{
     height: 114px;
     background-color: white;
