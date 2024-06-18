@@ -1,6 +1,12 @@
 const profileController = require("./profileController.js");
 const Profile = require("../models/Profile");
 
+const path = require("path");
+const { Console } = require("console");
+
+
+
+
 async function indexView(req, res) {
 	const userParam = req.query.user;
 	if (!userParam) {
@@ -51,6 +57,12 @@ async function edit(req, res) {
 
 	let profileAux = await profileController.findProfile(user.email)
 
+	console.log("✅Image grabbed:");
+	console.log(req.file.filename);
+	let imageName = req.file.filename;
+	console.log("✅Image grabbed:");
+	console.log(req.file.filename);
+
 	// profileController.findProfile(user.email).then((profile) => {
 		if (profileAux) {
 			// res.render("edit", { profile });
@@ -58,7 +70,7 @@ async function edit(req, res) {
 			if (req.body.softskills) {
 				softskills = req.body.softskills;
 			}
-			profileAux.foto = req.body.foto;
+			profileAux.foto = imageName;//req.body.foto;
 			profileAux.nome = req.body.nome;
 			profileAux.cargo = req.body.cargo;
 			profileAux.pais = req.body.pais;

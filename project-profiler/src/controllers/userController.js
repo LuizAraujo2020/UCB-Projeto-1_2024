@@ -125,7 +125,7 @@ function createProfileObjectFromUser(user) {
 	let profile = {
 		usuario: user.usuario,
 		email: user.email,
-		foto: null,
+		foto: "profile.jpg",
 		nome: "Insira o Seu Nome",
 		cargo: "Seu Cargo/função atual ou que procura",
 		pais: "Seu País",

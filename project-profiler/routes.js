@@ -12,9 +12,41 @@ const sessionController = require("./src/controllers/sessionController");
 
 // const errorController    = require('./Controllers/errorController')
 
+const path = require("path");
+const multer = require("multer");
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, path.join(__dirname, "src", "static", "uploads"));
+            // cb(null, "./aaaaaa");
+	},
+	filename: function (req, file, cb) {
+		cb(null, Date.now() + path.extname(file.originalname));
+	},
+});
+const upload = multer({ storage: storage });
+
 router.get("/", mainController.indexView);
 router.get("/edit", sessionController.verificarAutenticacao, mainController.editView);
-router.post("/edit", sessionController.verificarAutenticacao, mainController.edit);
+router.post("/edit", sessionController.verificarAutenticacao, 
+	upload.single("foto_upload"),
+	function (req, res, next) {
+		// // req.file is the name of your file in the form above, here 'uploaded_file'
+		// // req.body will hold the text fields, if there were any
+		// // console.log(req.file, req.body);
+
+		// // upload.single("foto");
+		console.log("✅Image saved:");
+		console.log(req.file.filename);
+		// // let ASDADAS = path.join(__dirname, "src", "static", "uploads");
+		// console.log("✅✅✅✅2");
+		// // console.log(ASDADAS);
+		// console.log(req.body);
+		// console.log("✅✅✅✅3");
+
+		next();
+	},
+	mainController.edit
+);
 
 router.get("/signup", userController.signupView);
 router.post("/signup", userController.createUser, mainController.indexView);
