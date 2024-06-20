@@ -3,6 +3,8 @@ const User = require("../models/user");
 const userController = require("./userController");
 const Profile = require("../models/Profile");
 
+
+//=====================================================================================================================
 //====== VIEW
 function admView(req, res) {
 	// deleteUser(req);
@@ -17,7 +19,10 @@ function admView(req, res) {
 }
 
 
+//=====================================================================================================================
 //====== ADM CRUD
+
+//====== Create
 async function admCreateUser(req, res) {
 	let user = {
 		usuario: req.body.usuario,
@@ -78,13 +83,19 @@ async function admCreateUser(req, res) {
 	res.redirect("/adm");
 }
 
-async function admDeleteUser(req, res, next) {
-	const email = req.body.delete;
-	await userController.deleteUser(email); 
+//====== Read
+async function createListAllUsers() {
+	const users = await listAllUsers();
 
-	next();
+	return users;
 }
 
+async function listAllUsers() {
+	const users = await User.findAll();
+	return users;
+}
+
+//====== Update
 async function admEditUser(req, res, next) {
 	const user = {
 		id: req.body.id,
@@ -98,27 +109,24 @@ async function admEditUser(req, res, next) {
 	next();
 }
 
-//====== VIEW COMPONENTS
-async function createListAllUsers() {
-	const users = await listAllUsers();
+//====== Delete
+async function admDeleteUser(req, res, next) {
+	const email = req.body.delete;
+	await userController.deleteUser(email); 
 
-	return users;
+	next();
 }
 
-//====== HELPERS
-async function listAllUsers() {
-	const users = await User.findAll();
-	return users;
-}
+// function deleteUser(req) {
+// 	const userToDelete = req.query.delete;
+// 	if (userToDelete) {
+// 		userController.deleteUser(userToDelete);
+// 	}
+// }
 
-function deleteUser(req) {
-	const userToDelete = req.query.delete;
-	if (userToDelete) {
-		userController.deleteUser(userToDelete);
-	}
-}
 
-//====== VALIDATIONS
+//=====================================================================================================================
+//====== EXPORT
 module.exports = {
 	admView,
 	createListAllUsers,

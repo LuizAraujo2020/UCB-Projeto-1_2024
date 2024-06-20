@@ -4,6 +4,8 @@ const User = require("../models/user");
 const Profile = require("../models/Profile");
 const sessionController = require("./sessionController");
 
+
+//=====================================================================================================================
 //====== VIEWS
 function signupView(req, res) {
 	res.render("signup");
@@ -13,8 +15,11 @@ function loginView(req, res) {
 	res.render("login");
 }
 
-//====== SIGNUP & LOGIN JOURNEY
 
+//=====================================================================================================================
+//====== CRUD
+
+//====== Create
 async function createUser(req, res) {
 	/// Creates helper objects from the request body.
 	let user = createUserObject(req.body);
@@ -54,6 +59,7 @@ async function createUser(req, res) {
 
 }
 
+//====== Read
 async function findUser(termo) {
 	let found = await User.findOne({ where: { usuario: termo } });
 
@@ -69,8 +75,7 @@ async function findUser(termo) {
 
 	return found;
 }
-
-// UPDATE
+//====== Update
 async function updateUser(id, user) {
 	await User.update(
 		{
@@ -86,7 +91,7 @@ async function updateUser(id, user) {
 	);
 }
 
-// DELETE
+//====== Delete
 function deleteUser(email) {
 	User.destroy({
 		where: {
@@ -95,6 +100,8 @@ function deleteUser(email) {
 	});
 }
 
+
+//=====================================================================================================================
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
 function validateSignup(senha, confirmarSenha) {
@@ -109,6 +116,8 @@ function validateSignup(senha, confirmarSenha) {
 	return fail;
 }
 
+
+//=====================================================================================================================
 //====== HELPERS
 function createUserObject(body) {
 	let usuario = {
@@ -151,7 +160,8 @@ function createProfileObjectFromUser(user) {
 }
 
 
-//====== MODULE EXPORTING
+//=====================================================================================================================
+//====== EXPORT
 module.exports = {
 	signupView,
 	loginView,

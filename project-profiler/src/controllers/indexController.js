@@ -1,5 +1,8 @@
 const profileController = require("./profileController.js");
 
+
+//=====================================================================================================================
+//====== VIEWS
 async function indexView(req, res) {
 	const userParam = req.query.user;
 	if (!userParam) {
@@ -51,6 +54,11 @@ async function editView(req, res) {
 	});
 }
 
+
+//=====================================================================================================================
+//====== CRUD
+
+//====== Update
 async function edit(req, res) {
 	const user = req.session.usuario;
 
@@ -90,6 +98,9 @@ async function edit(req, res) {
 	}
 }
 
+
+//=====================================================================================================================
+//====== HELPER
 function handleSkills(skills) {
 	let collection = skills + "";
 
@@ -109,6 +120,9 @@ function handleSkills(skills) {
 	return collection.join("");
 }
 
+
+//=====================================================================================================================
+//====== EXPORT
 module.exports = {
 	indexView,
 	editView,

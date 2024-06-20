@@ -1,11 +1,19 @@
 const profileController = require("./profileController");
 
+
+//=====================================================================================================================
+//====== VIEWS
 function searchView(req, res) {
 	//TODO: Fazer toda a lógica
 
 	res.render("search");
 }
 
+
+//=====================================================================================================================
+//====== CRUD
+
+//====== Read
 function search(req, res) {
 	const { tipo, termo } = req.body;
 
@@ -32,6 +40,9 @@ function search(req, res) {
 		});
 }
 
+
+//=====================================================================================================================
+//====== EXPORT
 module.exports = {
 	searchView,
 	search,

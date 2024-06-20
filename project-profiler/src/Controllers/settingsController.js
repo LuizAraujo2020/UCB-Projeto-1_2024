@@ -1,12 +1,20 @@
 const userController = require("./userController");
 const profileController = require("./profileController");
 
+
+//=====================================================================================================================
+//====== VIEWS
 function settingsView(req, res) {
 	const usuario = req.session.usuario;
 
 	res.render("settings", { usuario });
 }
 
+
+//=====================================================================================================================
+//====== CRUD
+
+//====== Update
 async function settings(req, res) {
 	let fail = "";
 	let success = "Usuário atualizado com sucesso.";
@@ -101,6 +109,7 @@ async function settings(req, res) {
 	res.redirect(`/?user=` + newUser.email);
 }
 
+//====== Delete
 async function deleteAccount(req, res) {
 	let user = await userController.findUser(req.session.usuario.email);
 
@@ -119,7 +128,9 @@ async function deleteAccount(req, res) {
 	}
 }
 
-//==== EXPORTING
+
+//=====================================================================================================================
+//====== EXPORT
 module.exports = {
 	settingsView,
 	settings,

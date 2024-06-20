@@ -1,9 +1,12 @@
-//====== PROFILE MANAGEMENT
-
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const Profile = require("../models/Profile");
 
+
+//=====================================================================================================================
+//====== CRUD
+
+//====== Create
 async function createProfile(profile) {
 	Profile.create(profile)
 		.then(() => {
@@ -14,6 +17,7 @@ async function createProfile(profile) {
 		});
 }
 
+//====== Read
 async function findProfile(termo) {
 	let found = await Profile.findOne({ where: { usuario: termo } });
 
@@ -135,6 +139,7 @@ async function findProfileByType(tipo, termo) {
 	return found;
 }
 
+//====== Update
 async function updateProfile(profile) {
 	await Profile.update(
 		{
@@ -179,6 +184,7 @@ async function updateProfileUserInfo(email, userInfo) {
 	});
 }
 
+//====== Delete
 function deleteProfile(email) {
 	Profile.destroy({
 		where: {
@@ -187,6 +193,9 @@ function deleteProfile(email) {
 	});
 }
 
+
+//=====================================================================================================================
+//====== EXPORTS
 module.exports = {
 	createProfile,
 	findProfile,
