@@ -3,8 +3,37 @@
     src: url(../fonts/Futura.ttc);
 }
 
+
+/*================== TAGS HTML ==================*/
+
 * {
     margin: 0;
+    font-family: Futura;
+}
+
+div{
+    justify-content: end;
+}
+
+h1 {
+    font-size: 2.125rem;
+    font-weight: 500;
+    font-family: Futura;
+}
+
+input {
+    height: 3rem;
+    border-radius: 1rem;
+    border-color: transparent;
+    background-color: #D9D9D9;
+}
+
+input .border-fail {
+    border-color: red;
+}
+
+a {
+    color: white;
 }
 
 nav {
@@ -12,12 +41,10 @@ nav {
     background-color: white;
 }
 
+
+/*================== COISAS DA NATÁLIA ==================*/
 .nav-link:hover {
     background-color: #ccc;
-}
-
-div{
-    justify-content: end;
 }
 
 /*p{
@@ -165,6 +192,8 @@ div{
     padding-bottom: 50px;
 }
 
+/* Naty isso que vc está fazendo não é o mais recomendado, vc está usando ID como CLASS, isso não
+é reutização de código. ID é pra ser usando com coisas únicas e específicas pra um único elemento (fui redunddante de propósito) */
 #input-name, #input-cargo, #input-estado, #input-pais, #sobre-mim, #habilidades, #input-local, 
 #input-cargo1, #input-periodo, #input-curso, #input-instituicao, #input-telefone, #input-linkedin,
 #input-github, #input-instagram {
@@ -255,7 +284,8 @@ div{
     opacity: 0.5;
 }
 
-/* SHADOW */
+
+/*================== SHADOW ==================*/
 .shadow-far {
     box-shadow: 5px 5px 5px black;
 }
@@ -264,6 +294,8 @@ div{
     box-shadow: 2.5px 2.5px 2.5px black;
 }
 
+
+/*================== CARD & MODALS ==================*/
 .card-custom {
     background-color: white;
     color: black;
@@ -272,12 +304,6 @@ div{
     
     padding-top: 1rem;
     padding-right: 1rem;
-}
-
-h1 {
-    font-size: 2.125rem;
-    font-weight: 500;
-    font-family: Futura;
 }
 
 .modal p {
@@ -291,21 +317,6 @@ h1 {
     font-family: Futura;
 }
 
-input {
-    height: 3rem;
-    border-radius: 1rem;
-    border-color: transparent;
-    background-color: #D9D9D9;
-}
-
-input .border-fail {
-    border-color: red;
-}
-
-a {
-    color: white;
-}
-
 /* MODALS */
 .modal-custom {
     background-color: #D9D9D9;
@@ -314,10 +325,10 @@ a {
     border-width: 5px;
 }
 
-.modal-custom a, button {
+/* .modal-custom a, button {
     width: 10rem;
     margin-left: 2rem;
-}
+} */
 
 .modal-body p {
     font-weight: 400;
@@ -325,7 +336,69 @@ a {
     font-size: 1.125rem;
 }
 
-/* SEARCH */
+.btn-custom {
+    height: 3rem;
+    background-color: #737373;
+    text-decoration: none;
+    border-color: transparent;
+    border-radius: 1rem;
+    border-width: 2.5px;
+    
+    color: white;
+    font-family: Futura;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+
+    min-width: 7.5rem;
+    
+}
+
+.custom-primary:hover {
+    background-color: #53A451;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-tertiary {
+    min-width: 20rem;
+    background-color: #919aa2;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-tertiary:hover {
+    background-color: #53A451;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.a-custom-secondary {
+    padding-top: 0.75rem;
+}
+
+.a-custom-secondary:hover {
+    padding-top: 0.55rem;
+}
+
+.custom-secondary:hover, .a-custom-secondary:hover {
+    color: white;
+    background-color: #919aa2;
+    border-color: black;
+    border: 2.5px solid rgb(6, 5, 5);  
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-danger:hover {
+    background-color: #CB444B;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+    text-decoration: none;
+    color: white;
+}
+
+
+/*================== SEARCH ==================*/
 #search-result-btn {
     color: black;
     text-decoration: none;
@@ -333,8 +406,4 @@ a {
 
 #search-result-btn h5 {
     font-weight: 700;
-}
-
-#search-result-btn /* .left */ {
-
 }

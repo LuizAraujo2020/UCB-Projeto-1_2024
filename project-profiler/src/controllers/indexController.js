@@ -1,5 +1,8 @@
 const profileController = require("./profileController.js");
 
+
+//=====================================================================================================================
+//====== VIEWS
 async function indexView(req, res) {
 	const userParam = req.query.user;
 	if (!userParam) {
@@ -20,7 +23,13 @@ async function indexView(req, res) {
 				ownProfile = profile.email === req.session.usuario.email;
 			}
 
-			res.render("index", { profile, ownProfile, logged });
+			if (req.session.usuario.usuario === "admin") {
+				res.redirect("/adm");
+
+			} else {
+				res.render("index", { profile, ownProfile, logged });
+			}
+				
 		} else {
 			res.render("search");
 		}
@@ -45,6 +54,11 @@ async function editView(req, res) {
 	});
 }
 
+
+//=====================================================================================================================
+//====== CRUD
+
+//====== Update
 async function edit(req, res) {
 	const user = req.session.usuario;
 
@@ -84,6 +98,9 @@ async function edit(req, res) {
 	}
 }
 
+
+//=====================================================================================================================
+//====== HELPER
 function handleSkills(skills) {
 	let collection = skills + "";
 
@@ -103,6 +120,9 @@ function handleSkills(skills) {
 	return collection.join("");
 }
 
+
+//=====================================================================================================================
+//====== EXPORT
 module.exports = {
 	indexView,
 	editView,

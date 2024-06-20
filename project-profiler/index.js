@@ -1,4 +1,5 @@
-//==== MODULES/PACKAGES/IMPORTS/DEPENDENCIES
+//=====================================================================================================================
+//======= MODULES/PACKAGES/IMPORTS/DEPENDENCIES
 const express = require('express')
 const mustacheExpress = require('mustache-express')
 const db = require('./db')
@@ -7,7 +8,8 @@ const session = require("express-session");
 const router = require('./routes')
 
 
-//==== INITIAL CONFIG
+//=====================================================================================================================
+//======= INITIAL CONFIG
 const app = express()
 
 app.engine('html', mustacheExpress())
@@ -30,15 +32,21 @@ app.use(
 	})
 );
 
+
+//=====================================================================================================================
+//======= MAIN ROUTE
 app.use('/', router)
 
-//==== DATABASE
+
+//=====================================================================================================================
+//======= DATABASE
 db.sync(function() {
 	console.log('Banco de dados sincronizado com sucesso!')
 })
 
 
-//==== EXECUTE THE SERVER
+//=====================================================================================================================
+//======= EXECUTING THE SERVER
 const PORT = 8080
 
 app.listen(PORT, function () {

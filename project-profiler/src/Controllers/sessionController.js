@@ -1,5 +1,8 @@
 const User = require("../models/user");
 
+
+//=====================================================================================================================
+//====== AUTH
 async function autenticar(req, res) {
 	let usuario = await User.findOne({
 		where: {
@@ -27,6 +30,9 @@ async function autenticar(req, res) {
 	}
 }
 
+
+//=====================================================================================================================
+//====== CHECK AUTH
 function verificarAutenticacao(req, res, next) {
 	if (req.session.autorizado) {
 		console.log("usuário autorizado");
@@ -57,6 +63,9 @@ function logout(req, res) {
 	res.redirect("/login");
 }
 
+
+//=====================================================================================================================
+//====== EXPORT
 module.exports = {
 	autenticar,
 	verificarAutenticacao,
