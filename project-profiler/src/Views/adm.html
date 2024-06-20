@@ -23,16 +23,17 @@
 <!-- ===================================================================================================================== -->
 <!-- ======= BUTTONS USER  -->
             <div class="row mb-5">
-                <div class="col-4"></div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-primary">LIST USERS</button>
-                </div>
-                <div class="col-2">
+                <div class="col-1"></div>
+                <div class="col-3">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createUserModal">
                         CREATE USER
                     </button>
                 </div>
                 <div class="col-4"></div>
+                <div class="col-3">
+                    <a class="btn btn-outline-secondary" target="_self" href="/logout">LOGOUT</a>
+                </div>
+                <div class="col-1"></div>
             </div> <!-- End: Row 2 -->
 
 <!-- ===================================================================================================================== -->
@@ -85,7 +86,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <input type="text" name="id" class="form-control"
+                                                        <input type="hidden" name="id" class="form-control"
                                                             style="margin-bottom: 20px;" value="{{id}}">
                                                         <input type="text" name="usuario" class="form-control"
                                                             style="margin-bottom: 20px;" value="{{usuario}}">
