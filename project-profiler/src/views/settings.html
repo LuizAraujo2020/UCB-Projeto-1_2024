@@ -20,11 +20,9 @@
             <h1 class="text-center">Editar Cadastro</h1>
     
             <div class="row mt-5 mb-3 ms-5 me-5">
-                <!-- <div class="col-1"> </div> -->
                 <div class="col-12">
                     {{#fail}}<div class="row alert alert-danger mt-1 ms-5 me-5 text-center" role="alert">{{{fail}}}</div>{{/fail}}
                 </div>
-                <!-- <div class="col-1"> </div> -->
             </div>
 
             <form action="/settings" method="POST" class="form">
@@ -98,13 +96,11 @@
                         <div class="modal-body" style="background-color: rgb(230, 230, 230);">
                             <p>Todas as informações do seguinte Usuário serão perdidas:</p>
                             <p>{{ usuario.usuario }}</p>
-                            <!-- <p>{{ usuario.email }}</p> -->
                             <p>Realmente deseja DELETAR esse Usuário?</p>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn-custom custom-secondary" data-bs-dismiss="modal">CANCELAR</button>
-                            <!-- <button type="button" class="btn btn-danger">DELETAR</button> -->
                             <a target="_self" class="btn-custom custom-danger a-custom-secondary" href="/delete">DELETAR</a>
                         </div>
                     </div>

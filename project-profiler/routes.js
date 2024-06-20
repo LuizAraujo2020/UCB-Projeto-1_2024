@@ -10,8 +10,6 @@ const settingsController = require("./src/controllers/settingsController");
 const admController = require("./src/controllers/admController");
 const sessionController = require("./src/controllers/sessionController");
 
-// const errorController    = require('./Controllers/errorController')
-
 
 //=====================================================================================================================
 //====== Store the images
