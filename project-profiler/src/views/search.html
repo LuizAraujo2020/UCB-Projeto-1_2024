@@ -11,67 +11,38 @@
     <link rel="stylesheet" href="../static/css/global.css">
 </head>
 
-<body class="paiHome">
-<!-- <body class="bg-dark bg-gradient vh-100 vh-100 text-white"> -->
-    <div class="container card-custom shadow-far pb-5">
-        <div class="row" devc>
-            <div class="col-12 text-center">
-                <h1 class=" text-center">Profiler</h1>
-                <h2 class=" text-center">Buscar Profissional</h2>
-                {{#fail}}
-                <div class="alert alert-danger mt-1" role="alert">
-                    {{fail}}
-                </div>
-                {{/fail}}
-            </div>
+<body>
+    <div class="paiSearch">
+        <div id="filhaSearch1">
+            <img alt="image" src="../static/images/buttons/button-sign-in.png" width="100" href="./login.html" />
         </div>
 
-        <form action="/search" method="POST" class="form">
-
-            <div class="row mt-5 mb-3 ms-5 me-5">
-                <!-- <label for="usuario">Email / Nome de Usuário:</label> -->
-                <select class="col-4" name="tipo" id="tipo">
-                    <option value="usuario">Nome de Usuário</option>
-                    <option value="email">E-mail</option>
-                    <option value="cargo">Cargo</option>
-                    <option value="hardskills">Hardskills</option>
-                    <option value="softskills">Softskills</option>
-                </select>
-                <input class="row mt-2" type="text" name="termo" id="termo">
-            </div>
-
-            <div class="row mt-5 mb-5 ms-5 me-5">
-                <div class="text-center col-12">
-                    <input type="submit" value="BUSCAR">
-                </div>
-            </div>
-
-            <div class="row mt-5 ms-5 me-5"></div>
-        </form>
-
-        <!-- {{#list}}
-            <div>
-                {{list}}
-            </div>
-        {{/list}} -->
-        <!-- {{#list}}
-        <div class="alert alert-danger mt-1" role="alert">
-            {{{list}}}
+        <div id="filhaSearch2">
+            <img alt="image" src="../static/images/Profiler.png" width="200"/>
         </div>
-        {{/list}} -->
-        {{#list}}
-        <div class="mt-2 ms-5 me-5 bg-secondary">
-            <a id="search-result-btn" href="/?user={{email}}" target="_self">
-                <div class="text-start ms-5 me-5 pt-2 pb-2">
-                    <h5 class="search-text">{{nome}}</h5>
-                    <h6 class="search-text">{{cargo}}</h6>
-                    <h6 class="search-text">{{estado}}, {{pais}}</h6>
-                </div>
-            </a>
+
+        <div id="filhaSearch3">
+            <p>Buscar Profissional</p>
         </div>
-        {{/list}}
-    </div><!-- End Container -->
-</div>
+
+        <div id="filhaSearch4">
+            <p class="label-form">Nome de usuário:</p>
+            <input type="text" class="form-control form-control-sm input-form" id="input-user">
+        
+            <p class="label-form">Email:</p>
+            <input type="text" class="form-control form-control-sm input-form" id="input-email">
+
+            <p class="label-form">Cargo atual:</p>
+            <input type="text" class="form-control form-control-sm input-form" id="input-cargo2">
+
+            <p class="label-form">Habilidades:</p>
+            <input type="text" class="form-control form-control-sm input-form" id="input-habilidades">
+        </div>
+
+        <div id="filhaSearch5">
+            <img alt="image" src="../static/images/buttons/button-search1.png" width="170" id="button-search1" type="submit" value="Buscar">
+        </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </html>
