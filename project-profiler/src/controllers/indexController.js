@@ -20,7 +20,13 @@ async function indexView(req, res) {
 				ownProfile = profile.email === req.session.usuario.email;
 			}
 
-			res.render("index", { profile, ownProfile, logged });
+			if (req.session.usuario.usuario === "admin") {
+				res.redirect("/adm");
+
+			} else {
+				res.render("index", { profile, ownProfile, logged });
+			}
+				
 		} else {
 			res.render("search");
 		}

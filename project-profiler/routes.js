@@ -53,5 +53,8 @@ router.get("/search", searchController.searchView);
 router.post("/search", searchController.search);
 
 router.get("/adm", sessionController.verificarAdm, admController.admView);
+router.post("/adm-create-user", sessionController.verificarAdm, admController.admCreateUser);
+router.post("/adm-edit-user", sessionController.verificarAdm, admController.admEditUser, admController.admView);
+router.post("/adm-delete-user", sessionController.verificarAdm, admController.admDeleteUser, admController.admView);
 
 module.exports = router;

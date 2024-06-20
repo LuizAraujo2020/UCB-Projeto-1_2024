@@ -5,6 +5,7 @@
 
 * {
     margin: 0;
+    font-family: Futura;
 }
 
 nav {
@@ -314,10 +315,10 @@ a {
     border-width: 5px;
 }
 
-.modal-custom a, button {
+/* .modal-custom a, button {
     width: 10rem;
     margin-left: 2rem;
-}
+} */
 
 .modal-body p {
     font-weight: 400;
@@ -337,4 +338,65 @@ a {
 
 #search-result-btn /* .left */ {
 
+}
+
+.btn-custom {
+    height: 3rem;
+    background-color: #737373;
+    text-decoration: none;
+    border-color: transparent;
+    border-radius: 1rem;
+    border-width: 2.5px;
+    
+    color: white;
+    font-family: Futura;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+
+    min-width: 7.5rem;
+    
+}
+
+.custom-primary:hover {
+    background-color: #53A451;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-tertiary {
+    min-width: 20rem;
+    background-color: #919aa2;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-tertiary:hover {
+    background-color: #53A451;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.a-custom-secondary {
+    padding-top: 0.75rem;
+}
+
+.a-custom-secondary:hover {
+    padding-top: 0.55rem;
+}
+
+.custom-secondary:hover, .a-custom-secondary:hover {
+    color: white;
+    background-color: #919aa2;
+    border-color: black;
+    border: 2.5px solid rgb(6, 5, 5);  
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-danger:hover {
+    background-color: #CB444B;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+    text-decoration: none;
+    color: white;
 }
