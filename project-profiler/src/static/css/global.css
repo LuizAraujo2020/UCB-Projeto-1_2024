@@ -4,8 +4,8 @@
 }
 
 
-/*================== TAGS HTML ==================*/
-
+/*===========================================================================*/
+/*====== TAGS HTML ==================*/
 * {
     margin: 0;
     font-family: Futura;
@@ -42,7 +42,8 @@ nav {
 }
 
 
-/*================== COISAS DA NATÁLIA ==================*/
+/*===========================================================================*/
+/*====== COISAS DA NATÁLIA ==================*/
 .nav-link:hover {
     background-color: #ccc;
 }
@@ -192,8 +193,9 @@ nav {
     padding-bottom: 50px;
 }
 
-/* Naty isso que vc está fazendo não é o mais recomendado, vc está usando ID como CLASS, isso não
-é reutização de código. ID é pra ser usando com coisas únicas e específicas pra um único elemento (fui redunddante de propósito) */
+/*.*️⃣ Naty isso que vc está fazendo não é o mais recomendado, vc está usando ID como CLASS, isso não
+é reutização de código. ID é pra ser usando com coisas únicas e específicas, pra um único elemento (fui redunddante de propósito) 
+(pode apagar depois de ler) */
 #input-name, #input-cargo, #input-estado, #input-pais, #sobre-mim, #habilidades, #input-local, 
 #input-cargo1, #input-periodo, #input-curso, #input-instituicao, #input-telefone, #input-linkedin,
 #input-github, #input-instagram, #input-user, #input-email, #input-cargo2, #input-habilidades {
@@ -325,8 +327,10 @@ nav {
 }
 
 
-/*============= PARTE DA JU ============*/
-
+/*===========================================================================*/
+/*====== PARTE DA JU */
+/*. *️⃣ Ju aquele rolê de parte da Naty era pq eu não queria mudar algo, mas o ideal não seria ter parte de pessoas específicas, deveria
+ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contexto. (pode apagar depois de ler) */
 .container-login {
     width: 600px;
     height: 615px;
@@ -403,7 +407,8 @@ nav {
 }
 
 
-/*================== SHADOW ==================*/
+/*===========================================================================*/
+/*====== SHADOWS */
 .shadow-far {
     box-shadow: 5px 5px 5px black;
 }
@@ -413,7 +418,8 @@ nav {
 }
 
 
-/*================== CARD & MODALS ==================*/
+/*===========================================================================*/
+/*====== CARD & MODALS */
 .card-custom {
     background-color: white;
     color: black;
@@ -435,7 +441,6 @@ nav {
     font-family: Futura;
 }
 
-/* MODALS */
 .modal-custom {
     background-color: #D9D9D9;
     color: black;
@@ -516,7 +521,8 @@ nav {
 }
 
 
-/*================== SEARCH ==================*/
+/*===========================================================================*/
+/*====== SEARCH */
 #search-result-btn {
     color: black;
     text-decoration: none;
