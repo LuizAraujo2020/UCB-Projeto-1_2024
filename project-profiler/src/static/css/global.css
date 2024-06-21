@@ -327,6 +327,27 @@ nav {
 
 /*============= PARTE DA JU ============*/
 
+.container-login {
+    width: 600px;
+    height: 615px;
+    position: absolute;
+    top: 8%;
+    margin-top: 100px;
+    left: 40%;
+    margin-left: -100px;
+}
+
+.forgot-password {
+    color: gray;
+    font-style: italic;
+    text-decoration: none;
+    position: absolute;
+    top: 48%;
+    margin-top: 100px;
+    left: 85%;
+    margin-left: -100px;
+}
+
 .container-register {
     width: 600px;
     height: 710px;
