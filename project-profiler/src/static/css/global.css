@@ -4,8 +4,8 @@
 }
 
 
-/*================== TAGS HTML ==================*/
-
+/*===========================================================================*/
+/*====== TAGS HTML ==================*/
 * {
     margin: 0;
     font-family: Futura;
@@ -42,7 +42,8 @@ nav {
 }
 
 
-/*================== COISAS DA NATÁLIA ==================*/
+/*===========================================================================*/
+/*====== COISAS DA NATÁLIA ==================*/
 .nav-link:hover {
     background-color: #ccc;
 }
@@ -192,8 +193,9 @@ nav {
     padding-bottom: 50px;
 }
 
-/* Naty isso que vc está fazendo não é o mais recomendado, vc está usando ID como CLASS, isso não
-é reutização de código. ID é pra ser usando com coisas únicas e específicas pra um único elemento (fui redunddante de propósito) */
+/*.*️⃣ Naty isso que vc está fazendo não é o mais recomendado, vc está usando ID como CLASS, isso não
+é reutização de código. ID é pra ser usando com coisas únicas e específicas, pra um único elemento (fui redunddante de propósito) 
+(pode apagar depois de ler) */
 #input-name, #input-cargo, #input-estado, #input-pais, #sobre-mim, #habilidades, #input-local, 
 #input-cargo1, #input-periodo, #input-curso, #input-instituicao, #input-telefone, #input-linkedin,
 #input-github, #input-instagram, #input-user, #input-email, #input-cargo2, #input-habilidades {
@@ -282,8 +284,9 @@ nav {
 }
 
 #filhaSearch4 {
-    padding-left: 380px;
-    padding-right: 380px;
+    /* padding-left: 380px;
+    padding-right: 380px; */
+    max-width: 700px;
 }
 
 #filhaSearch5 {
@@ -325,8 +328,10 @@ nav {
 }
 
 
-/*============= PARTE DA JU ============*/
-
+/*===========================================================================*/
+/*====== PARTE DA JU */
+/*. *️⃣ Ju aquele rolê de parte da Naty era pq eu não queria mudar algo, mas o ideal não seria ter parte de pessoas específicas, deveria
+ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contexto. (pode apagar depois de ler) */
 .container-login {
     width: 600px;
     height: 615px;
@@ -351,21 +356,23 @@ nav {
 .container-register {
     width: 600px;
     height: 710px;
-    position: absolute;
-    top: 3%;
-    margin-top: 100px;
-    left: 40%;
-    margin-left: -100px;
+    /* position: absolute; */
+    margin: 50px auto;
+    /* top: 5%; */
+    /* margin-top: 50px; */
+    /* left: 40%;
+    margin-left: -100px; */
 }
 
 .container-searchResult {
     width: 600px;
     height: auto;
-    position: absolute;
-    top: 3%;
-    margin-top: 100px;
-    left: 40%;
-    margin-left: -100px;
+    margin: 50px auto;
+    /* position: absolute; */
+    /* top: 3%; */
+    /* margin-top: 100px; */
+    /* left: 40%; */
+    /* margin-left: -100px; */
 }
 
 .bg-entrar-login-cadastro-signup-search {
@@ -374,7 +381,7 @@ nav {
 }
 
 .bg-searchResult-left {
-    height: 103px;
+    /* height: 103px; */
     border-radius:0px 20px 0px 20px;
     border-color: transparent;
     background-color: #D9D9D9;
@@ -383,8 +390,10 @@ nav {
 .bg-align-image-left {
     display: flex;
     align-items: center;
-    position: relative;
-    right: 200px;
+    justify-content: start;
+    /* position: relative; */
+    /* alig */
+    /* right: 200px; */
 }
 
 .bg-searchResult-right {
@@ -403,17 +412,19 @@ nav {
 }
 
 
-/*================== SHADOW ==================*/
+/*===========================================================================*/
+/*====== SHADOWS */
 .shadow-far {
     box-shadow: 5px 5px 5px black;
 }
 
-.shadow-near {
+.shadow-near, .img-profile-picture:hover {
     box-shadow: 2.5px 2.5px 2.5px black;
 }
 
 
-/*================== CARD & MODALS ==================*/
+/*===========================================================================*/
+/*====== CARD & MODALS */
 .card-custom {
     background-color: white;
     color: black;
@@ -435,7 +446,6 @@ nav {
     font-family: Futura;
 }
 
-/* MODALS */
 .modal-custom {
     background-color: #D9D9D9;
     color: black;
@@ -516,7 +526,8 @@ nav {
 }
 
 
-/*================== SEARCH ==================*/
+/*===========================================================================*/
+/*====== SEARCH */
 #search-result-btn {
     color: black;
     text-decoration: none;
@@ -524,4 +535,14 @@ nav {
 
 #search-result-btn h5 {
     font-weight: 700;
+}
+
+
+/*===========================================================================*/
+/*====== GRAPHICS */
+.img-profile-picture {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 0.35rem solid #ddd;
 }
