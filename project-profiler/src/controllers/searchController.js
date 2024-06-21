@@ -28,9 +28,11 @@ function search(req, res) {
 				res.redirect(`/?user=${result[0].email}`);
 				return;
 			}
-			let boleanos = []
+
+			result = result.filter(filterNoAdm);
+			
 			for (let index = 0; index < result.length; index++) {
-				result[index].boleano = index % 2 == 0;
+				result[index].direita = index % 2 == 0;
 			}
 			
 			res.render("searchResult", { list: result });
@@ -42,6 +44,13 @@ function search(req, res) {
 			res.render("searchResult", { fail });
 			return;
 		});
+}
+
+
+//=====================================================================================================================
+//====== HELPERS
+function filterNoAdm(profile) {
+	return profile.usuario != "admin";
 }
 
 

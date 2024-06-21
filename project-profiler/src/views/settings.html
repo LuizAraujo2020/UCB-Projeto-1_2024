@@ -20,7 +20,7 @@
                 <!-- <h1 class="text-center text-logo">Profiler</h1> -->
                 <div class="row mt-5">
                     <div class="col-4"></div>
-                    <img class="col-4" alt="Profiler logo." src="../static/images/Profiler.png"/>
+                    <img class="col-4" alt="Profiler logo." src="./images/Profiler.png"/>
                     <div class="col-4"></div>
                 </div>
                 <div class="row mt-5 mb-3 ms-5 me-5">
@@ -28,10 +28,14 @@
                     <h1 class="col-4 text-center">Editar Cadastro</h1>
                     <div class="col-4"></div>
                 </div>
-                <div class="row mt-5 mb-3 ms-5 me-5">
-                    <div class="col-12">
-                        {{#fail}}<div class="row alert alert-danger mt-1 ms-5 me-5 text-center" role="alert">{{{fail}}}
-                        </div>{{/fail}}
+                
+                <div class="row">
+                    <div class="col-9 text-center me-5">
+                        {{#fail}}
+                        <div class="alert alert-danger text-center mt-1 me-5" role="alert">
+                            {{fail}}
+                        </div>
+                        {{/fail}}
                     </div>
                 </div>
 
@@ -81,19 +85,23 @@
                     <!-- ===================================================================================================================== -->
                     <!-- ======= BUTTONS  -->
                     <div class="row mt-5 mb-5 ms-5 me-5">
-                        <a href="/?user={{usuario.email}}" class="col-3 btn-custom a-custom-secondary"
-                            target="_self">CANCELAR</a>
-
                         <div class="col-1"></div>
 
-                        <button type="button" class="col-3 btn-custom custom-danger" data-bs-toggle="modal"
+                        <a href="/?user={{usuario.email}}" class="col-2 btn-custom a-custom-secondary"
+                            target="_self">CANCELAR</a>
+
+                            <div class="col-2"></div>
+
+                        <button type="button" class="col-2 btn-custom custom-danger" data-bs-toggle="modal"
                             data-bs-target="#deleteConfirmation">
                             DELETAR
                         </button>
+                        
+                        <div class="col-2"></div>
+                        
+                        <input type="submit" class="col-2 btn-custom custom-primary" value="SALVAR">
 
                         <div class="col-1"></div>
-
-                        <input type="submit" class="col-3 btn-custom custom-primary" value="SALVAR">
                     </div>
 
                     <div class="row mt-5 ms-5 me-5"></div>
@@ -127,6 +135,7 @@
                 </div>
             </div>
         </div> <!-- End Container -->
+        
         <div class="Footer mt-5">
             <div id="filhaFooter">
                 <img src="./images/Footer.png" height="70">

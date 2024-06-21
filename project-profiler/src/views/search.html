@@ -27,32 +27,33 @@
             </div> <!-- End: Row 1 -->
     
             <div class="row">
-                <div class="col-11 text-center">
-                    <!-- <h1 class=" text-center">Profiler</h1>
-                    <h2 class=" text-center">Buscar Profissional</h2> -->
+                <div class="col-9 text-center me-5">
                     {{#fail}}
-                    <div class="alert alert-danger mt-1" role="alert">
+                    <div class="alert alert-danger text-center mt-1 me-5" role="alert">
                         {{fail}}
                     </div>
                     {{/fail}}
                 </div>
             </div>
 
-
             <form action="/search" method="POST" class="form mt-5">
+                <div class="row mb-4 ms-5 me-sm-5 ps-3 custom-select">
+                <!-- <div class="row custom-select mt-5 mb-3 ms-5 me-5"> -->
+                    <label  class="me-3 mb-2" for="tipo">Escolha o tipo de busca:</label>
 
-                <div class="row mt-5 mb-3 ms-5 me-5">
-                    <!-- <label for="usuario">Email / Nome de Usuário:</label> -->
-                    <select class="col-8" name="tipo" id="tipo">
+                    <!-- <div class="col-2"></div> -->
+                    <!-- <select name="tipo" id="tipo"> -->
+                    <select class="col-12" name="tipo" id="tipo">
                         <option value="usuario">Nome de Usuário</option>
                         <option value="email">E-mail</option>
                         <option value="cargo">Cargo</option>
                         <option value="hardskills">Hardskills</option>
                         <option value="softskills">Softskills</option>
                     </select>
+                    <!-- <div class="col-2"></div> -->
                 </div>
 
-                <div class="row mb-3 ms-5 me-5">
+                <div class="row mb-3 ms-5 me-md-5 pe-3">
                     <label for="termo">Termo da pesquisa:</label>
                     <input class="row mt-2" type="text" name="termo" id="termo" required>
                 </div>
@@ -69,6 +70,6 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-
+        crossorigin="anonymous">
+    </script>
 </html>

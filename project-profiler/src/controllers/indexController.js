@@ -29,7 +29,8 @@ async function indexView(req, res) {
 			}
 
 			res.render("index", { profile, ownProfile, logged });
-				
+			return;
+
 		} else {
 			res.render("search");
 		}

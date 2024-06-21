@@ -299,6 +299,7 @@ nav {
 .Footer{
     height: 114px;
     background-color: white;
+    width: 100vw;
 }
 
 #filhaFooter{
@@ -440,6 +441,7 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
     
     padding-top: 1rem;
     padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .modal p {
@@ -576,7 +578,6 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
     box-shadow: 2.5px 2.5px 2.5px black;
 }
 
-
 /* 
 .btn-custom {
     height: 3rem;
@@ -640,7 +641,59 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
 } */
 
 
+/*===========================================================================*/
+/*====== SELECT CUSTOM */
+.custom-select {
+  min-width: 350px;
+  position: relative;
+}
 
+select {
+  appearance: none;
+  /*  safari  */
+  -webkit-appearance: none;
+  /*  other styles for aesthetics */
+  width: 100%;
+  /* font-size: 1.15rem; */
+  padding: 0.675em 6em 0.675em 1em;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
 
+.custom-select::before,
+.custom-select::after {
+  --size: 0.5rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
 
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid #919aa2;
+  top: 55%;
+}
 
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid #919aa2;
+  top: 75%;
+}
+
+/*====== Aesthetics */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
