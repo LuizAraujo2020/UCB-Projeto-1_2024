@@ -28,14 +28,18 @@ function search(req, res) {
 				res.redirect(`/?user=${result[0].email}`);
 				return;
 			}
-
-			res.render("search", { list: result });
+			let boleanos = []
+			for (let index = 0; index < result.length; index++) {
+				result[index].boleano = index % 2 == 0;
+			}
+			
+			res.render("searchResult", { list: result });
 			return;
 		})
 		.catch((err) => {
 			console.log(err);
 			const fail = "Erro: nenhum perfil encontrado.";
-			res.render("search", { fail });
+			res.render("searchResult", { fail });
 			return;
 		});
 }

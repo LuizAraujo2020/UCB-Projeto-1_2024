@@ -367,11 +367,12 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
 .container-searchResult {
     width: 600px;
     height: auto;
-    position: absolute;
-    top: 3%;
-    margin-top: 100px;
-    left: 40%;
-    margin-left: -100px;
+    margin: 50px auto;
+    /* position: absolute; */
+    /* top: 3%; */
+    /* margin-top: 100px; */
+    /* left: 40%; */
+    /* margin-left: -100px; */
 }
 
 .bg-entrar-login-cadastro-signup-search {
@@ -380,7 +381,7 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
 }
 
 .bg-searchResult-left {
-    height: 103px;
+    /* height: 103px; */
     border-radius:0px 20px 0px 20px;
     border-color: transparent;
     background-color: #D9D9D9;
@@ -389,8 +390,10 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
 .bg-align-image-left {
     display: flex;
     align-items: center;
-    position: relative;
-    right: 200px;
+    justify-content: start;
+    /* position: relative; */
+    /* alig */
+    /* right: 200px; */
 }
 
 .bg-searchResult-right {

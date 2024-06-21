@@ -25,35 +25,44 @@
                     <h4 class="text-center">Buscar Profissional</h4>
                 </div>
             </div> <!-- End: Row 1 -->
+    
+            <div class="row">
+                <div class="col-11 text-center">
+                    <!-- <h1 class=" text-center">Profiler</h1>
+                    <h2 class=" text-center">Buscar Profissional</h2> -->
+                    {{#fail}}
+                    <div class="alert alert-danger mt-1" role="alert">
+                        {{fail}}
+                    </div>
+                    {{/fail}}
+                </div>
+            </div>
 
-            <form action="/signup" method="POST" class="form">
+
+            <form action="/search" method="POST" class="form mt-5">
 
                 <div class="row mt-5 mb-3 ms-5 me-5">
-                    <label for="usuario">Nome de Usuário</label>
-                    <input class="row mt-2" type="text" name="usuario" id="usuario" required>
+                    <!-- <label for="usuario">Email / Nome de Usuário:</label> -->
+                    <select class="col-8" name="tipo" id="tipo">
+                        <option value="usuario">Nome de Usuário</option>
+                        <option value="email">E-mail</option>
+                        <option value="cargo">Cargo</option>
+                        <option value="hardskills">Hardskills</option>
+                        <option value="softskills">Softskills</option>
+                    </select>
                 </div>
 
                 <div class="row mb-3 ms-5 me-5">
-                    <label for="email">E-mail</label>
-                    <input class="row mt-2" type="text" name="email" id="email" required>
+                    <label for="termo">Termo da pesquisa:</label>
+                    <input class="row mt-2" type="text" name="termo" id="termo" required>
                 </div>
 
-                <div class="row mb-3 ms-5 me-5">
-                    <label for="senha">Cargo</label>
-                    <input class="row mt-2" type="password" name="senha" id="senha" required>
-                </div>
-
-                <div class="row mb-3 ms-5 me-5">
-                    <label for="confirmarSenha">Habilidades</label>
-                    <input class="row mt-2" type="password" name="confirmarSenha" id="confirmarSenha" required>
-                </div>
 
                 <div class="row mt-5 mb-5 ms-5 me-5">
                     <div class="text-center">
                         <input class="col-5 bg-entrar-login-cadastro-signup-search" type="submit" value="BUSCAR">
                     </div>
                 </div>
-
             </form>
 
         </div> <!-- End: Container -->
