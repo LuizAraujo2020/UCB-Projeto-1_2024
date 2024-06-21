@@ -48,36 +48,32 @@
 
                     {{#boleano}}
                     <div class="mt-2 ms-5 me-5 bg-searchResult-left">
-                        <!-- <div class="col-4"></div> -->
-                        <div class="col-10 bg-align-image-left">
-                            <img src="./uploads/{{foto}}" alt="" width="80" height="80" class="ms-3">
+                        <div class="bg-align-image-left">
+                            <img class="ms-2" src="./uploads/{{foto}}" alt="" width="80" height="80">
                             <a id="search-result-btn" href="/?user={{email}}" target="_self">
-                                <div class="text-start ms-3 pt-2 pb-2">
+                                <div class="text-start ms-3 me-5 pt-2 pb-2">
                                     <h5 class="search-text">{{nome}}</h5>
                                     <h6 class="search-text">{{cargo}}</h6>
                                     <h6 class="search-text">{{estado}}, {{pais}}</h6>
                                 </div>
                             </a>
                         </div>
-                        <!-- <div class="col-2"></div> -->
                     </div>
+                    
                     {{/boleano}}
 
                     {{^boleano}}
                         <div class="mt-2 ms-5 me-5 bg-searchResult-right">
-                            <!-- <div class="col-4"></div> -->
-                            <div class="col-12 bg-align-image-right">
-                                
+                            <div class="bg-align-image-right">
                                 <a id="search-result-btn" href="/?user={{email}}" target="_self">
-                                    <div class="text-end me-3 pt-2 pb-2">
+                                    <div class="text-end ms-5 me-3 pt-2 pb-2">
                                         <h5 class="search-text">{{nome}}</h5>
                                         <h6 class="search-text">{{cargo}}</h6>
                                         <h6 class="search-text">{{estado}}, {{pais}}</h6>
                                     </div>
                                 </a>
-                                <img src="./uploads/{{foto}}" alt="" width="80" height="80" class="me-3">
+                                <img src="./uploads/{{foto}}" alt="" width="80" height="80">
                             </div>
-                            <!-- <div class="col-2"></div> -->
                         </div>
                     {{/boleano}}
 
