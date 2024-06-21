@@ -284,8 +284,9 @@ nav {
 }
 
 #filhaSearch4 {
-    padding-left: 380px;
-    padding-right: 380px;
+    /* padding-left: 380px;
+    padding-right: 380px; */
+    max-width: 700px;
 }
 
 #filhaSearch5 {
@@ -355,11 +356,12 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
 .container-register {
     width: 600px;
     height: 710px;
-    position: absolute;
-    top: 3%;
-    margin-top: 100px;
-    left: 40%;
-    margin-left: -100px;
+    /* position: absolute; */
+    margin: 50px auto;
+    /* top: 5%; */
+    /* margin-top: 50px; */
+    /* left: 40%;
+    margin-left: -100px; */
 }
 
 .container-searchResult {

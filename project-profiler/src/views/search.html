@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profiler - Buscar</title>
-<link rel="stylesheet" href="../static/css/normalize.css">
-<link rel="stylesheet" href="./css/normalize.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<link rel="stylesheet" href="../static/css/global.css">
-<link rel="stylesheet" href="./css/global.css">
-</head>
 
-<body class="paiHome">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="container-searchResult card-custom shadow-far">
-        <div class="paiSearch">
-            <div id="filhaSearch1">
-                <img alt="image" src="./images/buttons/button-sign-in.png" width="100" href="./login.html" />
-            </div>
+        <link rel="stylesheet" href="../static/css/normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/global.css">
+        <link rel="stylesheet" href="./css/global.css">
 
-            <div id="filhaSearch2">
-                <img alt="image" src="./images/Profiler.png" width="200"/>
-            </div>
+        <title>Profiler - Cadastro</title>
+    </head>
 
-            <div id="filhaSearch3">
-                <p>Buscar Profissional</p>
-            </div>
+    <body class="paiHome">
+        <div class="container-register card-custom shadow-far">
+            <div class="row"  devc>
+                <div class="col-12 text-center mt-4 mb-3">
+                    <div class="box"></div>
+                    <img src="./images/Profiler.png" alt="" width="200" height="50">
+                    <div class="row mt-3 ms-5 me-5"></div>
+                    <h4 class="text-center">Buscar Profissional</h4>
+                </div>
+            </div> <!-- End: Row 1 -->
 
-            <div id="filhaSearch4">
-                <p class="label-form">Nome de usuário:</p>
-                <input type="text" class="form-control form-control-sm input-form" id="input-user">
-            
-                <p class="label-form">Email:</p>
-                <input type="text" class="form-control form-control-sm input-form" id="input-email">
+            <form action="/signup" method="POST" class="form">
 
-                <p class="label-form">Cargo atual:</p>
-                <input type="text" class="form-control form-control-sm input-form" id="input-cargo2">
+                <div class="row mt-5 mb-3 ms-5 me-5">
+                    <label for="usuario">Nome de Usuário</label>
+                    <input class="row mt-2" type="text" name="usuario" id="usuario" required>
+                </div>
 
-                <p class="label-form">Habilidades:</p>
-                <input type="text" class="form-control form-control-sm input-form" id="input-habilidades">
-            </div>
+                <div class="row mb-3 ms-5 me-5">
+                    <label for="email">E-mail</label>
+                    <input class="row mt-2" type="text" name="email" id="email" required>
+                </div>
 
-            <div id="filhaSearch5">
-                <img alt="image" src="./images/buttons/button-search1.png" width="170" id="button-search1" type="submit" value="Buscar">
-            </div>
-        </div>
-    </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+                <div class="row mb-3 ms-5 me-5">
+                    <label for="senha">Cargo</label>
+                    <input class="row mt-2" type="password" name="senha" id="senha" required>
+                </div>
+
+                <div class="row mb-3 ms-5 me-5">
+                    <label for="confirmarSenha">Habilidades</label>
+                    <input class="row mt-2" type="password" name="confirmarSenha" id="confirmarSenha" required>
+                </div>
+
+                <div class="row mt-5 mb-5 ms-5 me-5">
+                    <div class="text-center">
+                        <input class="col-5 bg-entrar-login-cadastro-signup-search" type="submit" value="BUSCAR">
+                    </div>
+                </div>
+
+            </form>
+
+        </div> <!-- End: Container -->
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
 </html>
