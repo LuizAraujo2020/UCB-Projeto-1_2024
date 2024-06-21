@@ -29,8 +29,11 @@
 
             <div class="row mt-5 mb-3 ms-5 me-5">
                 <div class="col-12">
-                    {{#fail}}<div class="row alert alert-danger mt-1 ms-5 me-5 text-center" role="alert">{{{fail}}}
-                    </div>{{/fail}}
+                    {{#fail}}
+                    <div class="row alert alert-danger mt-1 ms-5 me-5 text-center" role="alert">
+                        {{{fail}}}
+                    </div>
+                    {{/fail}}
                 </div>
             </div>
 
@@ -38,7 +41,8 @@
 
                 <div class="row mt-4 mb-5 ms-5 me-5">
                     <div class="text-center">
-                        <input class="col-5 bg-entrar-login-cadastro-signup-search" type="submit" value="Nova Busca">
+                        <a href="/search" class="col-5 a-custom-login" id="" target="_self">NOVA BUSCA</a>
+                        <!-- <input class="col-5 bg-entrar-login-cadastro-signup-search" type="submit" value="Nova Busca"> -->
                     </div>
                 </div>
 

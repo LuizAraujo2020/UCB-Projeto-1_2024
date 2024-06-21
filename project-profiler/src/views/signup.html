@@ -16,7 +16,7 @@
 
 <body class="paiHome">
     <div class="container-register card-custom shadow-far">
-        <div class="row" devc>
+        <div class="row">
             <div class="col-12 text-center mt-4 mb-3">
                 <div class="box"></div>
                 <img src="./images/Profiler.png" alt="" width="200" height="50">
@@ -24,6 +24,16 @@
                 <h4 class="text-center">Cadastro</h4>
             </div>
         </div> <!-- End: Row 1 -->
+
+        <div class="row mt-5 mb-3 ms-5 me-5">
+            <div class="col-12">
+                {{#fail}}
+                <div class="row alert alert-danger mt-1 ms-5 me-5 text-center" role="alert">
+                    {{{fail}}}
+                </div>
+                {{/fail}}
+            </div>
+        </div>
 
         <form action="/signup" method="POST" class="form">
 
@@ -47,9 +57,17 @@
                 <input class="row mt-2" type="password" name="confirmarSenha" id="confirmarSenha" required>
             </div>
 
-            <div class="row mt-5 mb-5 ms-5 me-5">
+            <!-- <div class="row mt-5 mb-5 ms-5 me-5">
                 <div class="text-center">
                     <input class="col-5 bg-entrar-login-cadastro-signup-search" type="submit" value="CADASTRAR">
+                </div>
+            </div> -->
+
+            <div class="row mt-5 mb-5 ms-5 me-5">
+                <div class="text-center">
+                    <a href="/login" class="col-5 a-custom-login" id="" target="_self">ENTRAR</a>
+                    <!-- <input class="col-5 " type="submit" value="CADASTRAR"> -->
+                    <input class="col-5 bg-entrar-login-cadastro-signup-search ms-2" type="submit" value="CADASTRAR">
                 </div>
             </div>
 

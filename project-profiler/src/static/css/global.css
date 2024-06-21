@@ -355,13 +355,14 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
 
 .container-register {
     width: 600px;
-    height: 710px;
+    
     /* position: absolute; */
     margin: 50px auto;
     /* top: 5%; */
     /* margin-top: 50px; */
     /* left: 40%;
     margin-left: -100px; */
+    padding-bottom: 1rem;
 }
 
 .container-searchResult {
@@ -378,6 +379,12 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
 .bg-entrar-login-cadastro-signup-search {
     color: rgb(255, 255, 255);
     background-color: #6e6b6b; 
+}
+
+.bg-entrar-login-cadastro-signup-search:hover {
+    background-color: #53A451;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
 }
 
 .bg-searchResult-left {
@@ -546,3 +553,94 @@ ter coisas bem genéricas, com nomes e usos bem reutilizáveis e livre de contex
     border-radius: 50%;
     border: 0.35rem solid #ddd;
 }
+
+.a-custom-login {
+    border-radius: 1rem;
+    border-color: transparent;
+    color: white;
+    background-color: #D9D9D9;
+    /* .🌟 Usar esa lógica em todos os a href */
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+    padding-left: 3rem;
+    padding-right: 3.3rem;
+    text-decoration: none;
+}
+
+.a-custom-login:hover {
+    padding-right: 3rem;
+    color: white;
+    background-color: #919aa2;
+    border-color: black;
+    border: 2.5px solid rgb(6, 5, 5);  
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+
+/* 
+.btn-custom {
+    height: 3rem;
+    background-color: #737373;
+    text-decoration: none;
+    border-color: transparent;
+    border-radius: 1rem;
+    border-width: 2.5px;
+    
+    color: white;
+    font-family: Futura;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+
+    min-width: 7.5rem;
+    
+}
+
+.custom-primary:hover {
+    background-color: #53A451;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-tertiary {
+    min-width: 20rem;
+    background-color: #919aa2;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-tertiary:hover {
+    background-color: #53A451;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.a-custom-secondary {
+    padding-top: 0.75rem;
+}
+
+.a-custom-secondary:hover {
+    padding-top: 0.55rem;
+}
+
+.custom-secondary:hover, .a-custom-secondary:hover {
+    color: white;
+    background-color: #919aa2;
+    border-color: black;
+    border: 2.5px solid rgb(6, 5, 5);  
+    box-shadow: 2.5px 2.5px 2.5px black;
+}
+
+.custom-danger:hover {
+    background-color: #CB444B;
+    border-color: black;
+    box-shadow: 2.5px 2.5px 2.5px black;
+    text-decoration: none;
+    color: white;
+} */
+
+
+
+
+
+
