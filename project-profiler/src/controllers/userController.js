@@ -4,7 +4,6 @@ const User = require("../models/user");
 const Profile = require("../models/Profile");
 const sessionController = require("./sessionController");
 
-
 //=====================================================================================================================
 //====== VIEWS
 function signupView(req, res) {
@@ -14,7 +13,6 @@ function signupView(req, res) {
 function loginView(req, res) {
 	res.render("login");
 }
-
 
 //=====================================================================================================================
 //====== CRUD
@@ -42,13 +40,14 @@ async function createUser(req, res) {
 		.catch((err) => {
 			let fail = "Erro: falha ao criar o usuário.";
 			res.render("signup", { fail });
-			return
+			return;
 		});
 
 	Profile.create(profile)
 		.then(() => {
 			console.log("✅ Profile criado no DB com sucesso.");
 			res.redirect(`/?user=` + user.email);
+			return;
 		})
 		.catch((err) => {
 			let fail = "Erro ao criar o Profile no DB.";
@@ -56,7 +55,6 @@ async function createUser(req, res) {
 			res.render("signup", { fail });
 			return;
 		});
-
 }
 
 //====== Read
@@ -100,7 +98,6 @@ function deleteUser(email) {
 	});
 }
 
-
 //=====================================================================================================================
 //====== VALIDATIONS
 /// Validates the entries in the Signup journey.
@@ -115,7 +112,6 @@ function validateSignup(senha, confirmarSenha) {
 
 	return fail;
 }
-
 
 //=====================================================================================================================
 //====== HELPERS
@@ -158,7 +154,6 @@ function createProfileObjectFromUser(user) {
 
 	return profile;
 }
-
 
 //=====================================================================================================================
 //====== EXPORT
