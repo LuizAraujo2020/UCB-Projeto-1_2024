@@ -68,7 +68,7 @@ nav {
 
 .paiHome{
     padding-top: 15px;
-    background-image: url("/project-profiler/src/views/images/desenhoBackground.png");
+    background-image: url("../images/desenhoBackground.png");
     background-position: top;
     background-repeat: no-repeat;
     background-color: #737373;
@@ -322,6 +322,53 @@ nav {
 }
 #button-settings:hover {
     opacity: 0.5;
+}
+
+
+/*============= PARTE DA JU ============*/
+
+.container-searchResult {
+    width: 600px;
+    height: auto;
+    position: absolute;
+    top: 3%;
+    margin-top: 100px;
+    left: 40%;
+    margin-left: -100px;
+}
+
+.bg-entrar-login-cadastro-signup-search {
+    color: rgb(255, 255, 255);
+    background-color: #6e6b6b; 
+}
+
+.bg-searchResult-left {
+    height: 103px;
+    border-radius:0px 20px 0px 20px;
+    border-color: transparent;
+    background-color: #D9D9D9;
+}
+
+.bg-align-image-left {
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 200px;
+}
+
+.bg-searchResult-right {
+    height: 103px;
+    border-radius:20px 0px 20px 0px;
+    border-color: transparent;
+    background-color: #D9D9D9;
+}
+
+.bg-align-image-right {
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 10px;
+    border-radius:0px 20px 0px 20px;
 }
 
 
